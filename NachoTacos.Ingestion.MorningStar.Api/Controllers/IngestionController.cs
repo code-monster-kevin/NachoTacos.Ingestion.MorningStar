@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NachoTacos.Ingestion.MorningStar.Api.Services;
 using NachoTacos.Ingestion.MorningStar.Data;
-using NachoTacos.Ingestion.MorningStar.Domain.MorningStar;
 using System;
 using System.Threading.Tasks;
 
@@ -14,11 +14,13 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
     {
         private readonly ILogger<IngestionController> _logger;
         private readonly IIngestionContext _ingestionContext;
+        private readonly IConfiguration _configuration;
 
-        public IngestionController(IIngestionContext ingestionContext, ILogger<IngestionController> logger)
+        public IngestionController(IConfiguration configuration, IIngestionContext ingestionContext, ILogger<IngestionController> logger)
         {
             _logger = logger;
             _ingestionContext = ingestionContext;
+            _configuration = configuration;
         }
 
 
@@ -32,8 +34,8 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
 
             if (tokenEntity != null)
             {
-                IngestionService ingestionService = new IngestionService(_ingestionContext, _logger);
-                StockExchangeSecurityResponse response = await ingestionService.IngestionMain(tokenEntity.Token);
+                IngestionService ingestionService = new IngestionService(_configuration, _ingestionContext, _logger);
+                var response = await ingestionService.IngestionMain(tokenEntity.Token);
 
                 return Ok(response);
             }

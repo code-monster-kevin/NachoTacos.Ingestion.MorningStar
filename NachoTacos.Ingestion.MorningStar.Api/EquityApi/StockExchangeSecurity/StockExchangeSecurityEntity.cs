@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace NachoTacos.Ingestion.MorningStar.Domain.MorningStar
+namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi.StockExchangeSecurity
 {
     /// <summary>
     /// Source: https://equityapi.morningstar.com/DataCatalog.aspx?catalogid=161
@@ -31,22 +30,4 @@ namespace NachoTacos.Ingestion.MorningStar.Domain.MorningStar
         [Required]
         public string SuspendedFlag { get; set; }
     }
-
-    public class StockExchangeSecurityRequest : BaseRequest
-    {
-        [Required]
-        public string exchangeId { get; set; }
-        [Required]
-        public string identifierType { get; set; }
-        [Required]
-        public string identifier { get; set; }
-        [Required]
-        public string stockStatus { get; set; }
-    }
-
-    public class StockExchangeSecurityResponse : BaseResponse
-    {
-        public List<StockExchangeSecurityEntity> StockExchangeSecurityEntityList { get; set; }
-    }
-
 }

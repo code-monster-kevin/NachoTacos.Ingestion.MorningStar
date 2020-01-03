@@ -74,13 +74,14 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             try
             {
                 doc.LoadXml(Regex.Replace(loginResult, @"(xmlns:?[^=]*=[""][^""]*[""])", "", RegexOptions.IgnoreCase | RegexOptions.Multiline));
-                string tokenExpireDate = string.Format("{0}Z", doc.SelectSingleNode(@"//TokenEntity/expireDate").InnerText.Substring(0, 26));
+                string tokenExpireDate = string.Format("{0}Z", doc.SelectSingleNode(@"//TokenEntity/expireDate").InnerText.Substring(0, 23));
+                _logger.LogInformation("GetTokenEntity tokenExpireDate: {0}", tokenExpireDate);
 
                 token = new TokenEntity
                 {
                     IsSuccess = doc.SelectSingleNode(@"//TokenEntity/IsSuccess").InnerText == "true" ? true : false,
                     Token = doc.SelectSingleNode(@"//TokenEntity/Token").InnerText,
-                    ExpireDate = DateTime.ParseExact(tokenExpireDate, "yyyy-MM-ddTHH:mm:ss.ffffffZ", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
+                    ExpireDate = DateTime.ParseExact(tokenExpireDate, "yyyy-MM-ddTHH:mm:ss.fffZ", System.Globalization.CultureInfo.CreateSpecificCulture("en-US"))
                 };
             }
             catch (Exception ex)
