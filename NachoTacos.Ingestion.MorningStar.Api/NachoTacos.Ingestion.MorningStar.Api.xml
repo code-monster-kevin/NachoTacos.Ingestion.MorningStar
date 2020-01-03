@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NachoTacos.Ingestion.MorningStar.Api</name>
+    </assembly>
+    <members>
+        <member name="T:NachoTacos.Ingestion.MorningStar.Api.Services.Authentication">
+            <summary>
+            Connecting to MorningStar equity API service
+            based on sample code from https://equityapi.morningstar.com/SampleCode.aspx
+            </summary>
+        </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Services.Authentication.GetTokenEntity(System.String)">
+            <summary>
+            Deserialize the XML result into TokenEntity class
+            fixed a bug where the miliseconds expire date sometimes return 6 or 7 digits
+            truncate the miliseconds to limit to 6 digits
+            </summary>
+            <param name="loginResult"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

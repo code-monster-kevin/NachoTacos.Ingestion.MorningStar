@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{992E7D06-69AC-478D-AAD6-6E5937EF0B3F}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NachoTacos.Ingestion.MorningStar.Domain", "NachoTacos.Ingestion.MorningStar.Domain\NachoTacos.Ingestion.MorningStar.Domain.csproj", "{F3B993C2-72CC-4127-BC10-08AA24EB0BC1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NachoTacos.Ingestion.MorningStar.Api", "NachoTacos.Ingestion.MorningStar.Api\NachoTacos.Ingestion.MorningStar.Api.csproj", "{13CF61F5-F729-4A2D-AC45-31BBBE02432E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NachoTacos.Ingestion.MorningStar.Data", "NachoTacos.Ingestion.MorningStar.Data\NachoTacos.Ingestion.MorningStar.Data.csproj", "{E6ABED5B-61C5-4B04-8162-874DDB5BB21F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3B993C2-72CC-4127-BC10-08AA24EB0BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3B993C2-72CC-4127-BC10-08AA24EB0BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3B993C2-72CC-4127-BC10-08AA24EB0BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3B993C2-72CC-4127-BC10-08AA24EB0BC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13CF61F5-F729-4A2D-AC45-31BBBE02432E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13CF61F5-F729-4A2D-AC45-31BBBE02432E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13CF61F5-F729-4A2D-AC45-31BBBE02432E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13CF61F5-F729-4A2D-AC45-31BBBE02432E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6ABED5B-61C5-4B04-8162-874DDB5BB21F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6ABED5B-61C5-4B04-8162-874DDB5BB21F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6ABED5B-61C5-4B04-8162-874DDB5BB21F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6ABED5B-61C5-4B04-8162-874DDB5BB21F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C349C4C-90FC-4608-9114-6C7139A839DC}
+	EndGlobalSection
+EndGlobal
