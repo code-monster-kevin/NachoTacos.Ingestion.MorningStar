@@ -1,6 +1,6 @@
 ﻿namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
 {
-    public class BaseResponse
+    public abstract class BaseResponse
     {
         public MessageInfo MessageInfo { get; set; }
     }

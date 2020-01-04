@@ -11,12 +11,19 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi.StockExchangeSecurity
     public class Request : BaseRequest
     {
         [Required]
-        public string exchangeId { get; set; }
-        [Required]
-        public string identifierType { get; set; }
-        [Required]
-        public string identifier { get; set; }
-        [Required]
         public string stockStatus { get; set; }
+
+        public static Request Create(string token, string exchangeId, string identifierType, string identifier, string stockStatus, string responseType = "Json")
+        {
+            return new Request
+            {
+                exchangeId = exchangeId,
+                identifier = identifier,
+                identifierType = identifierType,
+                stockStatus = stockStatus,
+                Token = token,
+                ResponseType = responseType
+            };
+        }
     }
 }

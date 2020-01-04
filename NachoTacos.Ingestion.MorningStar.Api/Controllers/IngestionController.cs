@@ -3,7 +3,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NachoTacos.Ingestion.MorningStar.Api.Services;
 using NachoTacos.Ingestion.MorningStar.Data;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
@@ -34,13 +36,51 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
 
             if (tokenEntity != null)
             {
-                IngestionService ingestionService = new IngestionService(_configuration, _ingestionContext, _logger);
-                var response = await ingestionService.IngestionMain(tokenEntity.Token);
+                var response = await CreateStockExchangeSecurityRequest(tokenEntity.Token);
+                //var response = await CreateBalanceSheetRequest(tokenEntity.Token);
 
                 return Ok(response);
             }
 
             return NotFound(id);
+        }
+
+        private async Task<List<EquityApi.StockExchangeSecurity.StockExchangeSecurityEntity>> CreateStockExchangeSecurityRequest(string token)
+        {
+            IngestionService ingestion = new IngestionService(_logger);
+
+            string endPoint = _configuration.GetValue<string>("MorningStar:EquityApi:StockExchangeSecurityList");
+            EquityApi.StockExchangeSecurity.Request request =
+                    EquityApi.StockExchangeSecurity.Request.Create(token, "KLS", "exchangeId", "KLS", "Active");
+
+            var response = await ingestion.Get(endPoint, request);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _logger);
+
+            await persistence.SaveResultToDb("StockExchangeSecurityList", 
+                                                endPoint, 
+                                                JsonConvert.SerializeObject(request), 
+                                                JsonConvert.SerializeObject(response));
+            return response;
+        }
+
+        private async Task<List<EquityApi.BalanceSheet.BalanceSheetEntity>> CreateBalanceSheetRequest(string token)
+        {
+            IngestionService ingestion = new IngestionService(_logger);
+            string endPoint = _configuration.GetValue<string>("MorningStar:EquityApi:BalanceSheet");
+
+            EquityApi.BalanceSheet.Request request =
+                EquityApi.BalanceSheet.Request.Create(token, "NYS", "Symbol", "IBM", "Annual", "AOR", "1/2018", "1/2019", "Json");
+
+            var response = await ingestion.Get(endPoint, request);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _logger);
+
+            await persistence.SaveResultToDb("BalanceSheetEntityList",
+                                                endPoint,
+                                                JsonConvert.SerializeObject(request),
+                                                JsonConvert.SerializeObject(response));
+            return response;
         }
         #endregion
     }

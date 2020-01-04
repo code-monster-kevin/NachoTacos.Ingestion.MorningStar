@@ -1,13 +1,11 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi.StockExchangeSecurity
+namespace NachoTacos.Ingestion.MorningStar.Domain
 {
-    /// <summary>
-    /// Source: https://equityapi.morningstar.com/DataCatalog.aspx?catalogid=161
-    /// Endpoint: http://equityapi.morningstar.com/Webservice/GlobalMasterListsService.asmx/GetStockExchangeSecurityList
-    /// </summary>
-    public class StockExchangeSecurityEntity : Equity
+    [Table("TStockExchangeSecurity", Schema = "MStar")]
+    public class TStockExchangeSecurity : TEquity
     {
         public string InvestmentTypeId { get; set; }
         [Required]
@@ -20,5 +18,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi.StockExchangeSecurity
         public decimal ParValue { get; set; }
         [Required]
         public string SuspendedFlag { get; set; }
+        public Guid IngestionTaskId { get; set; }
+        public virtual IngestionTask IngestionTask { get; set; }
     }
 }

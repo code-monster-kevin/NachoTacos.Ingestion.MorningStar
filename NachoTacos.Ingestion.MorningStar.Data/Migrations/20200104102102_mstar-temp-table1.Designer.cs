@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NachoTacos.Ingestion.MorningStar.Data;
 
 namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
 {
     [DbContext(typeof(IngestionContext))]
-    partial class IngestionContextModelSnapshot : ModelSnapshot
+    [Migration("20200104102102_mstar-temp-table1")]
+    partial class mstartemptable1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -149,18 +151,7 @@ namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
                     b.Property<string>("Symbol")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("IngestionTaskId");
-
                     b.ToTable("TStockExchangeSecurity","MStar");
-                });
-
-            modelBuilder.Entity("NachoTacos.Ingestion.MorningStar.Domain.TStockExchangeSecurity", b =>
-                {
-                    b.HasOne("NachoTacos.Ingestion.MorningStar.Domain.IngestionTask", "IngestionTask")
-                        .WithMany()
-                        .HasForeignKey("IngestionTaskId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

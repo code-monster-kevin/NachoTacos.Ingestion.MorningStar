@@ -9,6 +9,8 @@ namespace NachoTacos.Ingestion.MorningStar.Data
     {
         DbSet<ClientConfiguration> ClientConfigurations { get; set; }
         DbSet<IngestionResult> IngestionResults { get; set; }
+        DbSet<IngestionTask> IngestionTasks { get; set; }
+        DbSet<TStockExchangeSecurity> TStockExchangeSecurities { get; set; }
 
         int SaveChanges();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
