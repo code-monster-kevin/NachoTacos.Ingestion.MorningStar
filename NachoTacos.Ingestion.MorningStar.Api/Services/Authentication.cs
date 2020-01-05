@@ -8,7 +8,6 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
 
-
 namespace NachoTacos.Ingestion.MorningStar.Api.Services
 {
     /// <summary>
@@ -33,7 +32,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                 var requestUrl = url.SetQueryParam("email", email)
                                     .SetQueryParam("password", password);
 
-                string loginResult = await RestClient.GetFlurlResponse(requestUrl);
+                string loginResult = await RestClient.GetResponseAsync(requestUrl);
                 if (string.IsNullOrEmpty(loginResult))
                     return null;
 
@@ -90,7 +89,6 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             }
             return token;
         }
-
     }
 
     public class TokenEntity

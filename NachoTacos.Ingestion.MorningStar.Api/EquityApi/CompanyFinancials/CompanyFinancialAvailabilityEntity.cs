@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
 namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
 {
@@ -12,9 +8,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
     /// </summary>
     public class CompanyFinancialAvailabilityEntity : Equity
     {
-        [Required]
         public int Start { get; set; }
-        [Required]
         public int End { get; set; }
         public string SectorId { get; set; }
         public string SectorName { get; set; }

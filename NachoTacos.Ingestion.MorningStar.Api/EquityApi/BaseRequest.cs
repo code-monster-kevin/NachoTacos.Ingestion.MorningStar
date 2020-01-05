@@ -2,7 +2,7 @@
 
 namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
 {
-    #pragma warning disable IDE1006
+#pragma warning disable IDE1006
     public abstract class BaseRequest
     {
         [Required]
@@ -13,6 +13,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         public string identifier { get; set; }
         [Required]
         public string Token { get; set; }
+        [Required]
         public string ResponseType { get; set; }
     }
 }

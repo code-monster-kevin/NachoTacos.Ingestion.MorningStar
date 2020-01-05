@@ -1,20 +1,15 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
+namespace NachoTacos.Ingestion.MorningStar.Domain
 {
-
-    // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
-    // Code generated from xml/BalanceSheetEntity.xml (Paste Special -> Paste XML as Classes)
-    // Replaced string with decimal
-    // Changed reportDate, periodEndingDate, fileDate to DateTime
-    // Changed StatementType, DataType, Interim, CurrencyId, AccessionNumber, FormType to string
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
-    public partial class BalanceSheetEntity
+    // Class generated from xml/BalanceSheetEntity.xml (Paste Special -> Paste XML as Classes)
+    // Added 2 properties TBalanceSheetEntityId, IngestionTaskId
+    [Table("TBalanceSheet", Schema = "MStar")]
+    public class TBalanceSheet
     {
+        public Guid Id { get; set; }
+        public Guid IngestionTaskId { get; set; }
 
         private DateTime reportDateField;
 

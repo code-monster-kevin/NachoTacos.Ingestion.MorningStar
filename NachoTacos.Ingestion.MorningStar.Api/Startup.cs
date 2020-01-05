@@ -1,13 +1,14 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using NachoTacos.Ingestion.MorningStar.Data;
 using System;
 using System.IO;
 using System.Reflection;
-using NachoTacos.Ingestion.MorningStar.Data;
 
 namespace NachoTacos.Ingestion.MorningStar.Api
 {
@@ -36,6 +37,8 @@ namespace NachoTacos.Ingestion.MorningStar.Api
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+
+            services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();
         }

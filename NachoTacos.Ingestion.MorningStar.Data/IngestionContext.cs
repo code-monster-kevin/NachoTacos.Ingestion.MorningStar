@@ -15,13 +15,13 @@ namespace NachoTacos.Ingestion.MorningStar.Data
 
         #region "Main Tables"
         public DbSet<ClientConfiguration> ClientConfigurations { get; set; }
-        public DbSet<IngestionResult> IngestionResults { get; set; }
         public DbSet<IngestionTask> IngestionTasks { get; set; }
         #endregion
 
         #region "MorningStar Tables"
 
         public DbSet<TStockExchangeSecurity> TStockExchangeSecurities { get; set; }
+        public DbSet<TBalanceSheet> TBalanceSheets { get; set; }
 
         #endregion
 
@@ -29,7 +29,6 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<TStockExchangeSecurity>().HasNoKey();
         }
 
         public override int SaveChanges()

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 
 namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
 {
@@ -10,15 +9,11 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
     public class StockExchangeSecurityEntity : Equity
     {
         public string InvestmentTypeId { get; set; }
-        [Required]
         public string StockStatus { get; set; }
         public DateTime DelistingDate { get; set; }
         public string DelistingReason { get; set; }
-        [Required]
         public string ExchangeSubMarketGlobalId { get; set; }
-        [Required]
         public decimal ParValue { get; set; }
-        [Required]
         public string SuspendedFlag { get; set; }
     }
 }

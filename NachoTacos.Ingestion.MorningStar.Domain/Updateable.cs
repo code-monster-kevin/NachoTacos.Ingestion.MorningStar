@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace NachoTacos.Ingestion.MorningStar.Domain
 {

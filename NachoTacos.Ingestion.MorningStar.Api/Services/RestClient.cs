@@ -6,18 +6,18 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
 {
     public class RestClient
     {
-        public static async Task<string> GetFlurlResponse(string url)
+        public static async Task<string> GetResponseAsync(string url)
         {
             try
             {
                 IFlurlResponse response = await url.GetAsync();
                 return await response.ResponseMessage.Content.ReadAsStringAsync();
             }
-            catch(FlurlHttpTimeoutException)
+            catch (FlurlHttpTimeoutException)
             {
                 throw new Exception("Response Time Out");
             }
-            catch(FlurlHttpException ex)
+            catch (FlurlHttpException ex)
             {
                 throw new Exception(ex.Message);
             }
