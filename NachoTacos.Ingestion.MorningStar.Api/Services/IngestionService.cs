@@ -15,11 +15,11 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             _logger = logger;
         }
 
-        public async Task<List<EquityApi.StockExchangeSecurity.StockExchangeSecurityEntity>> Get(string endPoint, EquityApi.StockExchangeSecurity.Request request)
+        public async Task<List<StockExchangeSecurityEntity>> Get(string endPoint, EquityApi.StockExchangeSecurity.Request request)
         {
             try
             {
-                List<EquityApi.StockExchangeSecurity.StockExchangeSecurityEntity> stockExchangeSecurityEntityList = 
+                List<StockExchangeSecurityEntity> stockExchangeSecurityEntityList = 
                     await GlobalMasterListsService.GetStockExchangeSecurityList(endPoint, request);
 
                 return stockExchangeSecurityEntityList;
@@ -31,11 +31,11 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             }
         }
 
-        public async Task<List<EquityApi.BalanceSheet.BalanceSheetEntity>> Get(string endPoint, EquityApi.BalanceSheet.Request request)
+        public async Task<List<BalanceSheetEntity>> Get(string endPoint, EquityApi.BalanceSheet.Request request)
         {
             try
             {
-                List<EquityApi.BalanceSheet.BalanceSheetEntity> balanceSheetEntities =
+                List<BalanceSheetEntity> balanceSheetEntities =
                 await CompanyFinancialsService.GetBalanceSheet(endPoint, request);
 
                 return balanceSheetEntities;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi.CompanyFinancials
+namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
 {
     /// <summary>
     /// Source: https://equityapi.morningstar.com/DataCatalog.aspx?catalogid=47

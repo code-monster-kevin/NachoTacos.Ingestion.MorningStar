@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi.StockExchangeSecurity
+namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
 {
     /// <summary>
     /// Source: https://equityapi.morningstar.com/DataCatalog.aspx?catalogid=161

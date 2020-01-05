@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi.BalanceSheet
+namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
 {
 
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.

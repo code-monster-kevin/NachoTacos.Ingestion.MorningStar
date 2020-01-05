@@ -1,4 +1,4 @@
-﻿namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi.BalanceSheet
+﻿namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
 {
     public class GeneralInfo : Equity
     {

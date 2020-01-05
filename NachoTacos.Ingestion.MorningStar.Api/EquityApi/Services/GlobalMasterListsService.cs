@@ -22,7 +22,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         /// <param name="stockStatus"></param>
         /// <param name="responseType"></param>
         /// <returns></returns>
-        public static async Task<List<StockExchangeSecurity.StockExchangeSecurityEntity>> GetStockExchangeSecurityList(string endPoint, string token, string exchangeId, string identifier, string identifierType, string stockStatus, string responseType = "Json")
+        public static async Task<List<StockExchangeSecurityEntity>> GetStockExchangeSecurityList(string endPoint, string token, string exchangeId, string identifier, string identifierType, string stockStatus, string responseType = "Json")
         {
             StockExchangeSecurity.Request request = new StockExchangeSecurity.Request
             {
@@ -36,7 +36,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
 
             return await GetStockExchangeSecurityList(endPoint, request);
         }
-        public static async Task<List<StockExchangeSecurity.StockExchangeSecurityEntity>> GetStockExchangeSecurityList(string endPoint, StockExchangeSecurity.Request request)
+        public static async Task<List<StockExchangeSecurityEntity>> GetStockExchangeSecurityList(string endPoint, StockExchangeSecurity.Request request)
         {
             string requestUrl = endPoint.SetQueryParams(request);
 

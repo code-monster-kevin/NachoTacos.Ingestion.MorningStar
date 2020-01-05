@@ -28,13 +28,13 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         /// <param name="endDate">Format must be mm/yyyy</param>
         /// <param name="responseType"></param>
         /// <returns></returns>
-        public static async Task<List<BalanceSheet.BalanceSheetEntity>> GetBalanceSheet(string endPoint, string token, string exchangeId, string identifierType, string identifier, string statementType, string dataType, string startDate, string endDate, string responseType = "Json")
+        public static async Task<List<BalanceSheetEntity>> GetBalanceSheet(string endPoint, string token, string exchangeId, string identifierType, string identifier, string statementType, string dataType, string startDate, string endDate, string responseType = "Json")
         {
             BalanceSheet.Request request = BalanceSheet.Request.Create(token, exchangeId, identifierType, identifier, statementType, dataType, startDate, endDate, responseType);
             return await GetBalanceSheet(endPoint, request);
         }
 
-        public static async Task<List<BalanceSheet.BalanceSheetEntity>> GetBalanceSheet(string endPoint, BalanceSheet.Request request)
+        public static async Task<List<BalanceSheetEntity>> GetBalanceSheet(string endPoint, BalanceSheet.Request request)
         {
             string requestUrl = endPoint.SetQueryParams(request);
 

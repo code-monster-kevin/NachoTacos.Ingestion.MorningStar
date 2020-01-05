@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using NachoTacos.Ingestion.MorningStar.Api.EquityApi;
 using NachoTacos.Ingestion.MorningStar.Api.Services;
 using NachoTacos.Ingestion.MorningStar.Data;
 using Newtonsoft.Json;
@@ -45,7 +46,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             return NotFound(id);
         }
 
-        private async Task<List<EquityApi.StockExchangeSecurity.StockExchangeSecurityEntity>> CreateStockExchangeSecurityRequest(string token)
+        private async Task<List<StockExchangeSecurityEntity>> CreateStockExchangeSecurityRequest(string token)
         {
             IngestionService ingestion = new IngestionService(_logger);
 
@@ -64,7 +65,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             return response;
         }
 
-        private async Task<List<EquityApi.BalanceSheet.BalanceSheetEntity>> CreateBalanceSheetRequest(string token)
+        private async Task<List<BalanceSheetEntity>> CreateBalanceSheetRequest(string token)
         {
             IngestionService ingestion = new IngestionService(_logger);
             string endPoint = _configuration.GetValue<string>("MorningStar:EquityApi:BalanceSheet");
