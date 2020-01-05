@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Flurl;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -27,50 +28,102 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
         }
 
         #region "Controllers"
+
+        /// <summary>
+        /// Starts to ingest the MorningStar API can saves the results into the database
+        /// </summary>
+        /// <param name="id">Client configuration id</param>
+        /// <param name="exchangeId">Example "KLS"</param>
+        /// <param name="stockStatus">Example "Active"</param>
+        /// <returns></returns>
         [HttpGet]
-        [Route("{id}")]
-        public async Task<IActionResult> IngestExecute(Guid id)
+        [Route("StockExchangeSecurity/{id}")]
+        public async Task<IActionResult> StockExchangeSecurityRequest(Guid id, string exchangeId, string stockStatus)
         {
             Authentication authentication = new Authentication(_ingestionContext, _logger);
             TokenEntity tokenEntity = await authentication.GetAccessTokenByClientConfigId(id);
 
             if (tokenEntity != null)
             {
-                var response = await CreateStockExchangeSecurityRequest(tokenEntity.Token);
-                //var response = await CreateBalanceSheetRequest(tokenEntity.Token);
+                string endPoint = _configuration.GetValue<string>("MorningStar:EquityApi:StockExchangeSecurityList");
+                EquityApi.StockExchangeSecurity.Request request =
+                    EquityApi.StockExchangeSecurity.Request.Create(tokenEntity.Token, exchangeId, "exchangeId", exchangeId, stockStatus);
+                string requestUrl = endPoint.SetQueryParams(request);
 
-                return Ok(response);
+                EquityApi.StockExchangeSecurity.Response response = await RestClient.GetDynamicResponseAsync<EquityApi.StockExchangeSecurity.Response>(requestUrl);
+
+                PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+                int result = await persistence.Save(request, response);
+
+                return Ok(result);
             }
-
             return NotFound(id);
         }
 
-        private async Task<int> CreateStockExchangeSecurityRequest(string token)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">Client configuration id</param>
+        /// <param name="exchangeId">Example "KLS"</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("CompanyFinancials/{id}")]
+        public async Task<IActionResult> CompanyFinancialsRequest(Guid id, string exchangeId)
         {
-            string endPoint = _configuration.GetValue<string>("MorningStar:EquityApi:StockExchangeSecurityList");
-            EquityApi.StockExchangeSecurity.Request request =
-                    EquityApi.StockExchangeSecurity.Request.Create(token, "KLS", "exchangeId", "KLS", "Active");
+            Authentication authentication = new Authentication(_ingestionContext, _logger);
+            TokenEntity tokenEntity = await authentication.GetAccessTokenByClientConfigId(id);
 
-            return await IngestPersist(endPoint, request);
+            if (tokenEntity != null)
+            {
+                string endPoint = _configuration.GetValue<string>("MorningStar:EquityApi:CompanyFinancialAvailabilityList");
+                EquityApi.CompanyFinancials.Request request =
+                    EquityApi.CompanyFinancials.Request.Create(tokenEntity.Token, exchangeId, "exchangeId", exchangeId);
+                string requestUrl = endPoint.SetQueryParams(request);
+
+                EquityApi.CompanyFinancials.Response response = await RestClient.GetDynamicResponseAsync<EquityApi.CompanyFinancials.Response>(requestUrl);
+
+                PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+                int result = await persistence.Save(request, response);
+
+                return Ok(result);
+            }
+            return NotFound(id);
         }
 
-        private async Task<int> CreateBalanceSheetRequest(string token)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="exchangeId">Example "KLS"</param>
+        /// <param name="symbol">Example "5014"</param>
+        /// <param name="statementType">Example "Annual"</param>
+        /// <param name="dataType">Example "AOR"</param>
+        /// <param name="startDate">Example "01/2018"</param>
+        /// <param name="endDate">Example "01/2019"</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("BalanceSheet/{id}")]
+        public async Task<IActionResult> BalanceSheetRequest(Guid id, string exchangeId, string symbol, string statementType, string dataType, string startDate, string endDate)
         {
-            string endPoint = _configuration.GetValue<string>("MorningStar:EquityApi:BalanceSheet");
+            Authentication authentication = new Authentication(_ingestionContext, _logger);
+            TokenEntity tokenEntity = await authentication.GetAccessTokenByClientConfigId(id);
 
-            EquityApi.BalanceSheet.Request request =
-                EquityApi.BalanceSheet.Request.Create(token, "NYS", "Symbol", "IBM", "Annual", "AOR", "1/2018", "1/2019", "Json");
+            if (tokenEntity != null)
+            {
+                string endPoint = _configuration.GetValue<string>("MorningStar:EquityApi:BalanceSheet");
+                EquityApi.BalanceSheet.Request request =
+                EquityApi.BalanceSheet.Request.Create(tokenEntity.Token, exchangeId, "Symbol", symbol, statementType, dataType, startDate, endDate);
+                string requestUrl = endPoint.SetQueryParams(request);
+                EquityApi.BalanceSheet.Response response = await RestClient.GetDynamicResponseAsync<EquityApi.BalanceSheet.Response>(requestUrl);
 
-            return await IngestPersist(endPoint, request);
+                PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+                int result = await persistence.Save(request, response);
+
+                return Ok(result);
+            }
+            return NotFound(id);
         }
 
-        private async Task<int> IngestPersist(string endPoint, dynamic request)
-        {
-            IngestionService ingestion = new IngestionService(_logger);
-            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
-            var response = await ingestion.Get(endPoint, request);
-            return await persistence.Save(request, response);
-        }
         #endregion
     }
 }

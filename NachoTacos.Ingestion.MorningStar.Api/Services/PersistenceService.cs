@@ -22,12 +22,14 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             _logger = logger;
             _mapper = mapper;
         }
-        public async Task<int> Save(EquityApi.StockExchangeSecurity.Request request, List<StockExchangeSecurityEntity> entities)
+        public async Task<int> Save(EquityApi.StockExchangeSecurity.Request request, EquityApi.StockExchangeSecurity.Response response)
         {
             try
             {
-                ValidateEntities(entities);
                 string entityName = "TStockExchangeSecurity";
+
+                List<StockExchangeSecurityEntity> entities = response.StockExchangeSecurityEntityList;
+                ValidateEntities(entities);
 
                 IngestionTask ingestionTask = IngestionTask.Create(entityName, JsonConvert.SerializeObject(request));
                 _ingestionContext.IngestionTasks.Add(ingestionTask);
@@ -49,14 +51,36 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                 _logger.LogError(ex.Message);
                 throw new Exception(ex.Message, ex.InnerException);
             }
-
         }
-        public async Task<int> Save(EquityApi.BalanceSheet.Request request, List<BalanceSheetEntity> entities)
+
+        public async Task<int> Save(EquityApi.CompanyFinancials.Request request, EquityApi.CompanyFinancials.Response response)
+        {
+            string entityName = "TCompanyFinancialAvailability";
+            List<CompanyFinancialAvailabilityEntity> entities = response.CompanyFinancialAvailabilityEntityList;
+            ValidateEntities(entities);
+            IngestionTask ingestionTask = IngestionTask.Create(entityName, JsonConvert.SerializeObject(request));
+            _ingestionContext.IngestionTasks.Add(ingestionTask);
+
+            List<TCompanyFinancialAvailability> list = new List<TCompanyFinancialAvailability>();
+            foreach(var entity in entities)
+            {
+                TCompanyFinancialAvailability item = _mapper.Map<TCompanyFinancialAvailability>(entity);
+                item.Id = Guid.NewGuid();
+                item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                list.Add(item);
+            }
+            _ingestionContext.TCompanyFinancialAvailabilities.AddRange(list);
+            return await _ingestionContext.SaveChangesAsync();
+        }
+
+        public async Task<int> Save(EquityApi.BalanceSheet.Request request, EquityApi.BalanceSheet.Response response)
         {
             try
             {
-                ValidateEntities(entities);
                 string entityName = "TBalanceSheet";
+
+                List<BalanceSheetEntity> entities = response.BalanceSheetEntityList;
+                ValidateEntities(entities);
 
                 IngestionTask ingestionTask = IngestionTask.Create(entityName, JsonConvert.SerializeObject(request));
                 _ingestionContext.IngestionTasks.Add(ingestionTask);
@@ -67,10 +91,16 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                     TBalanceSheet item = _mapper.Map<TBalanceSheet>(entity);
                     item.Id = Guid.NewGuid();
                     item.IngestionTaskId = ingestionTask.IngestionTaskId;
-
                     list.Add(item);
                 }
                 _ingestionContext.TBalanceSheets.AddRange(list);
+
+                GeneralInfo generalInfo = response.GeneralInfo;
+                TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
+                tGeneralInfo.Id = Guid.NewGuid();
+                tGeneralInfo.Id = ingestionTask.IngestionTaskId;
+                _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
+
                 return await _ingestionContext.SaveChangesAsync();
             }
             catch (Exception ex)

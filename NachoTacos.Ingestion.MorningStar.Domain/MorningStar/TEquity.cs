@@ -1,6 +1,6 @@
 ﻿namespace NachoTacos.Ingestion.MorningStar.Domain
 {
-    public abstract class TEquity
+    public abstract class TEquity : TBase
     {
         public string ExchangeId { get; set; }
         public string CompanyName { get; set; }

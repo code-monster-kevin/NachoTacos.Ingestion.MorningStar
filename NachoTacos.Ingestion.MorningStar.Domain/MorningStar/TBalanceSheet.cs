@@ -3,14 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NachoTacos.Ingestion.MorningStar.Domain
 {
-    // Class generated from xml/BalanceSheetEntity.xml (Paste Special -> Paste XML as Classes)
-    // Added 2 properties TBalanceSheetEntityId, IngestionTaskId
+    // Class copied from NachoTacos.Ingestion.MorningStar.Api.EquityApi.BalanceSheetEntity
+    // Inherit from TBase class
+    // Add Schema annotation
     [Table("TBalanceSheet", Schema = "MStar")]
-    public class TBalanceSheet
+    public class TBalanceSheet : TBase
     {
-        public Guid Id { get; set; }
-        public Guid IngestionTaskId { get; set; }
-
         private DateTime reportDateField;
 
         private DateTime periodEndingDateField;

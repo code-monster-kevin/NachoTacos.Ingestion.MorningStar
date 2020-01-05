@@ -1,21 +1,14 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
+namespace NachoTacos.Ingestion.MorningStar.Domain
 {
-
-    // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
-    /// <remarks/>
-    /// Source: https://equityapi.morningstar.com/DataCatalog.aspx?catalogid=47
-    /// Code generated from xml/CompanyFinancialAvailabilityEntity.xml (Paste Special -> Paste XML as Classes)
-    /// Changed Start, End to int
-    /// Changed LatestQuarterlyReportDate, LatestAnnualReportDate, LatestPreliminaryReportDate, LatestSemiAnnualReportDate to DateTime
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
-    public partial class CompanyFinancialAvailabilityEntity
+    // Class copied from NachoTacos.Ingestion.MorningStar.Api.EquityApi.CompanyFinancials.CompanyFinancialAvailabilityEntity
+    // Inherits TBase class
+    // Add Schema Annotation
+    [Table("TCompanyFinancialAvailability", Schema = "MStar")]
+    public class TCompanyFinancialAvailability : TBase
     {
-
         private string companyNameField;
 
         private string exchangeIdField;
@@ -331,6 +324,5 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
             }
         }
     }
-
 
 }

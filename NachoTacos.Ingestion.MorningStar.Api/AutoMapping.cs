@@ -9,6 +9,8 @@ namespace NachoTacos.Ingestion.MorningStar.Api
         public AutoMapping()
         {
             CreateMap<StockExchangeSecurityEntity, TStockExchangeSecurity>();
+            CreateMap<CompanyFinancialAvailabilityEntity, TCompanyFinancialAvailability>();
+            CreateMap<GeneralInfo, TGeneralInfo>();
             CreateMap<BalanceSheetEntity, TBalanceSheet>();
         }
     }

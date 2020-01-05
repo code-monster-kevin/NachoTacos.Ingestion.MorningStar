@@ -21,6 +21,8 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         #region "MorningStar Tables"
 
         public DbSet<TStockExchangeSecurity> TStockExchangeSecurities { get; set; }
+        public DbSet<TCompanyFinancialAvailability> TCompanyFinancialAvailabilities { get; set; }
+        public DbSet<TGeneralInfo> TGeneralInfo { get; set; }
         public DbSet<TBalanceSheet> TBalanceSheets { get; set; }
 
         #endregion

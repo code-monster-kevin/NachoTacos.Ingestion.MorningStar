@@ -1,0 +1,23 @@
+﻿<CompanyFinancialAvailabilityEntity>
+  <CompanyName>string</CompanyName>
+  <ExchangeId>string</ExchangeId>
+  <Symbol>string</Symbol>
+  <CUSIP>string</CUSIP>
+  <CIK>string</CIK>
+  <ISIN>string</ISIN>
+  <SEDOL>string</SEDOL>
+  <Start>int</Start>
+  <End>int</End>
+  <SectorId>string</SectorId>
+  <SectorName>string</SectorName>
+  <IndustryGroupId>string</IndustryGroupId>
+  <IndustryGroupName>string</IndustryGroupName>
+  <IndustryId>string</IndustryId>
+  <IndustryName>string</IndustryName>
+  <LatestQuarterlyReportDate>date</LatestQuarterlyReportDate>
+  <LatestAnnualReportDate>date</LatestAnnualReportDate>
+  <LatestPreliminaryReportDate>date</LatestPreliminaryReportDate>
+  <LatestSemiAnnualReportDate>date</LatestSemiAnnualReportDate>
+  <TemplateCode>string</TemplateCode>
+  <GlobalTemplateCode>string</GlobalTemplateCode>
+</CompanyFinancialAvailabilityEntity>

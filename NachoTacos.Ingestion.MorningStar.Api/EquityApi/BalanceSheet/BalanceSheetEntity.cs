@@ -5,10 +5,12 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
 
     // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
     // Code generated from xml/BalanceSheetEntity.xml (Paste Special -> Paste XML as Classes)
+
+    // Steps after copy XML to class
     // Replaced string with decimal
     // Changed reportDate, periodEndingDate, fileDate to DateTime
     // Changed StatementType, DataType, Interim, CurrencyId, AccessionNumber, FormType to string
-    /// <remarks/>
+
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
