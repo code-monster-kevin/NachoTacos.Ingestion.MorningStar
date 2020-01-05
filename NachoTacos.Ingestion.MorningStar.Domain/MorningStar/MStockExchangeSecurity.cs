@@ -3,9 +3,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NachoTacos.Ingestion.MorningStar.Domain
 {
-    [Table("TStockExchangeSecurity", Schema = "MStar")]
-    public class TStockExchangeSecurity : TEquity
+    [Table("MStockExchangeSecurity", Schema = "MStar")]
+    public class MStockExchangeSecurity : MEquity
     {
+        public Guid MStockExchangeSecurityId { get; set; }
         public string InvestmentTypeId { get; set; }
         public string StockStatus { get; set; }
         public DateTime DelistingDate { get; set; }

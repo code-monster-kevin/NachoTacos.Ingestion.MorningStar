@@ -18,12 +18,17 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         public DbSet<IngestionTask> IngestionTasks { get; set; }
         #endregion
 
-        #region "MorningStar Tables"
+        #region "MorningStar Task Tables"
 
         public DbSet<TStockExchangeSecurity> TStockExchangeSecurities { get; set; }
         public DbSet<TCompanyFinancialAvailability> TCompanyFinancialAvailabilities { get; set; }
         public DbSet<TGeneralInfo> TGeneralInfo { get; set; }
         public DbSet<TBalanceSheet> TBalanceSheets { get; set; }
+
+        #endregion
+
+        #region "MorningStar Master Tables"
+        public DbSet<MStockExchangeSecurity> MStockExchangeSecurities { get; set; }
 
         #endregion
 
