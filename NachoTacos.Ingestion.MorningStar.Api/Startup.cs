@@ -9,6 +9,7 @@ using NachoTacos.Ingestion.MorningStar.Data;
 using System;
 using System.IO;
 using System.Reflection;
+using Hangfire;
 
 namespace NachoTacos.Ingestion.MorningStar.Api
 {
@@ -41,6 +42,9 @@ namespace NachoTacos.Ingestion.MorningStar.Api
             services.AddAutoMapper(typeof(Startup));
 
             services.AddControllers();
+
+            services.AddHangfire(x => x.UseSqlServerStorage(Configuration.GetConnectionString("IngestionDbConnection")));
+            services.AddHangfireServer();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,6 +66,8 @@ namespace NachoTacos.Ingestion.MorningStar.Api
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseHangfireDashboard();
 
             app.UseEndpoints(endpoints =>
             {

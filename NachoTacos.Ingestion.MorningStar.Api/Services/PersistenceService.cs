@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using NachoTacos.Ingestion.MorningStar.Api.EquityApi;
 using NachoTacos.Ingestion.MorningStar.Data;
@@ -6,6 +7,7 @@ using NachoTacos.Ingestion.MorningStar.Domain;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace NachoTacos.Ingestion.MorningStar.Api.Services
@@ -22,24 +24,19 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             _logger = logger;
             _mapper = mapper;
         }
-        public async Task<int> Save(EquityApi.StockExchangeSecurity.Request request, EquityApi.StockExchangeSecurity.Response response)
+        public async Task<int> SaveAsync(Guid ingestionTaskId, EquityApi.StockExchangeSecurity.Response response)
         {
             try
             {
-                string entityName = "TStockExchangeSecurity";
-
                 List<StockExchangeSecurityEntity> entities = response.StockExchangeSecurityEntityList;
                 ValidateEntities(entities);
-
-                IngestionTask ingestionTask = IngestionTask.Create(entityName, JsonConvert.SerializeObject(request));
-                _ingestionContext.IngestionTasks.Add(ingestionTask);
 
                 List<TStockExchangeSecurity> list = new List<TStockExchangeSecurity>();
                 foreach(var entity in entities)
                 {
                     TStockExchangeSecurity item = _mapper.Map<TStockExchangeSecurity>(entity);
                     item.Id = Guid.NewGuid();
-                    item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                    item.IngestionTaskId = ingestionTaskId;
 
                     list.Add(item);
                 }
@@ -53,44 +50,36 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             }
         }
 
-        public async Task<int> Save(EquityApi.CompanyFinancials.Request request, EquityApi.CompanyFinancials.Response response)
+        public async Task<int> SaveAsync(Guid ingestionTaskId, EquityApi.CompanyFinancials.Response response)
         {
-            string entityName = "TCompanyFinancialAvailability";
             List<CompanyFinancialAvailabilityEntity> entities = response.CompanyFinancialAvailabilityEntityList;
             ValidateEntities(entities);
-            IngestionTask ingestionTask = IngestionTask.Create(entityName, JsonConvert.SerializeObject(request));
-            _ingestionContext.IngestionTasks.Add(ingestionTask);
 
             List<TCompanyFinancialAvailability> list = new List<TCompanyFinancialAvailability>();
             foreach(var entity in entities)
             {
                 TCompanyFinancialAvailability item = _mapper.Map<TCompanyFinancialAvailability>(entity);
                 item.Id = Guid.NewGuid();
-                item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                item.IngestionTaskId = ingestionTaskId;
                 list.Add(item);
             }
             _ingestionContext.TCompanyFinancialAvailabilities.AddRange(list);
             return await _ingestionContext.SaveChangesAsync();
         }
 
-        public async Task<int> Save(EquityApi.BalanceSheet.Request request, EquityApi.BalanceSheet.Response response)
+        public async Task<int> SaveAsync(Guid ingestionTaskId, EquityApi.BalanceSheet.Response response)
         {
             try
             {
-                string entityName = "TBalanceSheet";
-
                 List<BalanceSheetEntity> entities = response.BalanceSheetEntityList;
                 ValidateEntities(entities);
-
-                IngestionTask ingestionTask = IngestionTask.Create(entityName, JsonConvert.SerializeObject(request));
-                _ingestionContext.IngestionTasks.Add(ingestionTask);
 
                 List<TBalanceSheet> list = new List<TBalanceSheet>();
                 foreach (var entity in entities)
                 {
                     TBalanceSheet item = _mapper.Map<TBalanceSheet>(entity);
                     item.Id = Guid.NewGuid();
-                    item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                    item.IngestionTaskId = ingestionTaskId;
                     list.Add(item);
                 }
                 _ingestionContext.TBalanceSheets.AddRange(list);
@@ -98,7 +87,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                 GeneralInfo generalInfo = response.GeneralInfo;
                 TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
                 tGeneralInfo.Id = Guid.NewGuid();
-                tGeneralInfo.Id = ingestionTask.IngestionTaskId;
+                tGeneralInfo.Id = ingestionTaskId;
                 _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
 
                 return await _ingestionContext.SaveChangesAsync();

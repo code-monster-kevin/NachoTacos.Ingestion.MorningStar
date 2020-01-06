@@ -1,93 +1,112 @@
-/*
-SQL Script to merge Temporary tables to Mastar Tables
-*/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		Kevin Wu
+-- Create date: 6th Jan 2020
+-- Description:	Merge data from temporary job table [MStar].[TStockExchangeSecurity]
+--				to master table [MStar].[MStockExchangeSecurity]
+-- Example: EXECUTE MergeStockExchangeSecurity @TaskId='83156B67-F362-42C9-8E43-A9663FBA7E8E'
+-- =============================================
+CREATE PROCEDURE MergeStockExchangeSecurity 
+	-- Add the parameters for the stored procedure here
+	@TaskId AS UNIQUEIDENTIFIER
+AS
+BEGIN
+	SET NOCOUNT ON;
 
-DECLARE @SummaryOfChanges TABLE(Change VARCHAR(20));
-DECLARE @TaskId AS uniqueidentifier
-SET @TaskId ='EA4098E0-3727-4ED3-91D8-2F34FB720D74';
+    DECLARE @SummaryOfChanges TABLE(Change VARCHAR(20));
 
-MERGE INTO [IngestionDb].[MStar].[MStockExchangeSecurity] AS Target
-USING
-(SELECT [ExchangeId]
-      ,[CompanyName]
-      ,[Symbol]
-      ,[CUSIP]
-      ,[CIK]
-      ,[ISIN]
-      ,[SEDOL]
-      ,[InvestmentTypeId]
-      ,[StockStatus]
-      ,[DelistingDate]
-      ,[DelistingReason]
-      ,[ExchangeSubMarketGlobalId]
-      ,[ParValue]
-      ,[SuspendedFlag]
-  FROM [IngestionDb].[MStar].[TStockExchangeSecurity]
-  WHERE IngestionTaskId=@TaskId)
-  AS Source ([ExchangeId]
-      ,[CompanyName]
-      ,[Symbol]
-      ,[CUSIP]
-      ,[CIK]
-      ,[ISIN]
-      ,[SEDOL]
-      ,[InvestmentTypeId]
-      ,[StockStatus]
-      ,[DelistingDate]
-      ,[DelistingReason]
-      ,[ExchangeSubMarketGlobalId]
-      ,[ParValue]
-      ,[SuspendedFlag])
-ON Target.[ExchangeId] = Source.[ExchangeId]
-AND Target.[Symbol] = Source.[Symbol]
+	MERGE INTO [MStar].[MStockExchangeSecurity] AS TargetTable
+	USING
+	(SELECT [ExchangeId]
+		  ,[CompanyName]
+		  ,[Symbol]
+		  ,[CUSIP]
+		  ,[CIK]
+		  ,[ISIN]
+		  ,[SEDOL]
+		  ,[InvestmentTypeId]
+		  ,[StockStatus]
+		  ,[DelistingDate]
+		  ,[DelistingReason]
+		  ,[ExchangeSubMarketGlobalId]
+		  ,[ParValue]
+		  ,[SuspendedFlag]
+	  FROM [IngestionDb].[MStar].[TStockExchangeSecurity]
+	  WHERE IngestionTaskId=@TaskId)
+	  AS SourceTable ([ExchangeId]
+		  ,[CompanyName]
+		  ,[Symbol]
+		  ,[CUSIP]
+		  ,[CIK]
+		  ,[ISIN]
+		  ,[SEDOL]
+		  ,[InvestmentTypeId]
+		  ,[StockStatus]
+		  ,[DelistingDate]
+		  ,[DelistingReason]
+		  ,[ExchangeSubMarketGlobalId]
+		  ,[ParValue]
+		  ,[SuspendedFlag])
+	ON TargetTable.[ExchangeId] = SourceTable.[ExchangeId]
+	AND TargetTable.[Symbol] = SourceTable.[Symbol]
 
-WHEN MATCHED THEN
-UPDATE SET 
-[StockStatus] = Source.[StockStatus],
-[DelistingDate] = Source.[DelistingDate],
-[DelistingReason] = Source.[DelistingReason],
-[ParValue] = Source.[ParValue],
-[SuspendedFlag] = Source.[SuspendedFlag],
-[UpdatedDate] = GETUTCDATE()
+	WHEN MATCHED THEN
+	UPDATE SET 
+	[StockStatus] = SourceTable.[StockStatus],
+	[DelistingDate] = SourceTable.[DelistingDate],
+	[DelistingReason] = SourceTable.[DelistingReason],
+	[ParValue] = SourceTable.[ParValue],
+	[SuspendedFlag] = SourceTable.[SuspendedFlag],
+	[UpdatedDate] = GETUTCDATE()
 
-WHEN NOT MATCHED BY TARGET THEN
-INSERT([MStockExchangeSecurityId]
-      ,[CreatedDate]
-      ,[UpdatedDate]
-      ,[ExchangeId]
-      ,[CompanyName]
-      ,[Symbol]
-      ,[CUSIP]
-      ,[CIK]
-      ,[ISIN]
-      ,[SEDOL]
-      ,[InvestmentTypeId]
-      ,[StockStatus]
-      ,[DelistingDate]
-      ,[DelistingReason]
-      ,[ExchangeSubMarketGlobalId]
-      ,[ParValue]
-      ,[SuspendedFlag]) 
-VALUES (NEWID()
-	   ,GETUTCDATE()
-	   ,GETUTCDATE()
-	   ,[ExchangeId]
-      ,[CompanyName]
-      ,[Symbol]
-      ,[CUSIP]
-      ,[CIK]
-      ,[ISIN]
-      ,[SEDOL]
-      ,[InvestmentTypeId]
-      ,[StockStatus]
-      ,[DelistingDate]
-      ,[DelistingReason]
-      ,[ExchangeSubMarketGlobalId]
-      ,[ParValue]
-      ,[SuspendedFlag])
-OUTPUT $action INTO @SummaryOfChanges;
+	WHEN NOT MATCHED BY TARGET THEN
+	INSERT([MStockExchangeSecurityId]
+		  ,[CreatedDate]
+		  ,[UpdatedDate]
+		  ,[ExchangeId]
+		  ,[CompanyName]
+		  ,[Symbol]
+		  ,[CUSIP]
+		  ,[CIK]
+		  ,[ISIN]
+		  ,[SEDOL]
+		  ,[InvestmentTypeId]
+		  ,[StockStatus]
+		  ,[DelistingDate]
+		  ,[DelistingReason]
+		  ,[ExchangeSubMarketGlobalId]
+		  ,[ParValue]
+		  ,[SuspendedFlag]) 
+	VALUES (NEWID()
+		   ,GETUTCDATE()
+		   ,GETUTCDATE()
+		   ,[ExchangeId]
+		  ,[CompanyName]
+		  ,[Symbol]
+		  ,[CUSIP]
+		  ,[CIK]
+		  ,[ISIN]
+		  ,[SEDOL]
+		  ,[InvestmentTypeId]
+		  ,[StockStatus]
+		  ,[DelistingDate]
+		  ,[DelistingReason]
+		  ,[ExchangeSubMarketGlobalId]
+		  ,[ParValue]
+		  ,[SuspendedFlag])
+	OUTPUT $action INTO @SummaryOfChanges;
 
--- Query the results of the table variable.  
-SELECT Change, COUNT(*) AS CountPerChange  
-FROM @SummaryOfChanges  
-GROUP BY Change;
+	UPDATE [dbo].[IngestionTasks]
+	SET IsProcessed = 1
+	WHERE IngestionTaskId = @TaskId;
+
+	-- Query the results of the table variable.  
+	SELECT Change, COUNT(*) AS CountPerChange  
+	FROM @SummaryOfChanges  
+	GROUP BY Change;
+
+END
+GO

@@ -19,6 +19,17 @@ namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("NachoTacos.Ingestion.MorningStar.Domain.ChangeTable", b =>
+                {
+                    b.Property<string>("Change")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CountPerChange")
+                        .HasColumnType("int");
+
+                    b.ToTable("ChangeTables");
+                });
+
             modelBuilder.Entity("NachoTacos.Ingestion.MorningStar.Domain.ClientConfiguration", b =>
                 {
                     b.Property<Guid>("ClientConfigurationId")
@@ -51,7 +62,7 @@ namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Entity")
+                    b.Property<string>("EndPoint")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsProcessed")
@@ -66,6 +77,86 @@ namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
                     b.HasKey("IngestionTaskId");
 
                     b.ToTable("IngestionTasks");
+                });
+
+            modelBuilder.Entity("NachoTacos.Ingestion.MorningStar.Domain.MCompanyFinancialAvailability", b =>
+                {
+                    b.Property<Guid>("MCompanyFinancialAvailabilityId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("CIK")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CUSIP")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("End")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ExchangeId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("GlobalTemplateCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ISIN")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IndustryGroupId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IndustryGroupName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IndustryId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IndustryName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LatestAnnualReportDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LatestPreliminaryReportDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LatestQuarterlyReportDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("LatestSemiAnnualReportDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SEDOL")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SectorId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SectorName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Start")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Symbol")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TemplateCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("MCompanyFinancialAvailabilityId");
+
+                    b.ToTable("MCompanyFinancialAvailability","MStar");
                 });
 
             modelBuilder.Entity("NachoTacos.Ingestion.MorningStar.Domain.MStockExchangeSecurity", b =>

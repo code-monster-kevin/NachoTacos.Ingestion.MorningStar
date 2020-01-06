@@ -10,8 +10,8 @@ using NachoTacos.Ingestion.MorningStar.Data;
 namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
 {
     [DbContext(typeof(IngestionContext))]
-    [Migration("20200105110515_add-table-mstockexchangesecurity")]
-    partial class addtablemstockexchangesecurity
+    [Migration("20200106024421_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,17 @@ namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
                 .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("NachoTacos.Ingestion.MorningStar.Domain.ChangeTable", b =>
+                {
+                    b.Property<string>("Change")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CountPerChange")
+                        .HasColumnType("int");
+
+                    b.ToTable("ChangeTables");
+                });
 
             modelBuilder.Entity("NachoTacos.Ingestion.MorningStar.Domain.ClientConfiguration", b =>
                 {
@@ -53,7 +64,7 @@ namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Entity")
+                    b.Property<string>("EndPoint")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsProcessed")

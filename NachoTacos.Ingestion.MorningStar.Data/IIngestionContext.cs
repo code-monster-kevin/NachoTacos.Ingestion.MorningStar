@@ -13,6 +13,9 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         DbSet<TCompanyFinancialAvailability> TCompanyFinancialAvailabilities { get; set; }
         DbSet<TBalanceSheet> TBalanceSheets { get; set; }
         DbSet<TGeneralInfo> TGeneralInfo { get; set; }
+        DbSet<ChangeTable> ChangeTables { get; set; }
+        DbSet<MStockExchangeSecurity> MStockExchangeSecurities { get; set; }
+        DbSet<MCompanyFinancialAvailability> MCompanyFinancialAvailabilities { get; set; }
 
         int SaveChanges();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);

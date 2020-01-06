@@ -16,6 +16,7 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         #region "Main Tables"
         public DbSet<ClientConfiguration> ClientConfigurations { get; set; }
         public DbSet<IngestionTask> IngestionTasks { get; set; }
+        public DbSet<ChangeTable> ChangeTables { get; set; }
         #endregion
 
         #region "MorningStar Task Tables"
@@ -29,12 +30,15 @@ namespace NachoTacos.Ingestion.MorningStar.Data
 
         #region "MorningStar Master Tables"
         public DbSet<MStockExchangeSecurity> MStockExchangeSecurities { get; set; }
+        public DbSet<MCompanyFinancialAvailability> MCompanyFinancialAvailabilities { get; set; }
 
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<ChangeTable>().HasNoKey();
 
         }
 

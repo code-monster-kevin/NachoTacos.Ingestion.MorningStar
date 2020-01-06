@@ -1,15 +1,23 @@
 ﻿using AutoMapper;
 using Flurl;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NachoTacos.Ingestion.MorningStar.Api.Services;
 using NachoTacos.Ingestion.MorningStar.Data;
+using NachoTacos.Ingestion.MorningStar.Domain;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
 {
+    /// <summary>
+    /// Manually calls the MorningStar API and saves the results to DB
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class IngestionController : ControllerBase
@@ -50,10 +58,18 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
                     EquityApi.StockExchangeSecurity.Request.Create(tokenEntity.Token, exchangeId, "exchangeId", exchangeId, stockStatus);
                 string requestUrl = endPoint.SetQueryParams(request);
 
+                IngestionTask ingestionTask = IngestionTask.Create(endPoint, JsonConvert.SerializeObject(request));
+                _ingestionContext.IngestionTasks.Add(ingestionTask);
+
                 EquityApi.StockExchangeSecurity.Response response = await RestClient.GetDynamicResponseAsync<EquityApi.StockExchangeSecurity.Response>(requestUrl);
 
                 PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
-                int result = await persistence.Save(request, response);
+                int result = await persistence.SaveAsync(ingestionTask.IngestionTaskId, response);
+                if (result > 0)
+                {
+                    List<ChangeTable> changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeStockExchangeSecurity @TaskId={0}", ingestionTask.IngestionTaskId).ToList();
+                    _logger.LogInformation("MergeStockExchangeSecurity: {0}", JsonConvert.SerializeObject(changes));
+                }
 
                 return Ok(result);
             }
@@ -80,11 +96,18 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
                     EquityApi.CompanyFinancials.Request.Create(tokenEntity.Token, exchangeId, "exchangeId", exchangeId);
                 string requestUrl = endPoint.SetQueryParams(request);
 
+                IngestionTask ingestionTask = IngestionTask.Create(endPoint, JsonConvert.SerializeObject(request));
+                _ingestionContext.IngestionTasks.Add(ingestionTask);
+
                 EquityApi.CompanyFinancials.Response response = await RestClient.GetDynamicResponseAsync<EquityApi.CompanyFinancials.Response>(requestUrl);
 
                 PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
-                int result = await persistence.Save(request, response);
-
+                int result = await persistence.SaveAsync(ingestionTask.IngestionTaskId, response);
+                if (result > 0)
+                {
+                    List<ChangeTable> changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeCompanyFinancials @TaskId={0}", ingestionTask.IngestionTaskId).ToList();
+                    _logger.LogInformation("MergeCompanyFinancials: {0}", JsonConvert.SerializeObject(changes));
+                }
                 return Ok(result);
             }
             return NotFound(id);
@@ -111,14 +134,23 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             if (tokenEntity != null)
             {
                 string endPoint = _configuration.GetValue<string>("MorningStar:EquityApi:BalanceSheet");
+
                 EquityApi.BalanceSheet.Request request =
                 EquityApi.BalanceSheet.Request.Create(tokenEntity.Token, exchangeId, "Symbol", symbol, statementType, dataType, startDate, endDate);
                 string requestUrl = endPoint.SetQueryParams(request);
+
+                IngestionTask ingestionTask = IngestionTask.Create(endPoint, JsonConvert.SerializeObject(request));
+                _ingestionContext.IngestionTasks.Add(ingestionTask);
+
                 EquityApi.BalanceSheet.Response response = await RestClient.GetDynamicResponseAsync<EquityApi.BalanceSheet.Response>(requestUrl);
 
                 PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
-                int result = await persistence.Save(request, response);
+                int result = await persistence.SaveAsync(ingestionTask.IngestionTaskId, response);
+                if (result > 0)
+                {
 
+                    // TODO: "MergeBalanceSheet"
+                }
                 return Ok(result);
             }
             return NotFound(id);

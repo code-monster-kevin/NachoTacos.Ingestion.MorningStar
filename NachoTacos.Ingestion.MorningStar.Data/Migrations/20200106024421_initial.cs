@@ -11,6 +11,17 @@ namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
                 name: "MStar");
 
             migrationBuilder.CreateTable(
+                name: "ChangeTables",
+                columns: table => new
+                {
+                    Change = table.Column<string>(nullable: true),
+                    CountPerChange = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ClientConfigurations",
                 columns: table => new
                 {
@@ -32,13 +43,41 @@ namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
                     IngestionTaskId = table.Column<Guid>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     UpdatedDate = table.Column<DateTime>(nullable: false),
-                    Entity = table.Column<string>(nullable: true),
+                    EndPoint = table.Column<string>(nullable: true),
                     RequestJson = table.Column<string>(nullable: true),
                     IsProcessed = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_IngestionTasks", x => x.IngestionTaskId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MStockExchangeSecurity",
+                schema: "MStar",
+                columns: table => new
+                {
+                    MStockExchangeSecurityId = table.Column<Guid>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    UpdatedDate = table.Column<DateTime>(nullable: false),
+                    ExchangeId = table.Column<string>(nullable: true),
+                    CompanyName = table.Column<string>(nullable: true),
+                    Symbol = table.Column<string>(nullable: true),
+                    CUSIP = table.Column<string>(nullable: true),
+                    CIK = table.Column<string>(nullable: true),
+                    ISIN = table.Column<string>(nullable: true),
+                    SEDOL = table.Column<string>(nullable: true),
+                    InvestmentTypeId = table.Column<string>(nullable: true),
+                    StockStatus = table.Column<string>(nullable: true),
+                    DelistingDate = table.Column<DateTime>(nullable: false),
+                    DelistingReason = table.Column<string>(nullable: true),
+                    ExchangeSubMarketGlobalId = table.Column<string>(nullable: true),
+                    ParValue = table.Column<decimal>(nullable: false),
+                    SuspendedFlag = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MStockExchangeSecurity", x => x.MStockExchangeSecurityId);
                 });
 
             migrationBuilder.CreateTable(
@@ -441,11 +480,67 @@ namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TCompanyFinancialAvailability",
+                schema: "MStar",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    IngestionTaskId = table.Column<Guid>(nullable: false),
+                    CompanyName = table.Column<string>(nullable: true),
+                    ExchangeId = table.Column<string>(nullable: true),
+                    Symbol = table.Column<string>(nullable: true),
+                    CUSIP = table.Column<string>(nullable: true),
+                    CIK = table.Column<string>(nullable: true),
+                    ISIN = table.Column<string>(nullable: true),
+                    SEDOL = table.Column<string>(nullable: true),
+                    Start = table.Column<int>(nullable: false),
+                    End = table.Column<int>(nullable: false),
+                    SectorId = table.Column<string>(nullable: true),
+                    SectorName = table.Column<string>(nullable: true),
+                    IndustryGroupId = table.Column<string>(nullable: true),
+                    IndustryGroupName = table.Column<string>(nullable: true),
+                    IndustryId = table.Column<string>(nullable: true),
+                    IndustryName = table.Column<string>(nullable: true),
+                    LatestQuarterlyReportDate = table.Column<DateTime>(nullable: false),
+                    LatestAnnualReportDate = table.Column<DateTime>(nullable: false),
+                    LatestPreliminaryReportDate = table.Column<DateTime>(nullable: false),
+                    LatestSemiAnnualReportDate = table.Column<DateTime>(nullable: false),
+                    TemplateCode = table.Column<string>(nullable: true),
+                    GlobalTemplateCode = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TCompanyFinancialAvailability", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TGeneralInfo",
+                schema: "MStar",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    IngestionTaskId = table.Column<Guid>(nullable: false),
+                    ExchangeId = table.Column<string>(nullable: true),
+                    CompanyName = table.Column<string>(nullable: true),
+                    Symbol = table.Column<string>(nullable: true),
+                    CUSIP = table.Column<string>(nullable: true),
+                    CIK = table.Column<string>(nullable: true),
+                    ISIN = table.Column<string>(nullable: true),
+                    SEDOL = table.Column<string>(nullable: true),
+                    ShareClassId = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TGeneralInfo", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TStockExchangeSecurity",
                 schema: "MStar",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(nullable: false),
+                    IngestionTaskId = table.Column<Guid>(nullable: false),
                     ExchangeId = table.Column<string>(nullable: true),
                     CompanyName = table.Column<string>(nullable: true),
                     Symbol = table.Column<string>(nullable: true),
@@ -459,8 +554,7 @@ namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
                     DelistingReason = table.Column<string>(nullable: true),
                     ExchangeSubMarketGlobalId = table.Column<string>(nullable: true),
                     ParValue = table.Column<decimal>(nullable: false),
-                    SuspendedFlag = table.Column<string>(nullable: true),
-                    IngestionTaskId = table.Column<Guid>(nullable: false)
+                    SuspendedFlag = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -471,13 +565,28 @@ namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "ChangeTables");
+
+            migrationBuilder.DropTable(
                 name: "ClientConfigurations");
 
             migrationBuilder.DropTable(
                 name: "IngestionTasks");
 
             migrationBuilder.DropTable(
+                name: "MStockExchangeSecurity",
+                schema: "MStar");
+
+            migrationBuilder.DropTable(
                 name: "TBalanceSheet",
+                schema: "MStar");
+
+            migrationBuilder.DropTable(
+                name: "TCompanyFinancialAvailability",
+                schema: "MStar");
+
+            migrationBuilder.DropTable(
+                name: "TGeneralInfo",
                 schema: "MStar");
 
             migrationBuilder.DropTable(
