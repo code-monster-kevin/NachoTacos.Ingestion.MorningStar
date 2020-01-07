@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NachoTacos.Ingestion.MorningStar.Data;
 
 namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
 {
     [DbContext(typeof(IngestionContext))]
-    partial class IngestionContextModelSnapshot : ModelSnapshot
+    [Migration("20200106082747_add-table-mbalancesheet")]
+    partial class addtablembalancesheet
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -451,7 +453,7 @@ namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
                     b.Property<decimal?>("FederalHomeLoanBankStock")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<DateTime?>("FileDate")
+                    b.Property<DateTime>("FileDate")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal?>("FinanceLeaseReceivables")

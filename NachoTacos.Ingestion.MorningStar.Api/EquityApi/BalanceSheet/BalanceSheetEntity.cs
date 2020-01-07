@@ -7,10 +7,10 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
     // Code generated from xml/BalanceSheetEntity.xml (Paste Special -> Paste XML as Classes)
 
     // Steps after copy XML to class
-    // Replaced string with decimal
+    // Replaced string with decimal?
     // Changed reportDate, periodEndingDate, fileDate to DateTime
     // Changed StatementType, DataType, Interim, CurrencyId, AccessionNumber, FormType to string
-
+#pragma warning disable IDE1006
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
@@ -22,7 +22,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
 
         private DateTime periodEndingDateField;
 
-        private DateTime fileDateField;
+        private DateTime? fileDateField;
 
         private string statementTypeField;
 
@@ -34,761 +34,761 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
 
         private int fiscalYearEndField;
 
-        private decimal accountsPayableField;
+        private decimal? accountsPayableField;
 
-        private decimal accountsReceivableField;
+        private decimal? accountsReceivableField;
 
-        private decimal grossAccountsReceivableField;
+        private decimal? grossAccountsReceivableField;
 
-        private decimal nonCurrentAccountsReceivableField;
+        private decimal? nonCurrentAccountsReceivableField;
 
-        private decimal currentAccruedExpensesField;
+        private decimal? currentAccruedExpensesField;
 
-        private decimal nonCurrentAccruedExpensesField;
+        private decimal? nonCurrentAccruedExpensesField;
 
-        private decimal accruedInterestReceivableField;
+        private decimal? accruedInterestReceivableField;
 
-        private decimal accruedInvestmentIncomeField;
+        private decimal? accruedInvestmentIncomeField;
 
-        private decimal accumulatedDepreciationField;
+        private decimal? accumulatedDepreciationField;
 
-        private decimal gainsLossesNotAffectingRetainedEarningsField;
+        private decimal? gainsLossesNotAffectingRetainedEarningsField;
 
-        private decimal additionalPaidInCapitalField;
+        private decimal? additionalPaidInCapitalField;
 
-        private decimal advanceFromFederalHomeLoanBanksField;
+        private decimal? advanceFromFederalHomeLoanBanksField;
 
-        private decimal allowanceForDoubtfulAccountsReceivableField;
+        private decimal? allowanceForDoubtfulAccountsReceivableField;
 
-        private decimal allowanceForLoansAndLeaseLossesField;
+        private decimal? allowanceForLoansAndLeaseLossesField;
 
-        private decimal allowanceForNotesReceivableField;
+        private decimal? allowanceForNotesReceivableField;
 
-        private decimal assetsHeldForSaleField;
+        private decimal? assetsHeldForSaleField;
 
-        private decimal assetsOfDiscontinuedOperationsField;
+        private decimal? assetsOfDiscontinuedOperationsField;
 
-        private decimal availableForSaleSecuritiesField;
+        private decimal? availableForSaleSecuritiesField;
 
-        private decimal bankAcceptanceExecutedAndOutstandingField;
+        private decimal? bankAcceptanceExecutedAndOutstandingField;
 
-        private decimal bankIndebtednessField;
+        private decimal? bankIndebtednessField;
 
-        private decimal bankLoanField;
+        private decimal? bankLoanField;
 
-        private decimal bankOwnedLifeInsuranceField;
+        private decimal? bankOwnedLifeInsuranceField;
 
-        private decimal securityBorrowedField;
+        private decimal? securityBorrowedField;
 
-        private decimal buildingsAndImprovementsField;
+        private decimal? buildingsAndImprovementsField;
 
-        private decimal capitalStockField;
+        private decimal? capitalStockField;
 
-        private decimal cashField;
+        private decimal? cashField;
 
-        private decimal cashEquivalentsField;
+        private decimal? cashEquivalentsField;
 
-        private decimal cashAndCashEquivalentsField;
+        private decimal? cashAndCashEquivalentsField;
 
-        private decimal cashAndDueFromBanksField;
+        private decimal? cashAndDueFromBanksField;
 
-        private decimal cashCashEquivalentsAndFederalFundsSoldField;
+        private decimal? cashCashEquivalentsAndFederalFundsSoldField;
 
-        private decimal cashCashEquivalentsAndShortTermInvestmentsField;
+        private decimal? cashCashEquivalentsAndShortTermInvestmentsField;
 
-        private decimal casualtyClaimsField;
+        private decimal? casualtyClaimsField;
 
-        private decimal cededUnearnedPremiumsField;
+        private decimal? cededUnearnedPremiumsField;
 
-        private decimal commercialLoanField;
+        private decimal? commercialLoanField;
 
-        private decimal commercialPaperField;
+        private decimal? commercialPaperField;
 
-        private decimal commonStockField;
+        private decimal? commonStockField;
 
-        private decimal commonStockEquityField;
+        private decimal? commonStockEquityField;
 
-        private decimal commonStocksAvailableForSaleField;
+        private decimal? commonStocksAvailableForSaleField;
 
-        private decimal constructionInProgressField;
+        private decimal? constructionInProgressField;
 
-        private decimal consumerLoanField;
+        private decimal? consumerLoanField;
 
-        private decimal minimumPensionLiabilitiesField;
+        private decimal? minimumPensionLiabilitiesField;
 
-        private decimal currentAssetsField;
+        private decimal? currentAssetsField;
 
-        private decimal currentDebtField;
+        private decimal? currentDebtField;
 
-        private decimal currentDebtAndCapitalLeaseObligationField;
+        private decimal? currentDebtAndCapitalLeaseObligationField;
 
-        private decimal currentLiabilitiesField;
+        private decimal? currentLiabilitiesField;
 
-        private decimal currentCapitalLeaseObligationField;
+        private decimal? currentCapitalLeaseObligationField;
 
-        private decimal customerAcceptancesField;
+        private decimal? customerAcceptancesField;
 
-        private decimal deferredAcquisitionCostsField;
+        private decimal? deferredAcquisitionCostsField;
 
-        private decimal deferredAssetsField;
+        private decimal? deferredAssetsField;
 
-        private decimal deferredCostsField;
+        private decimal? deferredCostsField;
 
-        private decimal deferredFinancingCostsField;
+        private decimal? deferredFinancingCostsField;
 
-        private decimal nonCurrentDeferredLiabilitiesField;
+        private decimal? nonCurrentDeferredLiabilitiesField;
 
-        private decimal currentDeferredLiabilitiesField;
+        private decimal? currentDeferredLiabilitiesField;
 
-        private decimal deferredPolicyAcquisitionCostsField;
+        private decimal? deferredPolicyAcquisitionCostsField;
 
-        private decimal currentDeferredRevenueField;
+        private decimal? currentDeferredRevenueField;
 
-        private decimal nonCurrentDeferredRevenueField;
+        private decimal? nonCurrentDeferredRevenueField;
 
-        private decimal deferredTaxAssetsField;
+        private decimal? deferredTaxAssetsField;
 
-        private decimal currentDeferredTaxesAssetsField;
+        private decimal? currentDeferredTaxesAssetsField;
 
-        private decimal currentDeferredTaxesLiabilitiesField;
+        private decimal? currentDeferredTaxesLiabilitiesField;
 
-        private decimal nonCurrentDeferredTaxesAssetsField;
+        private decimal? nonCurrentDeferredTaxesAssetsField;
 
-        private decimal nonCurrentDeferredTaxesLiabilitiesField;
+        private decimal? nonCurrentDeferredTaxesLiabilitiesField;
 
-        private decimal definedPensionBenefitField;
+        private decimal? definedPensionBenefitField;
 
-        private decimal derivativeProductLiabilitiesField;
+        private decimal? derivativeProductLiabilitiesField;
 
-        private decimal derivativeAssetsField;
+        private decimal? derivativeAssetsField;
 
-        private decimal dividendsPayableField;
+        private decimal? dividendsPayableField;
 
-        private decimal eSOPDebtGuaranteeField;
+        private decimal? eSOPDebtGuaranteeField;
 
-        private decimal employeeBenefitsField;
+        private decimal? employeeBenefitsField;
 
-        private decimal equityInvestmentsField;
+        private decimal? equityInvestmentsField;
 
-        private decimal facilitiesAndOtherField;
+        private decimal? facilitiesAndOtherField;
 
-        private decimal federalFundsPurchasedField;
+        private decimal? federalFundsPurchasedField;
 
-        private decimal federalFundsPurchasedAndSecuritiesSoldUnderAgreementToRepurchaseField;
+        private decimal? federalFundsPurchasedAndSecuritiesSoldUnderAgreementToRepurchaseField;
 
-        private decimal federalFundsSoldField;
+        private decimal? federalFundsSoldField;
 
-        private decimal federalFundsSoldAndSecuritiesPurchaseUnderAgreementsToResellField;
+        private decimal? federalFundsSoldAndSecuritiesPurchaseUnderAgreementsToResellField;
 
-        private decimal federalHomeLoanBankStockField;
+        private decimal? federalHomeLoanBankStockField;
 
-        private decimal financialAssetsField;
+        private decimal? financialAssetsField;
 
-        private decimal financialInstrumentsSoldUnderAgreementsToRepurchaseField;
+        private decimal? financialInstrumentsSoldUnderAgreementsToRepurchaseField;
 
-        private decimal finishedGoodsField;
+        private decimal? finishedGoodsField;
 
-        private decimal fixedMaturitiesAvailableForSaleField;
+        private decimal? fixedMaturitiesAvailableForSaleField;
 
-        private decimal fixedMaturitiesHeldToMaturityField;
+        private decimal? fixedMaturitiesHeldToMaturityField;
 
-        private decimal fixedMaturitiesTradingField;
+        private decimal? fixedMaturitiesTradingField;
 
-        private decimal fixedMaturityInvestmentsField;
+        private decimal? fixedMaturityInvestmentsField;
 
-        private decimal flightFleetVehicleAndRelatedEquipmentsField;
+        private decimal? flightFleetVehicleAndRelatedEquipmentsField;
 
-        private decimal foreclosedAssetsField;
+        private decimal? foreclosedAssetsField;
 
-        private decimal foreignComponentField;
+        private decimal? foreignComponentField;
 
-        private decimal foreignCurrencyTranslationAdjustmentsField;
+        private decimal? foreignCurrencyTranslationAdjustmentsField;
 
-        private decimal fuelAndNaturalGasField;
+        private decimal? fuelAndNaturalGasField;
 
-        private decimal futurePolicyBenefitsField;
+        private decimal? futurePolicyBenefitsField;
 
-        private decimal generalPartnershipCapitalField;
+        private decimal? generalPartnershipCapitalField;
 
-        private decimal goodwillField;
+        private decimal? goodwillField;
 
-        private decimal goodwillAndOtherIntangibleAssetsField;
+        private decimal? goodwillAndOtherIntangibleAssetsField;
 
-        private decimal grossLoanField;
+        private decimal? grossLoanField;
 
-        private decimal grossPPEField;
+        private decimal? grossPPEField;
 
-        private decimal guaranteedInvestmentContractField;
+        private decimal? guaranteedInvestmentContractField;
 
-        private decimal heldToMaturitySecuritiesField;
+        private decimal? heldToMaturitySecuritiesField;
 
-        private decimal incomeTaxPayableField;
+        private decimal? incomeTaxPayableField;
 
-        private decimal interestBearingDepositsLiabilitiesField;
+        private decimal? interestBearingDepositsLiabilitiesField;
 
-        private decimal interestPayableField;
+        private decimal? interestPayableField;
 
-        private decimal interestBearingDepositsAssetsField;
+        private decimal? interestBearingDepositsAssetsField;
 
-        private decimal inventoryField;
+        private decimal? inventoryField;
 
-        private decimal inventoriesAdjustmentsAllowancesField;
+        private decimal? inventoriesAdjustmentsAllowancesField;
 
-        private decimal investmentTaxCreditsField;
+        private decimal? investmentTaxCreditsField;
 
-        private decimal investmentsAndAdvancesField;
+        private decimal? investmentsAndAdvancesField;
 
-        private decimal investmentsInAffiliatesSubsidiariesAssociatesAndJointVenturesField;
+        private decimal? investmentsInAffiliatesSubsidiariesAssociatesAndJointVenturesField;
 
-        private decimal investmentsInOtherVenturesUnderEquityMethodField;
+        private decimal? investmentsInOtherVenturesUnderEquityMethodField;
 
-        private decimal investmentsInVariableInterestEntityField;
+        private decimal? investmentsInVariableInterestEntityField;
 
-        private decimal landAndImprovementsField;
+        private decimal? landAndImprovementsField;
 
-        private decimal leasesField;
+        private decimal? leasesField;
 
-        private decimal liabilitiesOfDiscontinuedOperationsField;
+        private decimal? liabilitiesOfDiscontinuedOperationsField;
 
-        private decimal limitedPartnershipCapitalField;
+        private decimal? limitedPartnershipCapitalField;
 
-        private decimal limitedPartnershipField;
+        private decimal? limitedPartnershipField;
 
-        private decimal lineOfCreditField;
+        private decimal? lineOfCreditField;
 
-        private decimal loansHeldForSaleField;
+        private decimal? loansHeldForSaleField;
 
-        private decimal loansReceivableField;
+        private decimal? loansReceivableField;
 
-        private decimal longTermDebtField;
+        private decimal? longTermDebtField;
 
-        private decimal longTermDebtAndCapitalLeaseObligationField;
+        private decimal? longTermDebtAndCapitalLeaseObligationField;
 
-        private decimal longTermEquityInvestmentField;
+        private decimal? longTermEquityInvestmentField;
 
-        private decimal longTermCapitalLeaseObligationField;
+        private decimal? longTermCapitalLeaseObligationField;
 
-        private decimal machineryFurnitureEquipmentField;
+        private decimal? machineryFurnitureEquipmentField;
 
-        private decimal materialsAndSuppliesField;
+        private decimal? materialsAndSuppliesField;
 
-        private decimal mineralPropertiesField;
+        private decimal? mineralPropertiesField;
 
-        private decimal minorityInterestField;
+        private decimal? minorityInterestField;
 
-        private decimal moneyMarketInvestmentsField;
+        private decimal? moneyMarketInvestmentsField;
 
-        private decimal mortgageLoanField;
+        private decimal? mortgageLoanField;
 
-        private decimal mortgageAndConsumerloansField;
+        private decimal? mortgageAndConsumerloansField;
 
-        private decimal naturalResourceAssetsField;
+        private decimal? naturalResourceAssetsField;
 
-        private decimal netLoanField;
+        private decimal? netLoanField;
 
-        private decimal netOtherUnrealizedGainLossField;
+        private decimal? netOtherUnrealizedGainLossField;
 
-        private decimal netPPEField;
+        private decimal? netPPEField;
 
-        private decimal netUnrealizedGainLossForeignCurrencyField;
+        private decimal? netUnrealizedGainLossForeignCurrencyField;
 
-        private decimal netUnrealizedGainLossInvestmentsField;
+        private decimal? netUnrealizedGainLossInvestmentsField;
 
-        private decimal nonInterestBearingDepositsField;
+        private decimal? nonInterestBearingDepositsField;
 
-        private decimal currentNotesPayableField;
+        private decimal? currentNotesPayableField;
 
-        private decimal notesReceivableField;
+        private decimal? notesReceivableField;
 
-        private decimal grossNotesReceivableField;
+        private decimal? grossNotesReceivableField;
 
-        private decimal nonCurrentNoteReceivablesField;
+        private decimal? nonCurrentNoteReceivablesField;
 
-        private decimal otherAssetsField;
+        private decimal? otherAssetsField;
 
-        private decimal otherCapitalStockField;
+        private decimal? otherCapitalStockField;
 
-        private decimal otherCurrentAssetsField;
+        private decimal? otherCurrentAssetsField;
 
-        private decimal otherCurrentBorrowingsField;
+        private decimal? otherCurrentBorrowingsField;
 
-        private decimal otherCurrentLiabilitiesField;
+        private decimal? otherCurrentLiabilitiesField;
 
-        private decimal otherDeferredCostsField;
+        private decimal? otherDeferredCostsField;
 
-        private decimal otherDepositsField;
+        private decimal? otherDepositsField;
 
-        private decimal otherEquityAdjustmentsField;
+        private decimal? otherEquityAdjustmentsField;
 
-        private decimal otherIntangibleAssetsField;
+        private decimal? otherIntangibleAssetsField;
 
-        private decimal otherInterestEarningAssetsField;
+        private decimal? otherInterestEarningAssetsField;
 
-        private decimal otherInventoriesField;
+        private decimal? otherInventoriesField;
 
-        private decimal otherInvestedAssetsField;
+        private decimal? otherInvestedAssetsField;
 
-        private decimal otherNonCurrentAssetsField;
+        private decimal? otherNonCurrentAssetsField;
 
-        private decimal otherPropertiesField;
+        private decimal? otherPropertiesField;
 
-        private decimal otherRealEstateOwnedField;
+        private decimal? otherRealEstateOwnedField;
 
-        private decimal otherReceivablesField;
+        private decimal? otherReceivablesField;
 
-        private decimal shortTermInvestmentsField;
+        private decimal? shortTermInvestmentsField;
 
-        private decimal patentsField;
+        private decimal? patentsField;
 
-        private decimal payablesField;
+        private decimal? payablesField;
 
-        private decimal payablesAndAccruedExpensesField;
+        private decimal? payablesAndAccruedExpensesField;
 
-        private decimal nonCurrentPensionAndOtherPostretirementBenefitPlansField;
+        private decimal? nonCurrentPensionAndOtherPostretirementBenefitPlansField;
 
-        private decimal policyLoansField;
+        private decimal? policyLoansField;
 
-        private decimal totalPolicyHoldersLiabilitiesField;
+        private decimal? totalPolicyHoldersLiabilitiesField;
 
-        private decimal policyholderFundsField;
+        private decimal? policyholderFundsField;
 
-        private decimal preferredSecuritiesOutsideStockEquityField;
+        private decimal? preferredSecuritiesOutsideStockEquityField;
 
-        private decimal trustPreferredSecuritiesField;
+        private decimal? trustPreferredSecuritiesField;
 
-        private decimal preferredStockField;
+        private decimal? preferredStockField;
 
-        private decimal preferredStockEquityField;
+        private decimal? preferredStockEquityField;
 
-        private decimal preferredStockOfSubsidiaryField;
+        private decimal? preferredStockOfSubsidiaryField;
 
-        private decimal preferredStocksAvailableForSaleField;
+        private decimal? preferredStocksAvailableForSaleField;
 
-        private decimal premiumsReceivableField;
+        private decimal? premiumsReceivableField;
 
-        private decimal prepaidAssetsField;
+        private decimal? prepaidAssetsField;
 
-        private decimal nonCurrentPrepaidAssetsField;
+        private decimal? nonCurrentPrepaidAssetsField;
 
-        private decimal prepaidReinsurancePremiumsField;
+        private decimal? prepaidReinsurancePremiumsField;
 
-        private decimal propertiesField;
+        private decimal? propertiesField;
 
-        private decimal currentProvisionsField;
+        private decimal? currentProvisionsField;
 
-        private decimal longTermProvisionsField;
+        private decimal? longTermProvisionsField;
 
-        private decimal purchasedComponentsField;
+        private decimal? purchasedComponentsField;
 
-        private decimal rawMaterialsField;
+        private decimal? rawMaterialsField;
 
-        private decimal realEstateHeldForSaleField;
+        private decimal? realEstateHeldForSaleField;
 
-        private decimal realEstateAndRealEstateJointVenturesHeldForInvestmentField;
+        private decimal? realEstateAndRealEstateJointVenturesHeldForInvestmentField;
 
-        private decimal receivablesField;
+        private decimal? receivablesField;
 
-        private decimal recievablesAdjustmentsAllowancesField;
+        private decimal? recievablesAdjustmentsAllowancesField;
 
-        private decimal redeemablePreferredStockField;
+        private decimal? redeemablePreferredStockField;
 
-        private decimal regulatoryAssetsField;
+        private decimal? regulatoryAssetsField;
 
-        private decimal regulatoryLiabilitiesField;
+        private decimal? regulatoryLiabilitiesField;
 
-        private decimal reinsuranceBalancesPayableField;
+        private decimal? reinsuranceBalancesPayableField;
 
-        private decimal reinsuranceReceivablesField;
+        private decimal? reinsuranceReceivablesField;
 
-        private decimal reinsuranceRecoverableField;
+        private decimal? reinsuranceRecoverableField;
 
-        private decimal reinsuranceRecoverableForPaidLossesField;
+        private decimal? reinsuranceRecoverableForPaidLossesField;
 
-        private decimal reinsuranceRecoverableForUnpaidLossesField;
+        private decimal? reinsuranceRecoverableForUnpaidLossesField;
 
-        private decimal restrictedCashField;
+        private decimal? restrictedCashField;
 
-        private decimal restrictedCashAndCashEquivalentsField;
+        private decimal? restrictedCashAndCashEquivalentsField;
 
-        private decimal restrictedCashAndInvestmentsField;
+        private decimal? restrictedCashAndInvestmentsField;
 
-        private decimal restrictedCommonStockField;
+        private decimal? restrictedCommonStockField;
 
-        private decimal restrictedInvestmentsField;
+        private decimal? restrictedInvestmentsField;
 
-        private decimal retainedEarningsField;
+        private decimal? retainedEarningsField;
 
-        private decimal securitiesLendingCollateralField;
+        private decimal? securitiesLendingCollateralField;
 
-        private decimal securitiesLendingPayableField;
+        private decimal? securitiesLendingPayableField;
 
-        private decimal securityAgreeToBeResellField;
+        private decimal? securityAgreeToBeResellField;
 
-        private decimal securitySoldNotYetRepurchasedField;
+        private decimal? securitySoldNotYetRepurchasedField;
 
-        private decimal separateAccountAssetsField;
+        private decimal? separateAccountAssetsField;
 
-        private decimal separateAccountLiabilityField;
+        private decimal? separateAccountLiabilityField;
 
-        private decimal shortTermInvestmentsAvailableForSaleField;
+        private decimal? shortTermInvestmentsAvailableForSaleField;
 
-        private decimal shortTermInvestmentsHeldToMaturityField;
+        private decimal? shortTermInvestmentsHeldToMaturityField;
 
-        private decimal shortTermInvestmentsTradingField;
+        private decimal? shortTermInvestmentsTradingField;
 
-        private decimal stockholdersEquityField;
+        private decimal? stockholdersEquityField;
 
-        private decimal studentLoanField;
+        private decimal? studentLoanField;
 
-        private decimal totalTaxPayableField;
+        private decimal? totalTaxPayableField;
 
-        private decimal taxesReceivableField;
+        private decimal? taxesReceivableField;
 
-        private decimal timeDepositsPlacedField;
+        private decimal? timeDepositsPlacedField;
 
-        private decimal totalAssetsField;
+        private decimal? totalAssetsField;
 
-        private decimal totalCapitalizationField;
+        private decimal? totalCapitalizationField;
 
-        private decimal totalDeferredCreditsAndOtherNonCurrentLiabilitiesField;
+        private decimal? totalDeferredCreditsAndOtherNonCurrentLiabilitiesField;
 
-        private decimal totalDepositsField;
+        private decimal? totalDepositsField;
 
-        private decimal totalInvestmentsField;
+        private decimal? totalInvestmentsField;
 
-        private decimal totalLiabilitiesField;
+        private decimal? totalLiabilitiesField;
 
-        private decimal totalNonCurrentAssetsField;
+        private decimal? totalNonCurrentAssetsField;
 
-        private decimal totalNonCurrentLiabilitiesField;
+        private decimal? totalNonCurrentLiabilitiesField;
 
-        private decimal totalPartnershipCapitalField;
+        private decimal? totalPartnershipCapitalField;
 
-        private decimal tradingAssetsField;
+        private decimal? tradingAssetsField;
 
-        private decimal tradingLiabilitiesField;
+        private decimal? tradingLiabilitiesField;
 
-        private decimal tradingSecuritiesField;
+        private decimal? tradingSecuritiesField;
 
-        private decimal treasuryStockField;
+        private decimal? treasuryStockField;
 
-        private decimal unbilledReceivablesField;
+        private decimal? unbilledReceivablesField;
 
-        private decimal unearnedIncomeField;
+        private decimal? unearnedIncomeField;
 
-        private decimal unearnedPremiumsField;
+        private decimal? unearnedPremiumsField;
 
-        private decimal unpaidLossAndLossReserveField;
+        private decimal? unpaidLossAndLossReserveField;
 
-        private decimal unrealizedGainLossField;
+        private decimal? unrealizedGainLossField;
 
-        private decimal workInProcessField;
+        private decimal? workInProcessField;
 
-        private decimal otherNonCurrentLiabilitiesField;
+        private decimal? otherNonCurrentLiabilitiesField;
 
-        private decimal capitalLeaseObligationsField;
+        private decimal? capitalLeaseObligationsField;
 
-        private decimal otherLiabilitiesField;
+        private decimal? otherLiabilitiesField;
 
-        private decimal otherPayableField;
+        private decimal? otherPayableField;
 
-        private decimal investedCapitalField;
+        private decimal? investedCapitalField;
 
-        private decimal tangibleBookValueField;
+        private decimal? tangibleBookValueField;
 
-        private decimal totalEquityField;
+        private decimal? totalEquityField;
 
-        private decimal workingCapitalField;
+        private decimal? workingCapitalField;
 
-        private decimal totalDebtField;
+        private decimal? totalDebtField;
 
-        private decimal cashValueOfLifeInsuranceField;
+        private decimal? cashValueOfLifeInsuranceField;
 
-        private decimal commonUtilityPlantField;
+        private decimal? commonUtilityPlantField;
 
-        private decimal currentDeferredAssetsField;
+        private decimal? currentDeferredAssetsField;
 
-        private decimal nonCurrentDeferredAssetsField;
+        private decimal? nonCurrentDeferredAssetsField;
 
-        private decimal electricUtilityPlantField;
+        private decimal? electricUtilityPlantField;
 
-        private decimal naturalGasFuelAndOtherField;
+        private decimal? naturalGasFuelAndOtherField;
 
-        private decimal netUtilityPlantField;
+        private decimal? netUtilityPlantField;
 
-        private decimal waterProductionField;
+        private decimal? waterProductionField;
 
-        private decimal securitiesAndInvestmentsField;
+        private decimal? securitiesAndInvestmentsField;
 
-        private decimal ordinarySharesNumberField;
+        private decimal? ordinarySharesNumberField;
 
-        private decimal preferredSharesNumberField;
+        private decimal? preferredSharesNumberField;
 
-        private decimal treasurySharesNumberField;
+        private decimal? treasurySharesNumberField;
 
-        private decimal totalLiabilitiesNetMinorityInterestField;
+        private decimal? totalLiabilitiesNetMinorityInterestField;
 
-        private decimal totalNonCurrentLiabilitiesNetMinorityInterestField;
+        private decimal? totalNonCurrentLiabilitiesNetMinorityInterestField;
 
-        private decimal totalEquityGrossMinorityInterestField;
+        private decimal? totalEquityGrossMinorityInterestField;
 
-        private decimal tradingAndOtherReceivableField;
+        private decimal? tradingAndOtherReceivableField;
 
         private string accessionNumberField;
 
         private string formTypeField;
 
-        private decimal securitiesLoanedField;
+        private decimal? securitiesLoanedField;
 
-        private decimal participatingPolicyholderEquityField;
+        private decimal? participatingPolicyholderEquityField;
 
-        private decimal netTangibleAssetsField;
+        private decimal? netTangibleAssetsField;
 
-        private decimal duefromRelatedPartiesCurrentField;
+        private decimal? duefromRelatedPartiesCurrentField;
 
-        private decimal duefromRelatedPartiesNonCurrentField;
+        private decimal? duefromRelatedPartiesNonCurrentField;
 
-        private decimal duetoRelatedPartiesField;
+        private decimal? duetoRelatedPartiesField;
 
-        private decimal duetoRelatedPartiesCurrentField;
+        private decimal? duetoRelatedPartiesCurrentField;
 
-        private decimal duetoRelatedPartiesNonCurrentField;
+        private decimal? duetoRelatedPartiesNonCurrentField;
 
-        private decimal netAssetsField;
+        private decimal? netAssetsField;
 
-        private decimal investmentPropertiesField;
+        private decimal? investmentPropertiesField;
 
-        private decimal investmentsinSubsidiariesatCostField;
+        private decimal? investmentsinSubsidiariesatCostField;
 
-        private decimal investmentsinAssociatesatCostField;
+        private decimal? investmentsinAssociatesatCostField;
 
-        private decimal investmentsinJointVenturesatCostField;
+        private decimal? investmentsinJointVenturesatCostField;
 
-        private decimal investmentinFinancialAssetsField;
+        private decimal? investmentinFinancialAssetsField;
 
-        private decimal financeLeaseReceivablesField;
+        private decimal? financeLeaseReceivablesField;
 
-        private decimal convertibleLoansCurrentField;
+        private decimal? convertibleLoansCurrentField;
 
-        private decimal bankLoansCurrentField;
+        private decimal? bankLoansCurrentField;
 
-        private decimal otherLoansCurrentField;
+        private decimal? otherLoansCurrentField;
 
-        private decimal accruedandDeferredIncomeField;
+        private decimal? accruedandDeferredIncomeField;
 
-        private decimal bankLoansNonCurrentField;
+        private decimal? bankLoansNonCurrentField;
 
-        private decimal otherLoansNonCurrentField;
+        private decimal? otherLoansNonCurrentField;
 
-        private decimal otherReservesField;
+        private decimal? otherReservesField;
 
-        private decimal loansandAdvancestoBankField;
+        private decimal? loansandAdvancestoBankField;
 
-        private decimal loansandAdvancestoCustomerField;
+        private decimal? loansandAdvancestoCustomerField;
 
-        private decimal treasuryBillsandOtherEligibleBillsField;
+        private decimal? treasuryBillsandOtherEligibleBillsField;
 
-        private decimal equitySharesInvestmentsField;
+        private decimal? equitySharesInvestmentsField;
 
-        private decimal depositsbyBankField;
+        private decimal? depositsbyBankField;
 
-        private decimal customerAccountsField;
+        private decimal? customerAccountsField;
 
-        private decimal itemsinTheCourseofTransmissiontoOtherBanksField;
+        private decimal? itemsinTheCourseofTransmissiontoOtherBanksField;
 
-        private decimal tradingandFinancialLiabilitiesField;
+        private decimal? tradingandFinancialLiabilitiesField;
 
-        private decimal debtSecuritiesinIssueField;
+        private decimal? debtSecuritiesinIssueField;
 
-        private decimal subordinatedLiabilitiesField;
+        private decimal? subordinatedLiabilitiesField;
 
-        private decimal provisionsTotalField;
+        private decimal? provisionsTotalField;
 
-        private decimal operatingLeaseAssetsField;
+        private decimal? operatingLeaseAssetsField;
 
-        private decimal claimsOutstandingField;
+        private decimal? claimsOutstandingField;
 
-        private decimal longTermContractsField;
+        private decimal? longTermContractsField;
 
-        private decimal realEstateField;
+        private decimal? realEstateField;
 
-        private decimal paymentofBillsField;
+        private decimal? paymentofBillsField;
 
-        private decimal liabilitiesHeldforSaleCurrentField;
+        private decimal? liabilitiesHeldforSaleCurrentField;
 
-        private decimal liabilitiesHeldforSaleNonCurrentField;
+        private decimal? liabilitiesHeldforSaleNonCurrentField;
 
-        private decimal unclassifiedCurrentAssetsField;
+        private decimal? unclassifiedCurrentAssetsField;
 
-        private decimal debtSecuritiesField;
+        private decimal? debtSecuritiesField;
 
-        private decimal totalFinancialLeaseObligationsField;
+        private decimal? totalFinancialLeaseObligationsField;
 
-        private decimal accruedandDeferredIncomeCurrentField;
+        private decimal? accruedandDeferredIncomeCurrentField;
 
-        private decimal accruedandDeferredIncomeNonCurrentField;
+        private decimal? accruedandDeferredIncomeNonCurrentField;
 
-        private decimal financeLeaseReceivablesCurrentField;
+        private decimal? financeLeaseReceivablesCurrentField;
 
-        private decimal financeLeaseReceivablesNonCurrentField;
+        private decimal? financeLeaseReceivablesNonCurrentField;
 
-        private decimal financialLiabilitiesCurrentField;
+        private decimal? financialLiabilitiesCurrentField;
 
-        private decimal financialLiabilitiesNonCurrentField;
+        private decimal? financialLiabilitiesNonCurrentField;
 
-        private decimal financialAssetsDesignatedasFairValueThroughProfitorLossTotalField;
+        private decimal? financialAssetsDesignatedasFairValueThroughProfitorLossTotalField;
 
-        private decimal taxesAssetsCurrentField;
+        private decimal? taxesAssetsCurrentField;
 
-        private decimal otherEquityInterestField;
+        private decimal? otherEquityInterestField;
 
-        private decimal interestBearingBorrowingsNonCurrentField;
+        private decimal? interestBearingBorrowingsNonCurrentField;
 
-        private decimal nonInterestBearingBorrowingsNonCurrentField;
+        private decimal? nonInterestBearingBorrowingsNonCurrentField;
 
-        private decimal tradeandOtherPayablesNonCurrentField;
+        private decimal? tradeandOtherPayablesNonCurrentField;
 
-        private decimal interestBearingBorrowingsCurrentField;
+        private decimal? interestBearingBorrowingsCurrentField;
 
-        private decimal nonInterestBearingBorrowingsCurrentField;
+        private decimal? nonInterestBearingBorrowingsCurrentField;
 
-        private decimal pensionandOtherPostRetirementBenefitPlansCurrentField;
+        private decimal? pensionandOtherPostRetirementBenefitPlansCurrentField;
 
-        private decimal cashandBalanceswithCentralBanksField;
+        private decimal? cashandBalanceswithCentralBanksField;
 
-        private decimal placementwithBanksandOtherFinancialInstitutionsField;
+        private decimal? placementwithBanksandOtherFinancialInstitutionsField;
 
-        private decimal otherLoanAssetsField;
+        private decimal? otherLoanAssetsField;
 
-        private decimal hedgingAssetsTotalField;
+        private decimal? hedgingAssetsTotalField;
 
-        private decimal assetsPledgedasCollateralSubjecttoSaleorRepledgingTotalField;
+        private decimal? assetsPledgedasCollateralSubjecttoSaleorRepledgingTotalField;
 
-        private decimal taxAssetsTotalField;
+        private decimal? taxAssetsTotalField;
 
-        private decimal advancesfromCentralBanksField;
+        private decimal? advancesfromCentralBanksField;
 
-        private decimal certificatesofDepositsandOtherDebtSecuritiesIssuedField;
+        private decimal? certificatesofDepositsandOtherDebtSecuritiesIssuedField;
 
-        private decimal depositCertificatesField;
+        private decimal? depositCertificatesField;
 
-        private decimal debenturesandDebtCertificatesField;
+        private decimal? debenturesandDebtCertificatesField;
 
-        private decimal interestBearingBorrowingsTotalField;
+        private decimal? interestBearingBorrowingsTotalField;
 
-        private decimal nonInterestBearingBorrowingsTotalField;
+        private decimal? nonInterestBearingBorrowingsTotalField;
 
-        private decimal otherBorrowedFundsField;
+        private decimal? otherBorrowedFundsField;
 
-        private decimal financialLiabilitiesDesignatedasFairValueThroughProfitorLossTotalField;
+        private decimal? financialLiabilitiesDesignatedasFairValueThroughProfitorLossTotalField;
 
-        private decimal financialLiabilitiesMeasuredatAmortizedCostTotalField;
+        private decimal? financialLiabilitiesMeasuredatAmortizedCostTotalField;
 
-        private decimal loanCapitalField;
+        private decimal? loanCapitalField;
 
-        private decimal hedgingLiabilitiesTotalField;
+        private decimal? hedgingLiabilitiesTotalField;
 
-        private decimal liabilitiesRecognizedforFairValueChangesinPortfolioHedgeofInterestRateRiskField;
+        private decimal? liabilitiesRecognizedforFairValueChangesinPortfolioHedgeofInterestRateRiskField;
 
-        private decimal accruedLiabilitiesTotalField;
+        private decimal? accruedLiabilitiesTotalField;
 
-        private decimal deferredIncomeTotalField;
+        private decimal? deferredIncomeTotalField;
 
-        private decimal deferredTaxLiabilitiesTotalField;
+        private decimal? deferredTaxLiabilitiesTotalField;
 
-        private decimal reinsuranceAssetsField;
+        private decimal? reinsuranceAssetsField;
 
-        private decimal reinsuranceShareofInsuranceContractField;
+        private decimal? reinsuranceShareofInsuranceContractField;
 
-        private decimal reinsuranceShareofAccruedPolicyholderClaimsField;
+        private decimal? reinsuranceShareofAccruedPolicyholderClaimsField;
 
-        private decimal depositsMadeunderAssumedReinsuranceContractField;
+        private decimal? depositsMadeunderAssumedReinsuranceContractField;
 
-        private decimal insuranceContractAssetsField;
+        private decimal? insuranceContractAssetsField;
 
-        private decimal insuranceReceivablesField;
+        private decimal? insuranceReceivablesField;
 
-        private decimal insuranceContractLiabilitiesField;
+        private decimal? insuranceContractLiabilitiesField;
 
-        private decimal insurancePayablesField;
+        private decimal? insurancePayablesField;
 
-        private decimal depositsReceivedunderCededInsuranceContractField;
+        private decimal? depositsReceivedunderCededInsuranceContractField;
 
-        private decimal investmentContractLiabilitiesField;
+        private decimal? investmentContractLiabilitiesField;
 
-        private decimal constructionGrantsField;
+        private decimal? constructionGrantsField;
 
-        private decimal deferredCostCurrentField;
+        private decimal? deferredCostCurrentField;
 
-        private decimal pensionAndOtherPostretirementBenefitPlansTotalField;
+        private decimal? pensionAndOtherPostretirementBenefitPlansTotalField;
 
-        private decimal liabilitiesHeldforSaleTotalField;
+        private decimal? liabilitiesHeldforSaleTotalField;
 
-        private decimal hedgingAssetsNonCurrentField;
+        private decimal? hedgingAssetsNonCurrentField;
 
-        private decimal hedgingAssetsCurrentField;
+        private decimal? hedgingAssetsCurrentField;
 
-        private decimal convertibleLoansTotalField;
+        private decimal? convertibleLoansTotalField;
 
-        private decimal bankLoansTotalField;
+        private decimal? bankLoansTotalField;
 
-        private decimal otherLoansTotalField;
+        private decimal? otherLoansTotalField;
 
-        private decimal hedgingLiabilitiesNonCurrentField;
+        private decimal? hedgingLiabilitiesNonCurrentField;
 
-        private decimal hedgingLiabilitiesCurrentField;
+        private decimal? hedgingLiabilitiesCurrentField;
 
-        private decimal insuranceFundsNonCurrentField;
+        private decimal? insuranceFundsNonCurrentField;
 
-        private decimal insuranceFundsCurrentField;
+        private decimal? insuranceFundsCurrentField;
 
-        private decimal debtTotalField;
+        private decimal? debtTotalField;
 
-        private decimal assetsHeldForSaleCurrentField;
+        private decimal? assetsHeldForSaleCurrentField;
 
-        private decimal assetsHeldForSaleNonCurrentField;
+        private decimal? assetsHeldForSaleNonCurrentField;
 
-        private decimal biologicalAssetsField;
+        private decimal? biologicalAssetsField;
 
-        private decimal cashRestrictedOrPledgedField;
+        private decimal? cashRestrictedOrPledgedField;
 
-        private decimal convertibleLoansNonCurrentField;
+        private decimal? convertibleLoansNonCurrentField;
 
-        private decimal financialOrDerivativeInvestmentCurrentLiabilitiesField;
+        private decimal? financialOrDerivativeInvestmentCurrentLiabilitiesField;
 
-        private decimal loanAndLoanReceivablesField;
+        private decimal? loanAndLoanReceivablesField;
 
-        private decimal otherInvestmentsField;
+        private decimal? otherInvestmentsField;
 
-        private decimal tradeAndOtherReceivablesNonCurrentField;
+        private decimal? tradeAndOtherReceivablesNonCurrentField;
 
-        private decimal debtDueInYear1Field;
+        private decimal? debtDueInYear1Field;
 
-        private decimal debtDueInYear2Field;
+        private decimal? debtDueInYear2Field;
 
-        private decimal debtDueInYear5Field;
+        private decimal? debtDueInYear5Field;
 
-        private decimal debtDueBeyondField;
+        private decimal? debtDueBeyondField;
 
-        private decimal totalDebtInMaturityScheduleField;
+        private decimal? totalDebtInMaturityScheduleField;
 
-        private decimal fiscalYearChangeField;
+        private decimal? fiscalYearChangeField;
 
-        private decimal fixedAssetsRevaluationReserveField;
+        private decimal? fixedAssetsRevaluationReserveField;
 
-        private decimal currentOtherFinancialLiabilitiesField;
+        private decimal? currentOtherFinancialLiabilitiesField;
 
-        private decimal nonCurrentOtherFinancialLiabilitiesField;
+        private decimal? nonCurrentOtherFinancialLiabilitiesField;
 
-        private decimal otherFinancialLiabilitiesField;
+        private decimal? otherFinancialLiabilitiesField;
 
-        private decimal totalLiabilitiesAsReportedField;
+        private decimal? totalLiabilitiesAsReportedField;
 
-        private decimal totalEquityAsReportedField;
+        private decimal? totalEquityAsReportedField;
 
-        private decimal unallocatedSurplusField;
+        private decimal? unallocatedSurplusField;
 
-        private decimal netDebtField;
+        private decimal? netDebtField;
 
         /// <remarks/>
         public DateTime ReportDate
@@ -817,7 +817,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public DateTime FileDate
+        public DateTime? FileDate
         {
             get
             {
@@ -895,7 +895,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AccountsPayable
+        public decimal? AccountsPayable
         {
             get
             {
@@ -908,7 +908,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AccountsReceivable
+        public decimal? AccountsReceivable
         {
             get
             {
@@ -921,7 +921,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal GrossAccountsReceivable
+        public decimal? GrossAccountsReceivable
         {
             get
             {
@@ -934,7 +934,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonCurrentAccountsReceivable
+        public decimal? NonCurrentAccountsReceivable
         {
             get
             {
@@ -947,7 +947,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CurrentAccruedExpenses
+        public decimal? CurrentAccruedExpenses
         {
             get
             {
@@ -960,7 +960,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonCurrentAccruedExpenses
+        public decimal? NonCurrentAccruedExpenses
         {
             get
             {
@@ -973,7 +973,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AccruedInterestReceivable
+        public decimal? AccruedInterestReceivable
         {
             get
             {
@@ -986,7 +986,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AccruedInvestmentIncome
+        public decimal? AccruedInvestmentIncome
         {
             get
             {
@@ -999,7 +999,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AccumulatedDepreciation
+        public decimal? AccumulatedDepreciation
         {
             get
             {
@@ -1012,7 +1012,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal GainsLossesNotAffectingRetainedEarnings
+        public decimal? GainsLossesNotAffectingRetainedEarnings
         {
             get
             {
@@ -1025,7 +1025,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AdditionalPaidInCapital
+        public decimal? AdditionalPaidInCapital
         {
             get
             {
@@ -1038,7 +1038,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AdvanceFromFederalHomeLoanBanks
+        public decimal? AdvanceFromFederalHomeLoanBanks
         {
             get
             {
@@ -1051,7 +1051,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AllowanceForDoubtfulAccountsReceivable
+        public decimal? AllowanceForDoubtfulAccountsReceivable
         {
             get
             {
@@ -1064,7 +1064,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AllowanceForLoansAndLeaseLosses
+        public decimal? AllowanceForLoansAndLeaseLosses
         {
             get
             {
@@ -1077,7 +1077,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AllowanceForNotesReceivable
+        public decimal? AllowanceForNotesReceivable
         {
             get
             {
@@ -1090,7 +1090,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AssetsHeldForSale
+        public decimal? AssetsHeldForSale
         {
             get
             {
@@ -1103,7 +1103,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AssetsOfDiscontinuedOperations
+        public decimal? AssetsOfDiscontinuedOperations
         {
             get
             {
@@ -1116,7 +1116,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AvailableForSaleSecurities
+        public decimal? AvailableForSaleSecurities
         {
             get
             {
@@ -1129,7 +1129,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal BankAcceptanceExecutedAndOutstanding
+        public decimal? BankAcceptanceExecutedAndOutstanding
         {
             get
             {
@@ -1142,7 +1142,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal BankIndebtedness
+        public decimal? BankIndebtedness
         {
             get
             {
@@ -1155,7 +1155,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal BankLoan
+        public decimal? BankLoan
         {
             get
             {
@@ -1168,7 +1168,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal BankOwnedLifeInsurance
+        public decimal? BankOwnedLifeInsurance
         {
             get
             {
@@ -1181,7 +1181,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal SecurityBorrowed
+        public decimal? SecurityBorrowed
         {
             get
             {
@@ -1194,7 +1194,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal BuildingsAndImprovements
+        public decimal? BuildingsAndImprovements
         {
             get
             {
@@ -1207,7 +1207,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CapitalStock
+        public decimal? CapitalStock
         {
             get
             {
@@ -1220,7 +1220,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal Cash
+        public decimal? Cash
         {
             get
             {
@@ -1233,7 +1233,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CashEquivalents
+        public decimal? CashEquivalents
         {
             get
             {
@@ -1246,7 +1246,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CashAndCashEquivalents
+        public decimal? CashAndCashEquivalents
         {
             get
             {
@@ -1259,7 +1259,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CashAndDueFromBanks
+        public decimal? CashAndDueFromBanks
         {
             get
             {
@@ -1272,7 +1272,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CashCashEquivalentsAndFederalFundsSold
+        public decimal? CashCashEquivalentsAndFederalFundsSold
         {
             get
             {
@@ -1285,7 +1285,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CashCashEquivalentsAndShortTermInvestments
+        public decimal? CashCashEquivalentsAndShortTermInvestments
         {
             get
             {
@@ -1298,7 +1298,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CasualtyClaims
+        public decimal? CasualtyClaims
         {
             get
             {
@@ -1311,7 +1311,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CededUnearnedPremiums
+        public decimal? CededUnearnedPremiums
         {
             get
             {
@@ -1324,7 +1324,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CommercialLoan
+        public decimal? CommercialLoan
         {
             get
             {
@@ -1337,7 +1337,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CommercialPaper
+        public decimal? CommercialPaper
         {
             get
             {
@@ -1350,7 +1350,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CommonStock
+        public decimal? CommonStock
         {
             get
             {
@@ -1363,7 +1363,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CommonStockEquity
+        public decimal? CommonStockEquity
         {
             get
             {
@@ -1376,7 +1376,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CommonStocksAvailableForSale
+        public decimal? CommonStocksAvailableForSale
         {
             get
             {
@@ -1389,7 +1389,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ConstructionInProgress
+        public decimal? ConstructionInProgress
         {
             get
             {
@@ -1402,7 +1402,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ConsumerLoan
+        public decimal? ConsumerLoan
         {
             get
             {
@@ -1415,7 +1415,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal MinimumPensionLiabilities
+        public decimal? MinimumPensionLiabilities
         {
             get
             {
@@ -1428,7 +1428,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CurrentAssets
+        public decimal? CurrentAssets
         {
             get
             {
@@ -1441,7 +1441,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CurrentDebt
+        public decimal? CurrentDebt
         {
             get
             {
@@ -1454,7 +1454,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CurrentDebtAndCapitalLeaseObligation
+        public decimal? CurrentDebtAndCapitalLeaseObligation
         {
             get
             {
@@ -1467,7 +1467,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CurrentLiabilities
+        public decimal? CurrentLiabilities
         {
             get
             {
@@ -1480,7 +1480,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CurrentCapitalLeaseObligation
+        public decimal? CurrentCapitalLeaseObligation
         {
             get
             {
@@ -1493,7 +1493,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CustomerAcceptances
+        public decimal? CustomerAcceptances
         {
             get
             {
@@ -1506,7 +1506,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DeferredAcquisitionCosts
+        public decimal? DeferredAcquisitionCosts
         {
             get
             {
@@ -1519,7 +1519,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DeferredAssets
+        public decimal? DeferredAssets
         {
             get
             {
@@ -1532,7 +1532,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DeferredCosts
+        public decimal? DeferredCosts
         {
             get
             {
@@ -1545,7 +1545,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DeferredFinancingCosts
+        public decimal? DeferredFinancingCosts
         {
             get
             {
@@ -1558,7 +1558,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonCurrentDeferredLiabilities
+        public decimal? NonCurrentDeferredLiabilities
         {
             get
             {
@@ -1571,7 +1571,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CurrentDeferredLiabilities
+        public decimal? CurrentDeferredLiabilities
         {
             get
             {
@@ -1584,7 +1584,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DeferredPolicyAcquisitionCosts
+        public decimal? DeferredPolicyAcquisitionCosts
         {
             get
             {
@@ -1597,7 +1597,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CurrentDeferredRevenue
+        public decimal? CurrentDeferredRevenue
         {
             get
             {
@@ -1610,7 +1610,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonCurrentDeferredRevenue
+        public decimal? NonCurrentDeferredRevenue
         {
             get
             {
@@ -1623,7 +1623,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DeferredTaxAssets
+        public decimal? DeferredTaxAssets
         {
             get
             {
@@ -1636,7 +1636,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CurrentDeferredTaxesAssets
+        public decimal? CurrentDeferredTaxesAssets
         {
             get
             {
@@ -1649,7 +1649,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CurrentDeferredTaxesLiabilities
+        public decimal? CurrentDeferredTaxesLiabilities
         {
             get
             {
@@ -1662,7 +1662,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonCurrentDeferredTaxesAssets
+        public decimal? NonCurrentDeferredTaxesAssets
         {
             get
             {
@@ -1675,7 +1675,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonCurrentDeferredTaxesLiabilities
+        public decimal? NonCurrentDeferredTaxesLiabilities
         {
             get
             {
@@ -1688,7 +1688,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DefinedPensionBenefit
+        public decimal? DefinedPensionBenefit
         {
             get
             {
@@ -1701,7 +1701,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DerivativeProductLiabilities
+        public decimal? DerivativeProductLiabilities
         {
             get
             {
@@ -1714,7 +1714,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DerivativeAssets
+        public decimal? DerivativeAssets
         {
             get
             {
@@ -1727,7 +1727,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DividendsPayable
+        public decimal? DividendsPayable
         {
             get
             {
@@ -1740,7 +1740,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ESOPDebtGuarantee
+        public decimal? ESOPDebtGuarantee
         {
             get
             {
@@ -1753,7 +1753,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal EmployeeBenefits
+        public decimal? EmployeeBenefits
         {
             get
             {
@@ -1766,7 +1766,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal EquityInvestments
+        public decimal? EquityInvestments
         {
             get
             {
@@ -1779,7 +1779,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FacilitiesAndOther
+        public decimal? FacilitiesAndOther
         {
             get
             {
@@ -1792,7 +1792,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FederalFundsPurchased
+        public decimal? FederalFundsPurchased
         {
             get
             {
@@ -1805,7 +1805,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FederalFundsPurchasedAndSecuritiesSoldUnderAgreementToRepurchase
+        public decimal? FederalFundsPurchasedAndSecuritiesSoldUnderAgreementToRepurchase
         {
             get
             {
@@ -1818,7 +1818,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FederalFundsSold
+        public decimal? FederalFundsSold
         {
             get
             {
@@ -1831,7 +1831,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FederalFundsSoldAndSecuritiesPurchaseUnderAgreementsToResell
+        public decimal? FederalFundsSoldAndSecuritiesPurchaseUnderAgreementsToResell
         {
             get
             {
@@ -1844,7 +1844,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FederalHomeLoanBankStock
+        public decimal? FederalHomeLoanBankStock
         {
             get
             {
@@ -1857,7 +1857,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FinancialAssets
+        public decimal? FinancialAssets
         {
             get
             {
@@ -1870,7 +1870,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FinancialInstrumentsSoldUnderAgreementsToRepurchase
+        public decimal? FinancialInstrumentsSoldUnderAgreementsToRepurchase
         {
             get
             {
@@ -1883,7 +1883,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FinishedGoods
+        public decimal? FinishedGoods
         {
             get
             {
@@ -1896,7 +1896,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FixedMaturitiesAvailableForSale
+        public decimal? FixedMaturitiesAvailableForSale
         {
             get
             {
@@ -1909,7 +1909,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FixedMaturitiesHeldToMaturity
+        public decimal? FixedMaturitiesHeldToMaturity
         {
             get
             {
@@ -1922,7 +1922,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FixedMaturitiesTrading
+        public decimal? FixedMaturitiesTrading
         {
             get
             {
@@ -1935,7 +1935,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FixedMaturityInvestments
+        public decimal? FixedMaturityInvestments
         {
             get
             {
@@ -1948,7 +1948,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FlightFleetVehicleAndRelatedEquipments
+        public decimal? FlightFleetVehicleAndRelatedEquipments
         {
             get
             {
@@ -1961,7 +1961,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ForeclosedAssets
+        public decimal? ForeclosedAssets
         {
             get
             {
@@ -1974,7 +1974,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ForeignComponent
+        public decimal? ForeignComponent
         {
             get
             {
@@ -1987,7 +1987,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ForeignCurrencyTranslationAdjustments
+        public decimal? ForeignCurrencyTranslationAdjustments
         {
             get
             {
@@ -2000,7 +2000,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FuelAndNaturalGas
+        public decimal? FuelAndNaturalGas
         {
             get
             {
@@ -2013,7 +2013,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FuturePolicyBenefits
+        public decimal? FuturePolicyBenefits
         {
             get
             {
@@ -2026,7 +2026,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal GeneralPartnershipCapital
+        public decimal? GeneralPartnershipCapital
         {
             get
             {
@@ -2039,7 +2039,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal Goodwill
+        public decimal? Goodwill
         {
             get
             {
@@ -2052,7 +2052,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal GoodwillAndOtherIntangibleAssets
+        public decimal? GoodwillAndOtherIntangibleAssets
         {
             get
             {
@@ -2065,7 +2065,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal GrossLoan
+        public decimal? GrossLoan
         {
             get
             {
@@ -2078,7 +2078,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal GrossPPE
+        public decimal? GrossPPE
         {
             get
             {
@@ -2091,7 +2091,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal GuaranteedInvestmentContract
+        public decimal? GuaranteedInvestmentContract
         {
             get
             {
@@ -2104,7 +2104,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal HeldToMaturitySecurities
+        public decimal? HeldToMaturitySecurities
         {
             get
             {
@@ -2117,7 +2117,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal IncomeTaxPayable
+        public decimal? IncomeTaxPayable
         {
             get
             {
@@ -2130,7 +2130,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InterestBearingDepositsLiabilities
+        public decimal? InterestBearingDepositsLiabilities
         {
             get
             {
@@ -2143,7 +2143,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InterestPayable
+        public decimal? InterestPayable
         {
             get
             {
@@ -2156,7 +2156,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InterestBearingDepositsAssets
+        public decimal? InterestBearingDepositsAssets
         {
             get
             {
@@ -2169,7 +2169,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal Inventory
+        public decimal? Inventory
         {
             get
             {
@@ -2182,7 +2182,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InventoriesAdjustmentsAllowances
+        public decimal? InventoriesAdjustmentsAllowances
         {
             get
             {
@@ -2195,7 +2195,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InvestmentTaxCredits
+        public decimal? InvestmentTaxCredits
         {
             get
             {
@@ -2208,7 +2208,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InvestmentsAndAdvances
+        public decimal? InvestmentsAndAdvances
         {
             get
             {
@@ -2221,7 +2221,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InvestmentsInAffiliatesSubsidiariesAssociatesAndJointVentures
+        public decimal? InvestmentsInAffiliatesSubsidiariesAssociatesAndJointVentures
         {
             get
             {
@@ -2234,7 +2234,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InvestmentsInOtherVenturesUnderEquityMethod
+        public decimal? InvestmentsInOtherVenturesUnderEquityMethod
         {
             get
             {
@@ -2247,7 +2247,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InvestmentsInVariableInterestEntity
+        public decimal? InvestmentsInVariableInterestEntity
         {
             get
             {
@@ -2260,7 +2260,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LandAndImprovements
+        public decimal? LandAndImprovements
         {
             get
             {
@@ -2273,7 +2273,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal Leases
+        public decimal? Leases
         {
             get
             {
@@ -2286,7 +2286,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LiabilitiesOfDiscontinuedOperations
+        public decimal? LiabilitiesOfDiscontinuedOperations
         {
             get
             {
@@ -2299,7 +2299,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LimitedPartnershipCapital
+        public decimal? LimitedPartnershipCapital
         {
             get
             {
@@ -2312,7 +2312,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LimitedPartnership
+        public decimal? LimitedPartnership
         {
             get
             {
@@ -2325,7 +2325,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LineOfCredit
+        public decimal? LineOfCredit
         {
             get
             {
@@ -2338,7 +2338,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LoansHeldForSale
+        public decimal? LoansHeldForSale
         {
             get
             {
@@ -2351,7 +2351,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LoansReceivable
+        public decimal? LoansReceivable
         {
             get
             {
@@ -2364,7 +2364,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LongTermDebt
+        public decimal? LongTermDebt
         {
             get
             {
@@ -2377,7 +2377,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LongTermDebtAndCapitalLeaseObligation
+        public decimal? LongTermDebtAndCapitalLeaseObligation
         {
             get
             {
@@ -2390,7 +2390,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LongTermEquityInvestment
+        public decimal? LongTermEquityInvestment
         {
             get
             {
@@ -2403,7 +2403,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LongTermCapitalLeaseObligation
+        public decimal? LongTermCapitalLeaseObligation
         {
             get
             {
@@ -2416,7 +2416,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal MachineryFurnitureEquipment
+        public decimal? MachineryFurnitureEquipment
         {
             get
             {
@@ -2429,7 +2429,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal MaterialsAndSupplies
+        public decimal? MaterialsAndSupplies
         {
             get
             {
@@ -2442,7 +2442,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal MineralProperties
+        public decimal? MineralProperties
         {
             get
             {
@@ -2455,7 +2455,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal MinorityInterest
+        public decimal? MinorityInterest
         {
             get
             {
@@ -2468,7 +2468,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal MoneyMarketInvestments
+        public decimal? MoneyMarketInvestments
         {
             get
             {
@@ -2481,7 +2481,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal MortgageLoan
+        public decimal? MortgageLoan
         {
             get
             {
@@ -2494,7 +2494,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal MortgageAndConsumerloans
+        public decimal? MortgageAndConsumerloans
         {
             get
             {
@@ -2507,7 +2507,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NaturalResourceAssets
+        public decimal? NaturalResourceAssets
         {
             get
             {
@@ -2520,7 +2520,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NetLoan
+        public decimal? NetLoan
         {
             get
             {
@@ -2533,7 +2533,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NetOtherUnrealizedGainLoss
+        public decimal? NetOtherUnrealizedGainLoss
         {
             get
             {
@@ -2546,7 +2546,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NetPPE
+        public decimal? NetPPE
         {
             get
             {
@@ -2559,7 +2559,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NetUnrealizedGainLossForeignCurrency
+        public decimal? NetUnrealizedGainLossForeignCurrency
         {
             get
             {
@@ -2572,7 +2572,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NetUnrealizedGainLossInvestments
+        public decimal? NetUnrealizedGainLossInvestments
         {
             get
             {
@@ -2585,7 +2585,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonInterestBearingDeposits
+        public decimal? NonInterestBearingDeposits
         {
             get
             {
@@ -2598,7 +2598,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CurrentNotesPayable
+        public decimal? CurrentNotesPayable
         {
             get
             {
@@ -2611,7 +2611,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NotesReceivable
+        public decimal? NotesReceivable
         {
             get
             {
@@ -2624,7 +2624,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal GrossNotesReceivable
+        public decimal? GrossNotesReceivable
         {
             get
             {
@@ -2637,7 +2637,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonCurrentNoteReceivables
+        public decimal? NonCurrentNoteReceivables
         {
             get
             {
@@ -2650,7 +2650,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherAssets
+        public decimal? OtherAssets
         {
             get
             {
@@ -2663,7 +2663,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherCapitalStock
+        public decimal? OtherCapitalStock
         {
             get
             {
@@ -2676,7 +2676,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherCurrentAssets
+        public decimal? OtherCurrentAssets
         {
             get
             {
@@ -2689,7 +2689,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherCurrentBorrowings
+        public decimal? OtherCurrentBorrowings
         {
             get
             {
@@ -2702,7 +2702,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherCurrentLiabilities
+        public decimal? OtherCurrentLiabilities
         {
             get
             {
@@ -2715,7 +2715,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherDeferredCosts
+        public decimal? OtherDeferredCosts
         {
             get
             {
@@ -2728,7 +2728,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherDeposits
+        public decimal? OtherDeposits
         {
             get
             {
@@ -2741,7 +2741,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherEquityAdjustments
+        public decimal? OtherEquityAdjustments
         {
             get
             {
@@ -2754,7 +2754,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherIntangibleAssets
+        public decimal? OtherIntangibleAssets
         {
             get
             {
@@ -2767,7 +2767,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherInterestEarningAssets
+        public decimal? OtherInterestEarningAssets
         {
             get
             {
@@ -2780,7 +2780,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherInventories
+        public decimal? OtherInventories
         {
             get
             {
@@ -2793,7 +2793,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherInvestedAssets
+        public decimal? OtherInvestedAssets
         {
             get
             {
@@ -2806,7 +2806,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherNonCurrentAssets
+        public decimal? OtherNonCurrentAssets
         {
             get
             {
@@ -2819,7 +2819,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherProperties
+        public decimal? OtherProperties
         {
             get
             {
@@ -2832,7 +2832,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherRealEstateOwned
+        public decimal? OtherRealEstateOwned
         {
             get
             {
@@ -2845,7 +2845,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherReceivables
+        public decimal? OtherReceivables
         {
             get
             {
@@ -2858,7 +2858,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ShortTermInvestments
+        public decimal? ShortTermInvestments
         {
             get
             {
@@ -2871,7 +2871,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal Patents
+        public decimal? Patents
         {
             get
             {
@@ -2884,7 +2884,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal Payables
+        public decimal? Payables
         {
             get
             {
@@ -2897,7 +2897,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PayablesAndAccruedExpenses
+        public decimal? PayablesAndAccruedExpenses
         {
             get
             {
@@ -2910,7 +2910,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonCurrentPensionAndOtherPostretirementBenefitPlans
+        public decimal? NonCurrentPensionAndOtherPostretirementBenefitPlans
         {
             get
             {
@@ -2923,7 +2923,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PolicyLoans
+        public decimal? PolicyLoans
         {
             get
             {
@@ -2936,7 +2936,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalPolicyHoldersLiabilities
+        public decimal? TotalPolicyHoldersLiabilities
         {
             get
             {
@@ -2949,7 +2949,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PolicyholderFunds
+        public decimal? PolicyholderFunds
         {
             get
             {
@@ -2962,7 +2962,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PreferredSecuritiesOutsideStockEquity
+        public decimal? PreferredSecuritiesOutsideStockEquity
         {
             get
             {
@@ -2975,7 +2975,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TrustPreferredSecurities
+        public decimal? TrustPreferredSecurities
         {
             get
             {
@@ -2988,7 +2988,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PreferredStock
+        public decimal? PreferredStock
         {
             get
             {
@@ -3001,7 +3001,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PreferredStockEquity
+        public decimal? PreferredStockEquity
         {
             get
             {
@@ -3014,7 +3014,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PreferredStockOfSubsidiary
+        public decimal? PreferredStockOfSubsidiary
         {
             get
             {
@@ -3027,7 +3027,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PreferredStocksAvailableForSale
+        public decimal? PreferredStocksAvailableForSale
         {
             get
             {
@@ -3040,7 +3040,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PremiumsReceivable
+        public decimal? PremiumsReceivable
         {
             get
             {
@@ -3053,7 +3053,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PrepaidAssets
+        public decimal? PrepaidAssets
         {
             get
             {
@@ -3066,7 +3066,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonCurrentPrepaidAssets
+        public decimal? NonCurrentPrepaidAssets
         {
             get
             {
@@ -3079,7 +3079,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PrepaidReinsurancePremiums
+        public decimal? PrepaidReinsurancePremiums
         {
             get
             {
@@ -3092,7 +3092,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal Properties
+        public decimal? Properties
         {
             get
             {
@@ -3105,7 +3105,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CurrentProvisions
+        public decimal? CurrentProvisions
         {
             get
             {
@@ -3118,7 +3118,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LongTermProvisions
+        public decimal? LongTermProvisions
         {
             get
             {
@@ -3131,7 +3131,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PurchasedComponents
+        public decimal? PurchasedComponents
         {
             get
             {
@@ -3144,7 +3144,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal RawMaterials
+        public decimal? RawMaterials
         {
             get
             {
@@ -3157,7 +3157,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal RealEstateHeldForSale
+        public decimal? RealEstateHeldForSale
         {
             get
             {
@@ -3170,7 +3170,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal RealEstateAndRealEstateJointVenturesHeldForInvestment
+        public decimal? RealEstateAndRealEstateJointVenturesHeldForInvestment
         {
             get
             {
@@ -3183,7 +3183,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal Receivables
+        public decimal? Receivables
         {
             get
             {
@@ -3196,7 +3196,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal RecievablesAdjustmentsAllowances
+        public decimal? RecievablesAdjustmentsAllowances
         {
             get
             {
@@ -3209,7 +3209,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal RedeemablePreferredStock
+        public decimal? RedeemablePreferredStock
         {
             get
             {
@@ -3222,7 +3222,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal RegulatoryAssets
+        public decimal? RegulatoryAssets
         {
             get
             {
@@ -3235,7 +3235,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal RegulatoryLiabilities
+        public decimal? RegulatoryLiabilities
         {
             get
             {
@@ -3248,7 +3248,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ReinsuranceBalancesPayable
+        public decimal? ReinsuranceBalancesPayable
         {
             get
             {
@@ -3261,7 +3261,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ReinsuranceReceivables
+        public decimal? ReinsuranceReceivables
         {
             get
             {
@@ -3274,7 +3274,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ReinsuranceRecoverable
+        public decimal? ReinsuranceRecoverable
         {
             get
             {
@@ -3287,7 +3287,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ReinsuranceRecoverableForPaidLosses
+        public decimal? ReinsuranceRecoverableForPaidLosses
         {
             get
             {
@@ -3300,7 +3300,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ReinsuranceRecoverableForUnpaidLosses
+        public decimal? ReinsuranceRecoverableForUnpaidLosses
         {
             get
             {
@@ -3313,7 +3313,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal RestrictedCash
+        public decimal? RestrictedCash
         {
             get
             {
@@ -3326,7 +3326,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal RestrictedCashAndCashEquivalents
+        public decimal? RestrictedCashAndCashEquivalents
         {
             get
             {
@@ -3339,7 +3339,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal RestrictedCashAndInvestments
+        public decimal? RestrictedCashAndInvestments
         {
             get
             {
@@ -3352,7 +3352,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal RestrictedCommonStock
+        public decimal? RestrictedCommonStock
         {
             get
             {
@@ -3365,7 +3365,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal RestrictedInvestments
+        public decimal? RestrictedInvestments
         {
             get
             {
@@ -3378,7 +3378,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal RetainedEarnings
+        public decimal? RetainedEarnings
         {
             get
             {
@@ -3391,7 +3391,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal SecuritiesLendingCollateral
+        public decimal? SecuritiesLendingCollateral
         {
             get
             {
@@ -3404,7 +3404,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal SecuritiesLendingPayable
+        public decimal? SecuritiesLendingPayable
         {
             get
             {
@@ -3417,7 +3417,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal SecurityAgreeToBeResell
+        public decimal? SecurityAgreeToBeResell
         {
             get
             {
@@ -3430,7 +3430,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal SecuritySoldNotYetRepurchased
+        public decimal? SecuritySoldNotYetRepurchased
         {
             get
             {
@@ -3443,7 +3443,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal SeparateAccountAssets
+        public decimal? SeparateAccountAssets
         {
             get
             {
@@ -3456,7 +3456,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal SeparateAccountLiability
+        public decimal? SeparateAccountLiability
         {
             get
             {
@@ -3469,7 +3469,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ShortTermInvestmentsAvailableForSale
+        public decimal? ShortTermInvestmentsAvailableForSale
         {
             get
             {
@@ -3482,7 +3482,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ShortTermInvestmentsHeldToMaturity
+        public decimal? ShortTermInvestmentsHeldToMaturity
         {
             get
             {
@@ -3495,7 +3495,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ShortTermInvestmentsTrading
+        public decimal? ShortTermInvestmentsTrading
         {
             get
             {
@@ -3508,7 +3508,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal StockholdersEquity
+        public decimal? StockholdersEquity
         {
             get
             {
@@ -3521,7 +3521,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal StudentLoan
+        public decimal? StudentLoan
         {
             get
             {
@@ -3534,7 +3534,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalTaxPayable
+        public decimal? TotalTaxPayable
         {
             get
             {
@@ -3547,7 +3547,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TaxesReceivable
+        public decimal? TaxesReceivable
         {
             get
             {
@@ -3560,7 +3560,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TimeDepositsPlaced
+        public decimal? TimeDepositsPlaced
         {
             get
             {
@@ -3573,7 +3573,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalAssets
+        public decimal? TotalAssets
         {
             get
             {
@@ -3586,7 +3586,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalCapitalization
+        public decimal? TotalCapitalization
         {
             get
             {
@@ -3599,7 +3599,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalDeferredCreditsAndOtherNonCurrentLiabilities
+        public decimal? TotalDeferredCreditsAndOtherNonCurrentLiabilities
         {
             get
             {
@@ -3612,7 +3612,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalDeposits
+        public decimal? TotalDeposits
         {
             get
             {
@@ -3625,7 +3625,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalInvestments
+        public decimal? TotalInvestments
         {
             get
             {
@@ -3638,7 +3638,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalLiabilities
+        public decimal? TotalLiabilities
         {
             get
             {
@@ -3651,7 +3651,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalNonCurrentAssets
+        public decimal? TotalNonCurrentAssets
         {
             get
             {
@@ -3664,7 +3664,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalNonCurrentLiabilities
+        public decimal? TotalNonCurrentLiabilities
         {
             get
             {
@@ -3677,7 +3677,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalPartnershipCapital
+        public decimal? TotalPartnershipCapital
         {
             get
             {
@@ -3690,7 +3690,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TradingAssets
+        public decimal? TradingAssets
         {
             get
             {
@@ -3703,7 +3703,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TradingLiabilities
+        public decimal? TradingLiabilities
         {
             get
             {
@@ -3716,7 +3716,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TradingSecurities
+        public decimal? TradingSecurities
         {
             get
             {
@@ -3729,7 +3729,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TreasuryStock
+        public decimal? TreasuryStock
         {
             get
             {
@@ -3742,7 +3742,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal UnbilledReceivables
+        public decimal? UnbilledReceivables
         {
             get
             {
@@ -3755,7 +3755,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal UnearnedIncome
+        public decimal? UnearnedIncome
         {
             get
             {
@@ -3768,7 +3768,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal UnearnedPremiums
+        public decimal? UnearnedPremiums
         {
             get
             {
@@ -3781,7 +3781,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal UnpaidLossAndLossReserve
+        public decimal? UnpaidLossAndLossReserve
         {
             get
             {
@@ -3794,7 +3794,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal UnrealizedGainLoss
+        public decimal? UnrealizedGainLoss
         {
             get
             {
@@ -3807,7 +3807,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal WorkInProcess
+        public decimal? WorkInProcess
         {
             get
             {
@@ -3820,7 +3820,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherNonCurrentLiabilities
+        public decimal? OtherNonCurrentLiabilities
         {
             get
             {
@@ -3833,7 +3833,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CapitalLeaseObligations
+        public decimal? CapitalLeaseObligations
         {
             get
             {
@@ -3846,7 +3846,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherLiabilities
+        public decimal? OtherLiabilities
         {
             get
             {
@@ -3859,7 +3859,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherPayable
+        public decimal? OtherPayable
         {
             get
             {
@@ -3872,7 +3872,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InvestedCapital
+        public decimal? InvestedCapital
         {
             get
             {
@@ -3885,7 +3885,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TangibleBookValue
+        public decimal? TangibleBookValue
         {
             get
             {
@@ -3898,7 +3898,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalEquity
+        public decimal? TotalEquity
         {
             get
             {
@@ -3911,7 +3911,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal WorkingCapital
+        public decimal? WorkingCapital
         {
             get
             {
@@ -3924,7 +3924,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalDebt
+        public decimal? TotalDebt
         {
             get
             {
@@ -3937,7 +3937,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CashValueOfLifeInsurance
+        public decimal? CashValueOfLifeInsurance
         {
             get
             {
@@ -3950,7 +3950,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CommonUtilityPlant
+        public decimal? CommonUtilityPlant
         {
             get
             {
@@ -3963,7 +3963,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CurrentDeferredAssets
+        public decimal? CurrentDeferredAssets
         {
             get
             {
@@ -3976,7 +3976,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonCurrentDeferredAssets
+        public decimal? NonCurrentDeferredAssets
         {
             get
             {
@@ -3989,7 +3989,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ElectricUtilityPlant
+        public decimal? ElectricUtilityPlant
         {
             get
             {
@@ -4002,7 +4002,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NaturalGasFuelAndOther
+        public decimal? NaturalGasFuelAndOther
         {
             get
             {
@@ -4015,7 +4015,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NetUtilityPlant
+        public decimal? NetUtilityPlant
         {
             get
             {
@@ -4028,7 +4028,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal WaterProduction
+        public decimal? WaterProduction
         {
             get
             {
@@ -4041,7 +4041,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal SecuritiesAndInvestments
+        public decimal? SecuritiesAndInvestments
         {
             get
             {
@@ -4054,7 +4054,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OrdinarySharesNumber
+        public decimal? OrdinarySharesNumber
         {
             get
             {
@@ -4067,7 +4067,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PreferredSharesNumber
+        public decimal? PreferredSharesNumber
         {
             get
             {
@@ -4080,7 +4080,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TreasurySharesNumber
+        public decimal? TreasurySharesNumber
         {
             get
             {
@@ -4093,7 +4093,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalLiabilitiesNetMinorityInterest
+        public decimal? TotalLiabilitiesNetMinorityInterest
         {
             get
             {
@@ -4106,7 +4106,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalNonCurrentLiabilitiesNetMinorityInterest
+        public decimal? TotalNonCurrentLiabilitiesNetMinorityInterest
         {
             get
             {
@@ -4119,7 +4119,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalEquityGrossMinorityInterest
+        public decimal? TotalEquityGrossMinorityInterest
         {
             get
             {
@@ -4132,7 +4132,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TradingAndOtherReceivable
+        public decimal? TradingAndOtherReceivable
         {
             get
             {
@@ -4171,7 +4171,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal SecuritiesLoaned
+        public decimal? SecuritiesLoaned
         {
             get
             {
@@ -4184,7 +4184,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ParticipatingPolicyholderEquity
+        public decimal? ParticipatingPolicyholderEquity
         {
             get
             {
@@ -4197,7 +4197,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NetTangibleAssets
+        public decimal? NetTangibleAssets
         {
             get
             {
@@ -4210,7 +4210,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DuefromRelatedPartiesCurrent
+        public decimal? DuefromRelatedPartiesCurrent
         {
             get
             {
@@ -4223,7 +4223,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DuefromRelatedPartiesNonCurrent
+        public decimal? DuefromRelatedPartiesNonCurrent
         {
             get
             {
@@ -4236,7 +4236,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DuetoRelatedParties
+        public decimal? DuetoRelatedParties
         {
             get
             {
@@ -4249,7 +4249,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DuetoRelatedPartiesCurrent
+        public decimal? DuetoRelatedPartiesCurrent
         {
             get
             {
@@ -4262,7 +4262,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DuetoRelatedPartiesNonCurrent
+        public decimal? DuetoRelatedPartiesNonCurrent
         {
             get
             {
@@ -4275,7 +4275,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NetAssets
+        public decimal? NetAssets
         {
             get
             {
@@ -4288,7 +4288,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InvestmentProperties
+        public decimal? InvestmentProperties
         {
             get
             {
@@ -4301,7 +4301,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InvestmentsinSubsidiariesatCost
+        public decimal? InvestmentsinSubsidiariesatCost
         {
             get
             {
@@ -4314,7 +4314,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InvestmentsinAssociatesatCost
+        public decimal? InvestmentsinAssociatesatCost
         {
             get
             {
@@ -4327,7 +4327,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InvestmentsinJointVenturesatCost
+        public decimal? InvestmentsinJointVenturesatCost
         {
             get
             {
@@ -4340,7 +4340,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InvestmentinFinancialAssets
+        public decimal? InvestmentinFinancialAssets
         {
             get
             {
@@ -4353,7 +4353,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FinanceLeaseReceivables
+        public decimal? FinanceLeaseReceivables
         {
             get
             {
@@ -4366,7 +4366,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ConvertibleLoansCurrent
+        public decimal? ConvertibleLoansCurrent
         {
             get
             {
@@ -4379,7 +4379,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal BankLoansCurrent
+        public decimal? BankLoansCurrent
         {
             get
             {
@@ -4392,7 +4392,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherLoansCurrent
+        public decimal? OtherLoansCurrent
         {
             get
             {
@@ -4405,7 +4405,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AccruedandDeferredIncome
+        public decimal? AccruedandDeferredIncome
         {
             get
             {
@@ -4418,7 +4418,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal BankLoansNonCurrent
+        public decimal? BankLoansNonCurrent
         {
             get
             {
@@ -4431,7 +4431,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherLoansNonCurrent
+        public decimal? OtherLoansNonCurrent
         {
             get
             {
@@ -4444,7 +4444,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherReserves
+        public decimal? OtherReserves
         {
             get
             {
@@ -4457,7 +4457,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LoansandAdvancestoBank
+        public decimal? LoansandAdvancestoBank
         {
             get
             {
@@ -4470,7 +4470,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LoansandAdvancestoCustomer
+        public decimal? LoansandAdvancestoCustomer
         {
             get
             {
@@ -4483,7 +4483,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TreasuryBillsandOtherEligibleBills
+        public decimal? TreasuryBillsandOtherEligibleBills
         {
             get
             {
@@ -4496,7 +4496,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal EquitySharesInvestments
+        public decimal? EquitySharesInvestments
         {
             get
             {
@@ -4509,7 +4509,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DepositsbyBank
+        public decimal? DepositsbyBank
         {
             get
             {
@@ -4522,7 +4522,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CustomerAccounts
+        public decimal? CustomerAccounts
         {
             get
             {
@@ -4535,7 +4535,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ItemsinTheCourseofTransmissiontoOtherBanks
+        public decimal? ItemsinTheCourseofTransmissiontoOtherBanks
         {
             get
             {
@@ -4548,7 +4548,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TradingandFinancialLiabilities
+        public decimal? TradingandFinancialLiabilities
         {
             get
             {
@@ -4561,7 +4561,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DebtSecuritiesinIssue
+        public decimal? DebtSecuritiesinIssue
         {
             get
             {
@@ -4574,7 +4574,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal SubordinatedLiabilities
+        public decimal? SubordinatedLiabilities
         {
             get
             {
@@ -4587,7 +4587,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ProvisionsTotal
+        public decimal? ProvisionsTotal
         {
             get
             {
@@ -4600,7 +4600,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OperatingLeaseAssets
+        public decimal? OperatingLeaseAssets
         {
             get
             {
@@ -4613,7 +4613,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ClaimsOutstanding
+        public decimal? ClaimsOutstanding
         {
             get
             {
@@ -4626,7 +4626,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LongTermContracts
+        public decimal? LongTermContracts
         {
             get
             {
@@ -4639,7 +4639,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal RealEstate
+        public decimal? RealEstate
         {
             get
             {
@@ -4652,7 +4652,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PaymentofBills
+        public decimal? PaymentofBills
         {
             get
             {
@@ -4665,7 +4665,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LiabilitiesHeldforSaleCurrent
+        public decimal? LiabilitiesHeldforSaleCurrent
         {
             get
             {
@@ -4678,7 +4678,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LiabilitiesHeldforSaleNonCurrent
+        public decimal? LiabilitiesHeldforSaleNonCurrent
         {
             get
             {
@@ -4691,7 +4691,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal UnclassifiedCurrentAssets
+        public decimal? UnclassifiedCurrentAssets
         {
             get
             {
@@ -4704,7 +4704,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DebtSecurities
+        public decimal? DebtSecurities
         {
             get
             {
@@ -4717,7 +4717,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalFinancialLeaseObligations
+        public decimal? TotalFinancialLeaseObligations
         {
             get
             {
@@ -4730,7 +4730,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AccruedandDeferredIncomeCurrent
+        public decimal? AccruedandDeferredIncomeCurrent
         {
             get
             {
@@ -4743,7 +4743,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AccruedandDeferredIncomeNonCurrent
+        public decimal? AccruedandDeferredIncomeNonCurrent
         {
             get
             {
@@ -4756,7 +4756,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FinanceLeaseReceivablesCurrent
+        public decimal? FinanceLeaseReceivablesCurrent
         {
             get
             {
@@ -4769,7 +4769,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FinanceLeaseReceivablesNonCurrent
+        public decimal? FinanceLeaseReceivablesNonCurrent
         {
             get
             {
@@ -4782,7 +4782,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FinancialLiabilitiesCurrent
+        public decimal? FinancialLiabilitiesCurrent
         {
             get
             {
@@ -4795,7 +4795,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FinancialLiabilitiesNonCurrent
+        public decimal? FinancialLiabilitiesNonCurrent
         {
             get
             {
@@ -4808,7 +4808,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FinancialAssetsDesignatedasFairValueThroughProfitorLossTotal
+        public decimal? FinancialAssetsDesignatedasFairValueThroughProfitorLossTotal
         {
             get
             {
@@ -4821,7 +4821,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TaxesAssetsCurrent
+        public decimal? TaxesAssetsCurrent
         {
             get
             {
@@ -4834,7 +4834,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherEquityInterest
+        public decimal? OtherEquityInterest
         {
             get
             {
@@ -4847,7 +4847,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InterestBearingBorrowingsNonCurrent
+        public decimal? InterestBearingBorrowingsNonCurrent
         {
             get
             {
@@ -4860,7 +4860,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonInterestBearingBorrowingsNonCurrent
+        public decimal? NonInterestBearingBorrowingsNonCurrent
         {
             get
             {
@@ -4873,7 +4873,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TradeandOtherPayablesNonCurrent
+        public decimal? TradeandOtherPayablesNonCurrent
         {
             get
             {
@@ -4886,7 +4886,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InterestBearingBorrowingsCurrent
+        public decimal? InterestBearingBorrowingsCurrent
         {
             get
             {
@@ -4899,7 +4899,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonInterestBearingBorrowingsCurrent
+        public decimal? NonInterestBearingBorrowingsCurrent
         {
             get
             {
@@ -4912,7 +4912,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PensionandOtherPostRetirementBenefitPlansCurrent
+        public decimal? PensionandOtherPostRetirementBenefitPlansCurrent
         {
             get
             {
@@ -4925,7 +4925,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CashandBalanceswithCentralBanks
+        public decimal? CashandBalanceswithCentralBanks
         {
             get
             {
@@ -4938,7 +4938,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PlacementwithBanksandOtherFinancialInstitutions
+        public decimal? PlacementwithBanksandOtherFinancialInstitutions
         {
             get
             {
@@ -4951,7 +4951,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherLoanAssets
+        public decimal? OtherLoanAssets
         {
             get
             {
@@ -4964,7 +4964,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal HedgingAssetsTotal
+        public decimal? HedgingAssetsTotal
         {
             get
             {
@@ -4977,7 +4977,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AssetsPledgedasCollateralSubjecttoSaleorRepledgingTotal
+        public decimal? AssetsPledgedasCollateralSubjecttoSaleorRepledgingTotal
         {
             get
             {
@@ -4990,7 +4990,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TaxAssetsTotal
+        public decimal? TaxAssetsTotal
         {
             get
             {
@@ -5003,7 +5003,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AdvancesfromCentralBanks
+        public decimal? AdvancesfromCentralBanks
         {
             get
             {
@@ -5016,7 +5016,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CertificatesofDepositsandOtherDebtSecuritiesIssued
+        public decimal? CertificatesofDepositsandOtherDebtSecuritiesIssued
         {
             get
             {
@@ -5029,7 +5029,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DepositCertificates
+        public decimal? DepositCertificates
         {
             get
             {
@@ -5042,7 +5042,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DebenturesandDebtCertificates
+        public decimal? DebenturesandDebtCertificates
         {
             get
             {
@@ -5055,7 +5055,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InterestBearingBorrowingsTotal
+        public decimal? InterestBearingBorrowingsTotal
         {
             get
             {
@@ -5068,7 +5068,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonInterestBearingBorrowingsTotal
+        public decimal? NonInterestBearingBorrowingsTotal
         {
             get
             {
@@ -5081,7 +5081,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherBorrowedFunds
+        public decimal? OtherBorrowedFunds
         {
             get
             {
@@ -5094,7 +5094,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FinancialLiabilitiesDesignatedasFairValueThroughProfitorLossTotal
+        public decimal? FinancialLiabilitiesDesignatedasFairValueThroughProfitorLossTotal
         {
             get
             {
@@ -5107,7 +5107,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FinancialLiabilitiesMeasuredatAmortizedCostTotal
+        public decimal? FinancialLiabilitiesMeasuredatAmortizedCostTotal
         {
             get
             {
@@ -5120,7 +5120,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LoanCapital
+        public decimal? LoanCapital
         {
             get
             {
@@ -5133,7 +5133,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal HedgingLiabilitiesTotal
+        public decimal? HedgingLiabilitiesTotal
         {
             get
             {
@@ -5146,7 +5146,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LiabilitiesRecognizedforFairValueChangesinPortfolioHedgeofInterestRateRisk
+        public decimal? LiabilitiesRecognizedforFairValueChangesinPortfolioHedgeofInterestRateRisk
         {
             get
             {
@@ -5159,7 +5159,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AccruedLiabilitiesTotal
+        public decimal? AccruedLiabilitiesTotal
         {
             get
             {
@@ -5172,7 +5172,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DeferredIncomeTotal
+        public decimal? DeferredIncomeTotal
         {
             get
             {
@@ -5185,7 +5185,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DeferredTaxLiabilitiesTotal
+        public decimal? DeferredTaxLiabilitiesTotal
         {
             get
             {
@@ -5198,7 +5198,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ReinsuranceAssets
+        public decimal? ReinsuranceAssets
         {
             get
             {
@@ -5211,7 +5211,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ReinsuranceShareofInsuranceContract
+        public decimal? ReinsuranceShareofInsuranceContract
         {
             get
             {
@@ -5224,7 +5224,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ReinsuranceShareofAccruedPolicyholderClaims
+        public decimal? ReinsuranceShareofAccruedPolicyholderClaims
         {
             get
             {
@@ -5237,7 +5237,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DepositsMadeunderAssumedReinsuranceContract
+        public decimal? DepositsMadeunderAssumedReinsuranceContract
         {
             get
             {
@@ -5250,7 +5250,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InsuranceContractAssets
+        public decimal? InsuranceContractAssets
         {
             get
             {
@@ -5263,7 +5263,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InsuranceReceivables
+        public decimal? InsuranceReceivables
         {
             get
             {
@@ -5276,7 +5276,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InsuranceContractLiabilities
+        public decimal? InsuranceContractLiabilities
         {
             get
             {
@@ -5289,7 +5289,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InsurancePayables
+        public decimal? InsurancePayables
         {
             get
             {
@@ -5302,7 +5302,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DepositsReceivedunderCededInsuranceContract
+        public decimal? DepositsReceivedunderCededInsuranceContract
         {
             get
             {
@@ -5315,7 +5315,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InvestmentContractLiabilities
+        public decimal? InvestmentContractLiabilities
         {
             get
             {
@@ -5328,7 +5328,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ConstructionGrants
+        public decimal? ConstructionGrants
         {
             get
             {
@@ -5341,7 +5341,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DeferredCostCurrent
+        public decimal? DeferredCostCurrent
         {
             get
             {
@@ -5354,7 +5354,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal PensionAndOtherPostretirementBenefitPlansTotal
+        public decimal? PensionAndOtherPostretirementBenefitPlansTotal
         {
             get
             {
@@ -5367,7 +5367,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LiabilitiesHeldforSaleTotal
+        public decimal? LiabilitiesHeldforSaleTotal
         {
             get
             {
@@ -5380,7 +5380,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal HedgingAssetsNonCurrent
+        public decimal? HedgingAssetsNonCurrent
         {
             get
             {
@@ -5393,7 +5393,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal HedgingAssetsCurrent
+        public decimal? HedgingAssetsCurrent
         {
             get
             {
@@ -5406,7 +5406,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ConvertibleLoansTotal
+        public decimal? ConvertibleLoansTotal
         {
             get
             {
@@ -5419,7 +5419,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal BankLoansTotal
+        public decimal? BankLoansTotal
         {
             get
             {
@@ -5432,7 +5432,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherLoansTotal
+        public decimal? OtherLoansTotal
         {
             get
             {
@@ -5445,7 +5445,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal HedgingLiabilitiesNonCurrent
+        public decimal? HedgingLiabilitiesNonCurrent
         {
             get
             {
@@ -5458,7 +5458,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal HedgingLiabilitiesCurrent
+        public decimal? HedgingLiabilitiesCurrent
         {
             get
             {
@@ -5471,7 +5471,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InsuranceFundsNonCurrent
+        public decimal? InsuranceFundsNonCurrent
         {
             get
             {
@@ -5484,7 +5484,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal InsuranceFundsCurrent
+        public decimal? InsuranceFundsCurrent
         {
             get
             {
@@ -5497,7 +5497,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DebtTotal
+        public decimal? DebtTotal
         {
             get
             {
@@ -5510,7 +5510,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AssetsHeldForSaleCurrent
+        public decimal? AssetsHeldForSaleCurrent
         {
             get
             {
@@ -5523,7 +5523,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal AssetsHeldForSaleNonCurrent
+        public decimal? AssetsHeldForSaleNonCurrent
         {
             get
             {
@@ -5536,7 +5536,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal BiologicalAssets
+        public decimal? BiologicalAssets
         {
             get
             {
@@ -5549,7 +5549,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CashRestrictedOrPledged
+        public decimal? CashRestrictedOrPledged
         {
             get
             {
@@ -5562,7 +5562,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal ConvertibleLoansNonCurrent
+        public decimal? ConvertibleLoansNonCurrent
         {
             get
             {
@@ -5575,7 +5575,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FinancialOrDerivativeInvestmentCurrentLiabilities
+        public decimal? FinancialOrDerivativeInvestmentCurrentLiabilities
         {
             get
             {
@@ -5588,7 +5588,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal LoanAndLoanReceivables
+        public decimal? LoanAndLoanReceivables
         {
             get
             {
@@ -5601,7 +5601,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherInvestments
+        public decimal? OtherInvestments
         {
             get
             {
@@ -5614,7 +5614,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TradeAndOtherReceivablesNonCurrent
+        public decimal? TradeAndOtherReceivablesNonCurrent
         {
             get
             {
@@ -5627,7 +5627,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DebtDueInYear1
+        public decimal? DebtDueInYear1
         {
             get
             {
@@ -5640,7 +5640,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DebtDueInYear2
+        public decimal? DebtDueInYear2
         {
             get
             {
@@ -5653,7 +5653,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DebtDueInYear5
+        public decimal? DebtDueInYear5
         {
             get
             {
@@ -5666,7 +5666,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal DebtDueBeyond
+        public decimal? DebtDueBeyond
         {
             get
             {
@@ -5679,7 +5679,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalDebtInMaturitySchedule
+        public decimal? TotalDebtInMaturitySchedule
         {
             get
             {
@@ -5692,7 +5692,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FiscalYearChange
+        public decimal? FiscalYearChange
         {
             get
             {
@@ -5705,7 +5705,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal FixedAssetsRevaluationReserve
+        public decimal? FixedAssetsRevaluationReserve
         {
             get
             {
@@ -5718,7 +5718,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal CurrentOtherFinancialLiabilities
+        public decimal? CurrentOtherFinancialLiabilities
         {
             get
             {
@@ -5731,7 +5731,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NonCurrentOtherFinancialLiabilities
+        public decimal? NonCurrentOtherFinancialLiabilities
         {
             get
             {
@@ -5744,7 +5744,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal OtherFinancialLiabilities
+        public decimal? OtherFinancialLiabilities
         {
             get
             {
@@ -5757,7 +5757,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalLiabilitiesAsReported
+        public decimal? TotalLiabilitiesAsReported
         {
             get
             {
@@ -5770,7 +5770,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal TotalEquityAsReported
+        public decimal? TotalEquityAsReported
         {
             get
             {
@@ -5783,7 +5783,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal UnallocatedSurplus
+        public decimal? UnallocatedSurplus
         {
             get
             {
@@ -5796,7 +5796,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
         }
 
         /// <remarks/>
-        public decimal NetDebt
+        public decimal? NetDebt
         {
             get
             {

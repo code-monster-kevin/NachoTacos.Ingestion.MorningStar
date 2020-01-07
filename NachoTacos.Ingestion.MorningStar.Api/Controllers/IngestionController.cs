@@ -135,8 +135,8 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             {
                 string endPoint = _configuration.GetValue<string>("MorningStar:EquityApi:BalanceSheet");
 
-                EquityApi.BalanceSheet.Request request =
-                EquityApi.BalanceSheet.Request.Create(tokenEntity.Token, exchangeId, "Symbol", symbol, statementType, dataType, startDate, endDate);
+                EquityApi.BaseFinancialRequest request =
+                EquityApi.BaseFinancialRequest.Create(tokenEntity.Token, exchangeId, "Symbol", symbol, statementType, dataType, startDate, endDate);
                 string requestUrl = endPoint.SetQueryParams(request);
 
                 IngestionTask ingestionTask = IngestionTask.Create(endPoint, JsonConvert.SerializeObject(request));
@@ -148,8 +148,8 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
                 int result = await persistence.SaveAsync(ingestionTask.IngestionTaskId, response);
                 if (result > 0)
                 {
-
-                    // TODO: "MergeBalanceSheet"
+                    List<ChangeTable> changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeBalanceSheet @TaskId={0}", ingestionTask.IngestionTaskId).ToList();
+                    _logger.LogInformation("MergeBalanceSheet: {0}", JsonConvert.SerializeObject(changes));
                 }
                 return Ok(result);
             }

@@ -12,6 +12,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api
             CreateMap<CompanyFinancialAvailabilityEntity, TCompanyFinancialAvailability>();
             CreateMap<GeneralInfo, TGeneralInfo>();
             CreateMap<BalanceSheetEntity, TBalanceSheet>();
+            CreateMap<CashFlowEntity, TCashFlow>();
         }
     }
 }

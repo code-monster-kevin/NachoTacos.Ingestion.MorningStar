@@ -31,6 +31,7 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         #region "MorningStar Master Tables"
         public DbSet<MStockExchangeSecurity> MStockExchangeSecurities { get; set; }
         public DbSet<MCompanyFinancialAvailability> MCompanyFinancialAvailabilities { get; set; }
+        public DbSet<MBalanceSheet> MBalanceSheets { get; set; }
 
         #endregion
 
@@ -39,7 +40,6 @@ namespace NachoTacos.Ingestion.MorningStar.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<ChangeTable>().HasNoKey();
-
         }
 
         public override int SaveChanges()

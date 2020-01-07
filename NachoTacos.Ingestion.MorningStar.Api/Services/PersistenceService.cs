@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using NachoTacos.Ingestion.MorningStar.Api.EquityApi;
 using NachoTacos.Ingestion.MorningStar.Data;
 using NachoTacos.Ingestion.MorningStar.Domain;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace NachoTacos.Ingestion.MorningStar.Api.Services
@@ -24,12 +21,13 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             _logger = logger;
             _mapper = mapper;
         }
+
         public async Task<int> SaveAsync(Guid ingestionTaskId, EquityApi.StockExchangeSecurity.Response response)
         {
             try
             {
                 List<StockExchangeSecurityEntity> entities = response.StockExchangeSecurityEntityList;
-                ValidateEntities(entities);
+                if (ValidateEntities(entities) == 0) return 0;
 
                 List<TStockExchangeSecurity> list = new List<TStockExchangeSecurity>();
                 foreach(var entity in entities)
@@ -53,7 +51,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
         public async Task<int> SaveAsync(Guid ingestionTaskId, EquityApi.CompanyFinancials.Response response)
         {
             List<CompanyFinancialAvailabilityEntity> entities = response.CompanyFinancialAvailabilityEntityList;
-            ValidateEntities(entities);
+            if (ValidateEntities(entities) == 0) return 0;
 
             List<TCompanyFinancialAvailability> list = new List<TCompanyFinancialAvailability>();
             foreach(var entity in entities)
@@ -72,22 +70,21 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             try
             {
                 List<BalanceSheetEntity> entities = response.BalanceSheetEntityList;
-                ValidateEntities(entities);
+                if (ValidateEntities(entities) == 0) return 0;
 
-                List<TBalanceSheet> list = new List<TBalanceSheet>();
                 foreach (var entity in entities)
                 {
                     TBalanceSheet item = _mapper.Map<TBalanceSheet>(entity);
                     item.Id = Guid.NewGuid();
                     item.IngestionTaskId = ingestionTaskId;
-                    list.Add(item);
+                    _ingestionContext.TBalanceSheets.Add(item);
                 }
-                _ingestionContext.TBalanceSheets.AddRange(list);
 
                 GeneralInfo generalInfo = response.GeneralInfo;
+
                 TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
                 tGeneralInfo.Id = Guid.NewGuid();
-                tGeneralInfo.Id = ingestionTaskId;
+                tGeneralInfo.IngestionTaskId = ingestionTaskId;
                 _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
 
                 return await _ingestionContext.SaveChangesAsync();
@@ -99,10 +96,37 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             }
         }
 
-        private void ValidateEntities(dynamic entities)
+        public async Task<int> SaveAsync(Guid ingestionTaskId, List<EquityApi.BalanceSheet.Response> responses)
         {
-            if (entities == null) throw new Exception("PersistenceService.Save() Entities is null");
-            if (entities.Count == 0) throw new Exception("PersistenceService.Save() Entities is empty");
+            foreach(var response in responses)
+            {
+                List<BalanceSheetEntity> entities = response.BalanceSheetEntityList;
+                if(ValidateEntities(entities) != 0)
+                {
+                    GeneralInfo generalInfo = response.GeneralInfo;
+
+                    TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
+                    tGeneralInfo.Id = Guid.NewGuid();
+                    tGeneralInfo.IngestionTaskId = ingestionTaskId;
+                    _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
+
+                    foreach (var entity in entities)
+                    {
+                        TBalanceSheet item = _mapper.Map<TBalanceSheet>(entity);
+                        item.Id = Guid.NewGuid();
+                        item.IngestionTaskId = ingestionTaskId;
+                        _ingestionContext.TBalanceSheets.Add(item);
+                    }
+                }
+            }
+            return await _ingestionContext.SaveChangesAsync();
+        }
+
+        private int ValidateEntities(dynamic entities)
+        {
+            if (entities == null) return 0;
+            if (entities.Count == 0) return 0;
+            return 1;
         }
     }
 }

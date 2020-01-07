@@ -3,17 +3,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NachoTacos.Ingestion.MorningStar.Domain
 {
-    // Class copied from NachoTacos.Ingestion.MorningStar.Api.EquityApi.BalanceSheetEntity
-    // Inherit from TBase class
-    // Add Schema annotation
-    [Table("TBalanceSheet", Schema = "MStar")]
-    public class TBalanceSheet : TBase
+    [Table("MBalanceSheet", Schema = "MStar")]
+    public class MBalanceSheet : MGeneralInfo
     {
+        public Guid MBalanceSheetId { get; set; }
+
         private DateTime reportDateField;
 
         private DateTime periodEndingDateField;
 
-        private DateTime fileDateField;
+        private DateTime? fileDateField;
 
         private string statementTypeField;
 
@@ -808,7 +807,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public DateTime FileDate
+        public DateTime? FileDate
         {
             get
             {
