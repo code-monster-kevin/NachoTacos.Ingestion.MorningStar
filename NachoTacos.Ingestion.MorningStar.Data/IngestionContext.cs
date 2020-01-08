@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NachoTacos.Ingestion.MorningStar.Domain;
 using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -40,6 +41,13 @@ namespace NachoTacos.Ingestion.MorningStar.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<ChangeTable>().HasNoKey();
+
+            foreach (var property in modelBuilder.Model.GetEntityTypes()
+                    .SelectMany(t => t.GetProperties())
+                    .Where(p => p.ClrType == typeof(decimal) || p.ClrType == typeof(decimal?)))
+            {
+                property.SetColumnType("decimal(18, 2)");
+            }
         }
 
         public override int SaveChanges()

@@ -113,47 +113,21 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             return NotFound(id);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="exchangeId">Example "KLS"</param>
-        /// <param name="symbol">Example "5014"</param>
-        /// <param name="statementType">Example "Annual"</param>
-        /// <param name="dataType">Example "AOR"</param>
-        /// <param name="startDate">Example "01/2018"</param>
-        /// <param name="endDate">Example "01/2019"</param>
-        /// <returns></returns>
         [HttpGet]
         [Route("BalanceSheet/{id}")]
-        public async Task<IActionResult> BalanceSheetRequest(Guid id, string exchangeId, string symbol, string statementType, string dataType, string startDate, string endDate)
+        public async Task<IActionResult> BalanceSheetAllRequest(Guid id, string exchangeId, string stockStatus, int year, int range)
         {
-            Authentication authentication = new Authentication(_ingestionContext, _logger);
-            TokenEntity tokenEntity = await authentication.GetAccessTokenByClientConfigId(id);
-
-            if (tokenEntity != null)
+            try
             {
-                string endPoint = _configuration.GetValue<string>("MorningStar:EquityApi:BalanceSheet");
-
-                EquityApi.BaseFinancialRequest request =
-                EquityApi.BaseFinancialRequest.Create(tokenEntity.Token, exchangeId, "Symbol", symbol, statementType, dataType, startDate, endDate);
-                string requestUrl = endPoint.SetQueryParams(request);
-
-                IngestionTask ingestionTask = IngestionTask.Create(endPoint, JsonConvert.SerializeObject(request));
-                _ingestionContext.IngestionTasks.Add(ingestionTask);
-
-                EquityApi.BalanceSheet.Response response = await RestClient.GetDynamicResponseAsync<EquityApi.BalanceSheet.Response>(requestUrl);
-
-                PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
-                int result = await persistence.SaveAsync(ingestionTask.IngestionTaskId, response);
-                if (result > 0)
-                {
-                    List<ChangeTable> changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeBalanceSheet @TaskId={0}", ingestionTask.IngestionTaskId).ToList();
-                    _logger.LogInformation("MergeBalanceSheet: {0}", JsonConvert.SerializeObject(changes));
-                }
-                return Ok(result);
+                IngestionJobs ingestionJobs = new IngestionJobs(_ingestionContext, _configuration, _mapper, _logger);
+                await ingestionJobs.GetBalanceSheetAll(id, exchangeId, stockStatus, year, range);
+                return Ok();
             }
-            return NotFound(id);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
         }
 
         #endregion

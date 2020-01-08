@@ -65,56 +65,28 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             return await _ingestionContext.SaveChangesAsync();
         }
 
-        public async Task<int> SaveAsync(Guid ingestionTaskId, EquityApi.BalanceSheet.Response response)
+        public async Task<int> SaveAsync(List<EquityApi.BalanceSheet.Response> responses)
         {
-            try
-            {
-                List<BalanceSheetEntity> entities = response.BalanceSheetEntityList;
-                if (ValidateEntities(entities) == 0) return 0;
-
-                foreach (var entity in entities)
-                {
-                    TBalanceSheet item = _mapper.Map<TBalanceSheet>(entity);
-                    item.Id = Guid.NewGuid();
-                    item.IngestionTaskId = ingestionTaskId;
-                    _ingestionContext.TBalanceSheets.Add(item);
-                }
-
-                GeneralInfo generalInfo = response.GeneralInfo;
-
-                TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
-                tGeneralInfo.Id = Guid.NewGuid();
-                tGeneralInfo.IngestionTaskId = ingestionTaskId;
-                _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
-
-                return await _ingestionContext.SaveChangesAsync();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-                throw new Exception(ex.Message, ex.InnerException);
-            }
-        }
-
-        public async Task<int> SaveAsync(Guid ingestionTaskId, List<EquityApi.BalanceSheet.Response> responses)
-        {
-            foreach(var response in responses)
+            foreach (var response in responses)
             {
                 List<BalanceSheetEntity> entities = response.BalanceSheetEntityList;
                 if(ValidateEntities(entities) != 0)
                 {
                     GeneralInfo generalInfo = response.GeneralInfo;
 
+                    IngestionTask ingestionTask = IngestionTask.Create("Balance Sheet All", string.Format("Symbol: {0}", generalInfo.Symbol));
+                    _ingestionContext.IngestionTasks.Add(ingestionTask);
+
                     TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
                     tGeneralInfo.Id = Guid.NewGuid();
-                    tGeneralInfo.IngestionTaskId = ingestionTaskId;
+                    tGeneralInfo.IngestionTaskId = ingestionTask.IngestionTaskId;
                     _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
 
                     foreach (var entity in entities)
                     {
                         TBalanceSheet item = _mapper.Map<TBalanceSheet>(entity);
                         item.Id = Guid.NewGuid();
-                        item.IngestionTaskId = ingestionTaskId;
+                        item.IngestionTaskId = ingestionTask.IngestionTaskId;
                         _ingestionContext.TBalanceSheets.Add(item);
                     }
                 }

@@ -10,6 +10,7 @@ using System;
 using System.IO;
 using System.Reflection;
 using Hangfire;
+using Serilog;
 
 namespace NachoTacos.Ingestion.MorningStar.Api
 {
@@ -54,12 +55,20 @@ namespace NachoTacos.Ingestion.MorningStar.Api
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
+            }
+
+            app.UseSerilogRequestLogging(options => options.EnrichDiagnosticContext = LogHelper.EnrichFromRequest);
 
             app.UseSwagger();
             app.UseSwaggerUI(c => {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "NachoTacos MorningStar Ingestion API");
                 c.RoutePrefix = string.Empty;
             });
+
 
             app.UseHttpsRedirection();
 

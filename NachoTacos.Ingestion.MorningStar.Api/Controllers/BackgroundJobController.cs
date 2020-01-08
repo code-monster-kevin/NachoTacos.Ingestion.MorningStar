@@ -54,27 +54,11 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
 
         [HttpGet]
         [Route("BalanceSheet/{id}")]
-        public IActionResult BalanceSheetRequest(Guid id, string exchangeId, string symbol, string statementType, string dataType, string startDate, string endDate)
+        public IActionResult BalanceSheetAllRequest(Guid id, string exchangeId, string stockStatus, int year, int range)
         {
             try
             {
-                BackgroundJob.Enqueue<IngestionJobs>(x => x.GetBalanceSheet(id, exchangeId, symbol, statementType, dataType, startDate, endDate));
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message, ex.InnerException);
-                return Problem(ex.Message);
-            }
-        }
-
-        [HttpGet]
-        [Route("BalanceSheetAll/{id}")]
-        public IActionResult BalanceSheetAllRequest(Guid id, string exchangeId, string stockStatus, int year)
-        {
-            try
-            {
-                BackgroundJob.Enqueue<IngestionJobs>(x => x.GetBalanceSheetAll(id, exchangeId, stockStatus, year));
+                BackgroundJob.Enqueue<IngestionJobs>(x => x.GetBalanceSheetAll(id, exchangeId, stockStatus, year, range));
                 return Ok();
             }
             catch (Exception ex)
