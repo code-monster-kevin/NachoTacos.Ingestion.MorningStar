@@ -71,10 +71,11 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             {
                 List<BalanceSheetEntity> entities = response.BalanceSheetEntityList;
                 if(ValidateEntities(entities) != 0)
-                {
+                {                    
                     GeneralInfo generalInfo = response.GeneralInfo;
+                    _logger.LogInformation("IngestionTask ==> Symbol: {0}", generalInfo.Symbol);
 
-                    IngestionTask ingestionTask = IngestionTask.Create("Balance Sheet All", string.Format("Symbol: {0}", generalInfo.Symbol));
+                    IngestionTask ingestionTask = IngestionTask.Create(string.Format("Balance Sheet {0}", generalInfo.ExchangeId), string.Format("Symbol: {0}", generalInfo.Symbol));
                     _ingestionContext.IngestionTasks.Add(ingestionTask);
 
                     TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);

@@ -9,6 +9,26 @@
             Similar to IngestionController, but uses HangFire to run as background job
             </summary>
         </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.CompanyFinancialsRequest(System.Guid,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="id">Client Configuration ID</param>
+            <param name="exchangeId">Exchange ie KLS</param>
+            <returns></returns>
+        </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.BalanceSheetAllRequest(System.Guid,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Retrieves the Annual and Quarterly balance sheet for all counters
+            including types "AOR", "Restated", "Preliminary"
+            </summary>
+            <param name="id">Client Configuration ID</param>
+            <param name="exchangeId">Exchange ie KLS</param>
+            <param name="year">ie 2019</param>
+            <param name="range">1 to 9</param>
+            <param name="symbol">Ticker code i.e. 1155</param>
+            <returns></returns>
+        </member>
         <member name="T:NachoTacos.Ingestion.MorningStar.Api.Controllers.IngestionController">
             <summary>
             Manually calls the MorningStar API and saves the results to DB

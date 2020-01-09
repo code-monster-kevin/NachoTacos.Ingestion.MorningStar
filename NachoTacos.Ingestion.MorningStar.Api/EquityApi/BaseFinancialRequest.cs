@@ -4,6 +4,7 @@ using System.Globalization;
 
 namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
 {
+#pragma warning disable IDE1006
     public class BaseFinancialRequest : BaseRequest
     {
 
@@ -36,14 +37,14 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
                 identifier = identifier,
                 statementType = statementType,
                 dataType = dataType,
-                startDate = formatDate(startDate),
-                endDate = formatDate(endDate),
+                startDate = FormatDate(startDate),
+                endDate = FormatDate(endDate),
                 Token = token,
                 ResponseType = responseType
             };
         }
 
-        private static string formatDate(string date)
+        private static string FormatDate(string date)
         {
             string format = "MM/yyyy"; // format follows MorningStar request format
             string padDate = date.PadLeft(7, '0'); // ie. changes 1/2020 to 01/2020

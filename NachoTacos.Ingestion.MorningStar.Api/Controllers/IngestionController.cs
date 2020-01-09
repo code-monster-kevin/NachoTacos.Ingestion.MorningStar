@@ -113,23 +113,18 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             return NotFound(id);
         }
 
-        [HttpGet]
-        [Route("BalanceSheet/{id}")]
-        public async Task<IActionResult> BalanceSheetAllRequest(Guid id, string exchangeId, string stockStatus, int year, int range)
-        {
-            try
-            {
-                IngestionJobs ingestionJobs = new IngestionJobs(_ingestionContext, _configuration, _mapper, _logger);
-                await ingestionJobs.GetBalanceSheetAll(id, exchangeId, stockStatus, year, range);
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message, ex.InnerException);
-                return Problem(ex.Message);
-            }
-        }
 
+        [HttpGet]
+        [Route("CompanyFinancials/BalanceSheet/Count")]
+        public IActionResult BalanceSheet(string exchangeId)
+        {
+            List<MCompanyFinancialAvailability> stockList =
+                    _ingestionContext.MCompanyFinancialAvailabilities
+                        .AsQueryable().Where(x => x.ExchangeId == exchangeId)
+                        .ToList();
+
+            return Ok(stockList.Count);
+        }
         #endregion
     }
 }

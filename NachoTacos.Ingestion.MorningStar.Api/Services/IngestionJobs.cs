@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
+using Dasync.Collections;
 using Flurl;
+using Hangfire;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -8,7 +10,6 @@ using NachoTacos.Ingestion.MorningStar.Data;
 using NachoTacos.Ingestion.MorningStar.Domain;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -22,23 +23,24 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
         public int PageSize { get; set; }
     }
 
+   
     public class IngestionJobs
     {
-        private readonly ILogger _logger;
+        private readonly ILogger<IngestionJobs> _logger;
         private readonly IConfiguration _configuration;
         private readonly IMapper _mapper;
         private readonly IIngestionContext _ingestionContext;
 
         private readonly string[] _dataTypes = { "AOR", "Restated", "Preliminary" };
 
-        public IngestionJobs(IIngestionContext ingestionContext, IConfiguration configuration, IMapper mapper, ILogger logger)
+        public IngestionJobs(IIngestionContext ingestionContext, IConfiguration configuration, IMapper mapper, ILogger<IngestionJobs> logger)
         {
             _ingestionContext = ingestionContext;
             _configuration = configuration;
             _mapper = mapper;
             _logger = logger;
         }
-
+        [AutomaticRetry(Attempts = 0)]
         public async Task<string> GetStockExchangeSecurity(Guid id, string exchangeId, string stockStatus)
         {
             try
@@ -76,7 +78,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                 return ex.Message;
             }
         }
-
+        [AutomaticRetry(Attempts = 0)]
         public async Task<string> GetCompanyFinancials(Guid id, string exchangeId)
         {
             try
@@ -113,80 +115,103 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                 return ex.Message;
             }
         }
+        
+        //[AutomaticRetry(Attempts = 0)]
+        //public async Task<int> GetBalanceSheetAll(Guid id, string exchangeId, int year, int range, string symbol = null)
+        //{
+        //    try
+        //    {
+        //        int result = 0;
+        //        TokenEntity tokenEntity = await GetTokenEntity(id);
+        //        if (tokenEntity != null)
+        //        {
+        //            IQueryable<MCompanyFinancialAvailability> query = CreateCompanyFinancialQuery(exchangeId, symbol);
 
-        public async Task<int> GetBalanceSheetAll(Guid id, string exchangeId, string stockStatus, int year, int range)
+        //            int recordCount = query.Count();
+        //            int pageSize = 20;
+        //            int pageCount = (int)((recordCount + pageSize) / pageSize);
+
+        //            for (int i = 0; i < pageCount; i++)
+        //            {
+        //                _logger.LogInformation(string.Format("[PagingParameter] ===> Page {0} Skip {1}", i, pageSize * i));
+
+        //                result += await IngestBalanceSheet(tokenEntity.Token, query, year, range, pageSize, i);
+        //            }
+        //        }
+
+        //        _logger.LogInformation(string.Format("[GetBalanceSheetAll] ===> {0} records saved", result));
+        //        return result;
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        _logger.LogError(ex.Message, ex.InnerException);
+        //        return 0;
+        //    }
+        //}
+
+        [AutomaticRetry(Attempts = 0)]
+        public async Task<int> GetCompanyFinancialReportAll(Guid id, string reportType, string exchangeId, int year, int range, string symbol = null)
         {
             try
             {
-                if (range > 9) return 0; // historical data limited to 9 years
-
-                TokenEntity tokenEntity = await GetTokenEntity(id);
-
                 int result = 0;
+                TokenEntity tokenEntity = await GetTokenEntity(id);
                 if (tokenEntity != null)
                 {
-                    //int recordCount = _ingestionContext.MStockExchangeSecurities
-                    //                        .Where(x => x.ExchangeId == exchangeId && x.StockStatus == stockStatus)
-                    //                        .Count();
-                    int recordCount = 5;
-                    int pageSize = 5;
-                    int pageCount = (int)((recordCount + pageSize) / pageSize);
-                    List<PagingParameter> pagingParameters = CreatePagingParameters(pageCount, pageSize);
+                    IQueryable<MCompanyFinancialAvailability> query = CreateCompanyFinancialQuery(exchangeId, symbol);
 
-                    foreach(PagingParameter pageParameter in pagingParameters)
+                    int recordCount = query.Count();
+                    int pageSize = 20;
+                    int pageCount = (int)((recordCount + pageSize) / pageSize);
+
+                    for (int i = 0; i < pageCount; i++)
                     {
-                        _logger.LogInformation("[PagingParameter] PageSize {0}, Page {1}", pageParameter.PageSize, pageParameter.Page);
-                        result += IngestBalanceSheet(tokenEntity.Token, exchangeId, stockStatus, year, range, pageParameter.PageSize, pageParameter.Page);
+                        _logger.LogInformation(string.Format("[PagingParameter] ===> Page {0} Skip {1}", i, pageSize * i));
+                        switch(reportType)
+                        {
+                            case "BalanceSheet":
+                                result += await IngestBalanceSheet(tokenEntity.Token, query, year, range, pageSize, i);
+                                break;
+                            case "CashFlow":
+                                // TODO IngestCashFlow(tokenEntity.Token, query, year, range, pageSize, i);
+                                break;
+                            default:
+                                break;
+                        };
                     }
                 }
 
                 _logger.LogInformation(string.Format("[GetBalanceSheetAll] ===> {0} records saved", result));
                 return result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 _logger.LogError(ex.Message, ex.InnerException);
                 return 0;
             }
         }
 
-        private int IngestBalanceSheet(string token, string exchangeId, string stockStatus, int year, int range, int pageSize, int pageNumber)
+
+        private async Task<int> IngestBalanceSheet(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
         {
-            List<MStockExchangeSecurity> stockList =
-                    _ingestionContext
-                        .MStockExchangeSecurities.Where(x => x.ExchangeId == exchangeId && x.StockStatus == stockStatus)
-                        .Skip(pageSize * pageNumber)
-                        .Take(pageSize)
-                        .ToList();
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
 
             var listMain = new List<EquityApi.BalanceSheet.Response>();
-
             object _lock = new object();
-            Parallel.ForEach(stockList, async (stock) =>
+
+            await stockList.ParallelForEachAsync(async (stock) =>
             {
                 List<EquityApi.BalanceSheet.Response> listSymbol =
-                    await GetBalanceSheetResponses(CreateBaseFinancialRequestList(token, exchangeId, stock.Symbol, year, range));
+                            await GetBalanceSheetResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
 
                 lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
+            },
+            maxDegreeOfParallelism: 4);
 
-                _logger.LogInformation("Parallel.ForEach {0} {1} {2}", stock.Symbol, listSymbol.Count, listMain.Count);
-            });
-
-
-
-            //foreach (MStockExchangeSecurity stock in stockList)
-            //{
-            //    List<EquityApi.BalanceSheet.Response> listSymbol =
-            //        await GetBalanceSheetResponses(CreateBaseFinancialRequestList(token, exchangeId, stock.Symbol, year, range));
-
-            //    listSymbol.ForEach(item => listMain.Add(item));
-            //    _logger.LogInformation("foreach {0} {1} {2}", stock.Symbol, listSymbol.Count, listMain.Count);
-            //}
-
-            //PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
-            //return await persistence.SaveAsync(listMain);
-
-            return listMain.Count;
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain);
         }
 
         private async Task<List<EquityApi.BalanceSheet.Response>> GetBalanceSheetResponses(List<BaseFinancialRequest> requests)
@@ -207,6 +232,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             List<BaseFinancialRequest> requests = new List<BaseFinancialRequest>();
 
             int quarterlyYear = 2; // quarterly reports limited to only 3 years of data
+            if (yearRange == 1) quarterlyYear = 1;
             int finalYear = year - yearRange;
 
             foreach (string dataType in _dataTypes)
@@ -236,26 +262,24 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             return requests;
         }
 
+        private IQueryable<MCompanyFinancialAvailability> CreateCompanyFinancialQuery(string exchangeId, string symbol)
+        {
+            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
+                                                    .Where(x => x.ExchangeId == exchangeId);
+
+            if (!string.IsNullOrEmpty(symbol))
+            {
+                companyFinancialQuery = companyFinancialQuery.AsQueryable().Where(x => x.Symbol == symbol);
+            }
+
+            return companyFinancialQuery;
+
+        }
         private async Task<TokenEntity> GetTokenEntity(Guid id)
         {
             Authentication authentication = new Authentication(_ingestionContext, _logger);
             return await authentication.GetAccessTokenByClientConfigId(id);
         }
 
-        private List<PagingParameter> CreatePagingParameters(int pageCount, int pageSize)
-        {
-            List<PagingParameter> pagingParams = new List<PagingParameter>();
-            for (int i = 0; i < pageCount; i++)
-            {
-                pagingParams.Add(new PagingParameter
-                {
-                    Page = i,
-                    Skip = pageSize * i,
-                    PageSize = pageSize
-                });
-            }
-
-            return pagingParams;
-        }
     }
 }

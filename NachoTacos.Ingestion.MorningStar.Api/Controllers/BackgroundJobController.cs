@@ -36,6 +36,12 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">Client Configuration ID</param>
+        /// <param name="exchangeId">Exchange ie KLS</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("CompanyFinancials/{id}")]
         public IActionResult CompanyFinancialsRequest(Guid id, string exchangeId)
@@ -52,14 +58,31 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Retrieves the Annual and Quarterly balance sheet for all counters
+        /// including types "AOR", "Restated", "Preliminary"
+        /// </summary>
+        /// <param name="id">Client Configuration ID</param>
+        /// <param name="exchangeId">Exchange ie KLS</param>
+        /// <param name="year">ie 2019</param>
+        /// <param name="range">1 to 9</param>
+        /// <param name="symbol">Ticker code i.e. 1155</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("BalanceSheet/{id}")]
-        public IActionResult BalanceSheetAllRequest(Guid id, string exchangeId, string stockStatus, int year, int range)
+        public IActionResult BalanceSheetAllRequest(Guid id, string exchangeId, int year, int range, string symbol = null)
         {
             try
             {
-                BackgroundJob.Enqueue<IngestionJobs>(x => x.GetBalanceSheetAll(id, exchangeId, stockStatus, year, range));
-                return Ok();
+                if (range > 0 && range <= 9)
+                {
+                        BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "BalanceSheet", exchangeId, year, range, symbol));
+                        return Ok();
+                }
+                else 
+                { 
+                    return BadRequest("Report range must be between 1 to 9"); 
+                }
             }
             catch (Exception ex)
             {
