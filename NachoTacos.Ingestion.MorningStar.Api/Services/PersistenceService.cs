@@ -95,6 +95,87 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             return await _ingestionContext.SaveChangesAsync();
         }
 
+        public async Task<int> SaveAsync(List<EquityApi.CashFlow.Response> responses, bool isTTM = false)
+        {
+            foreach (var response in responses)
+            {
+                List<CashFlowEntity> entities = response.CashFlowEntityList;
+                if (ValidateEntities(entities) != 0)
+                {
+                    GeneralInfo generalInfo = response.GeneralInfo;
+                    _logger.LogInformation("IngestionTask ==> Symbol: {0}", generalInfo.Symbol);
+
+                    IngestionTask ingestionTask = IngestionTask.Create(string.Format("Cash Flow {0}", generalInfo.ExchangeId), string.Format("Symbol: {0}", generalInfo.Symbol));
+                    _ingestionContext.IngestionTasks.Add(ingestionTask);
+
+                    TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
+                    tGeneralInfo.Id = Guid.NewGuid();
+                    tGeneralInfo.IngestionTaskId = ingestionTask.IngestionTaskId;
+                    _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
+
+                    foreach (var entity in entities)
+                    {
+                        if (isTTM)
+                        {
+                            TCashFlowTTM item = _mapper.Map<TCashFlowTTM>(entity);
+                            item.Id = Guid.NewGuid();
+                            item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                            _ingestionContext.TCashFlowTTMs.Add(item);
+                        }
+                        else
+                        {
+                            TCashFlow item = _mapper.Map<TCashFlow>(entity);
+                            item.Id = Guid.NewGuid();
+                            item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                            _ingestionContext.TCashFlows.Add(item);
+                        }
+                    }
+                }
+            }
+            return await _ingestionContext.SaveChangesAsync();
+        }
+
+        public async Task<int> SaveAsync(List<EquityApi.IncomeStatement.Response> responses, bool isTTM = false)
+        {
+            foreach (var response in responses)
+            {
+                List<IncomeStatementEntity> entities = response.IncomeStatementEntityList;
+                if (ValidateEntities(entities) != 0)
+                {
+                    GeneralInfo generalInfo = response.GeneralInfo;
+                    _logger.LogInformation("IngestionTask ==> Symbol: {0}", generalInfo.Symbol);
+
+                    IngestionTask ingestionTask = IngestionTask.Create(string.Format("Income Statement {0}", generalInfo.ExchangeId), string.Format("Symbol: {0}", generalInfo.Symbol));
+                    _ingestionContext.IngestionTasks.Add(ingestionTask);
+
+                    TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
+                    tGeneralInfo.Id = Guid.NewGuid();
+                    tGeneralInfo.IngestionTaskId = ingestionTask.IngestionTaskId;
+                    _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
+
+                    foreach (var entity in entities)
+                    {
+                        if (isTTM)
+                        {
+                            TIncomeStatementTTM item = _mapper.Map<TIncomeStatementTTM>(entity);
+                            item.Id = Guid.NewGuid();
+                            item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                            _ingestionContext.TIncomeStatementTTMs.Add(item);
+                        }
+                        else
+                        {
+                            TIncomeStatement item = _mapper.Map<TIncomeStatement>(entity);
+                            item.Id = Guid.NewGuid();
+                            item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                            _ingestionContext.TIncomeStatements.Add(item);
+                        }
+                    }
+                }
+            }
+            return await _ingestionContext.SaveChangesAsync();
+        }
+        
+        
         private int ValidateEntities(dynamic entities)
         {
             if (entities == null) return 0;

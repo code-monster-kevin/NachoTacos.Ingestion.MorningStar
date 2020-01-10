@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NachoTacos.Ingestion.MorningStar.Domain
 {
-    public partial class TCashFlow : Updateable
+    [Table("TCashFlow", Schema = "MStar")]
+    public partial class TCashFlow : TBase
     {
-        public Guid TCashFlowId { get; set; }
-
         private DateTime reportDateField;
 
         private DateTime periodEndingDateField;
@@ -24,469 +22,469 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
 
         private int fiscalYearEndField;
 
-        private decimal amortizationField;
+        private decimal? amortizationField;
 
-        private decimal amortizationOfFinancingCostsAndDiscountsField;
+        private decimal? amortizationOfFinancingCostsAndDiscountsField;
 
-        private decimal amortizationOfSecuritiesField;
+        private decimal? amortizationOfSecuritiesField;
 
-        private decimal assetImpairmentChargeField;
+        private decimal? assetImpairmentChargeField;
 
-        private decimal callsMaturitiesOfMaturitySecuritiesField;
+        private decimal? callsMaturitiesOfMaturitySecuritiesField;
 
-        private decimal capitalExpenditureField;
+        private decimal? capitalExpenditureField;
 
-        private decimal netCapitalExpenditureDisposalsField;
+        private decimal? netCapitalExpenditureDisposalsField;
 
-        private decimal capitalExpenditureReportedField;
+        private decimal? capitalExpenditureReportedField;
 
-        private decimal cashDividendsPaidField;
+        private decimal? cashDividendsPaidField;
 
-        private decimal cashFlowFromContinuingFinancingActivitiesField;
+        private decimal? cashFlowFromContinuingFinancingActivitiesField;
 
-        private decimal cashFlowFromContinuingInvestingActivitiesField;
+        private decimal? cashFlowFromContinuingInvestingActivitiesField;
 
-        private decimal cashFlowFromContinuingOperatingActivitiesField;
+        private decimal? cashFlowFromContinuingOperatingActivitiesField;
 
-        private decimal cashFlowFromDiscontinuedOperationField;
+        private decimal? cashFlowFromDiscontinuedOperationField;
 
-        private decimal financingCashFlowField;
+        private decimal? financingCashFlowField;
 
-        private decimal investingCashFlowField;
+        private decimal? investingCashFlowField;
 
-        private decimal operatingCashFlowField;
+        private decimal? operatingCashFlowField;
 
-        private decimal beginningCashPositionField;
+        private decimal? beginningCashPositionField;
 
-        private decimal endCashPositionField;
+        private decimal? endCashPositionField;
 
-        private decimal cashFromDiscontinuedFinancingActivitiesField;
+        private decimal? cashFromDiscontinuedFinancingActivitiesField;
 
-        private decimal cashFromDiscontinuedInvestingActivitiesField;
+        private decimal? cashFromDiscontinuedInvestingActivitiesField;
 
-        private decimal changeInAccountPayableField;
+        private decimal? changeInAccountPayableField;
 
-        private decimal changeInDividendPayableField;
+        private decimal? changeInDividendPayableField;
 
-        private decimal changeInTaxPayableField;
+        private decimal? changeInTaxPayableField;
 
-        private decimal changeInAccruedExpenseField;
+        private decimal? changeInAccruedExpenseField;
 
-        private decimal changeInAccruedInvestmentIncomeField;
+        private decimal? changeInAccruedInvestmentIncomeField;
 
-        private decimal changesInCashField;
+        private decimal? changesInCashField;
 
-        private decimal changeInDeferredAcquisitionCostsField;
+        private decimal? changeInDeferredAcquisitionCostsField;
 
-        private decimal changeInDeferredChargesField;
+        private decimal? changeInDeferredChargesField;
 
-        private decimal changeInFederalFundsAndSecuritiesSoldForRepurchaseField;
+        private decimal? changeInFederalFundsAndSecuritiesSoldForRepurchaseField;
 
-        private decimal changeInFundsWithheldField;
+        private decimal? changeInFundsWithheldField;
 
-        private decimal changeInIncomeTaxPayableField;
+        private decimal? changeInIncomeTaxPayableField;
 
-        private decimal changeInInterestPayableField;
+        private decimal? changeInInterestPayableField;
 
-        private decimal changeInInventoryField;
+        private decimal? changeInInventoryField;
 
-        private decimal changeInLoansField;
+        private decimal? changeInLoansField;
 
-        private decimal changeInLossAndLossAdjustmentExpenseReservesField;
+        private decimal? changeInLossAndLossAdjustmentExpenseReservesField;
 
-        private decimal changeInOtherCurrentAssetsField;
+        private decimal? changeInOtherCurrentAssetsField;
 
-        private decimal changeInOtherCurrentLiabilitiesField;
+        private decimal? changeInOtherCurrentLiabilitiesField;
 
-        private decimal changeInOtherWorkingCapitalField;
+        private decimal? changeInOtherWorkingCapitalField;
 
-        private decimal changeInPayableField;
+        private decimal? changeInPayableField;
 
-        private decimal changeInPayablesAndAccruedExpenseField;
+        private decimal? changeInPayablesAndAccruedExpenseField;
 
-        private decimal changeInPremiumsReceivableField;
+        private decimal? changeInPremiumsReceivableField;
 
-        private decimal changeInPrepaidAssetsField;
+        private decimal? changeInPrepaidAssetsField;
 
-        private decimal changeInPrepaidReinsurancePremiumsField;
+        private decimal? changeInPrepaidReinsurancePremiumsField;
 
-        private decimal changeInReceivablesField;
+        private decimal? changeInReceivablesField;
 
-        private decimal changeInReinsuranceReceivableOnPaidLossesField;
+        private decimal? changeInReinsuranceReceivableOnPaidLossesField;
 
-        private decimal changeInReinsuranceRecoverableOnPaidAndUnpaidLossesField;
+        private decimal? changeInReinsuranceRecoverableOnPaidAndUnpaidLossesField;
 
-        private decimal changeInReinsuranceRecoverableOnUnpaidLossesField;
+        private decimal? changeInReinsuranceRecoverableOnUnpaidLossesField;
 
-        private decimal changeInRestrictedCashField;
+        private decimal? changeInRestrictedCashField;
 
-        private decimal changeInTradingAccountSecuritiesField;
+        private decimal? changeInTradingAccountSecuritiesField;
 
-        private decimal changeInUnearnedPremiumsField;
+        private decimal? changeInUnearnedPremiumsField;
 
-        private decimal changeInUnearnedPremiumsCededField;
+        private decimal? changeInUnearnedPremiumsCededField;
 
-        private decimal changeInWorkingCapitalField;
+        private decimal? changeInWorkingCapitalField;
 
-        private decimal commonStockDividendPaidField;
+        private decimal? commonStockDividendPaidField;
 
-        private decimal cumulativeEffectOfAccountingChangeField;
+        private decimal? cumulativeEffectOfAccountingChangeField;
 
-        private decimal deferredIncomeTaxField;
+        private decimal? deferredIncomeTaxField;
 
-        private decimal deferredTaxField;
+        private decimal? deferredTaxField;
 
-        private decimal depletionField;
+        private decimal? depletionField;
 
-        private decimal depreciationField;
+        private decimal? depreciationField;
 
-        private decimal depreciationAndAmortizationField;
+        private decimal? depreciationAndAmortizationField;
 
-        private decimal depreciationAmortizationDepletionField;
+        private decimal? depreciationAmortizationDepletionField;
 
-        private decimal earningsLossesFromEquityInvestmentsField;
+        private decimal? earningsLossesFromEquityInvestmentsField;
 
-        private decimal effectOfExchangeRateChangesField;
+        private decimal? effectOfExchangeRateChangesField;
 
-        private decimal excessTaxBenefitFromStockBasedCompensationField;
+        private decimal? excessTaxBenefitFromStockBasedCompensationField;
 
-        private decimal extraordinaryItemsField;
+        private decimal? extraordinaryItemsField;
 
-        private decimal gainLossOnInvestmentSecuritiesField;
+        private decimal? gainLossOnInvestmentSecuritiesField;
 
-        private decimal gainLossOnSaleOfBusinessField;
+        private decimal? gainLossOnSaleOfBusinessField;
 
-        private decimal gainLossOnSaleOfPPEField;
+        private decimal? gainLossOnSaleOfPPEField;
 
-        private decimal increaseDecreaseInDepositField;
+        private decimal? increaseDecreaseInDepositField;
 
-        private decimal interestCreditedOnPolicyholderDepositsField;
+        private decimal? interestCreditedOnPolicyholderDepositsField;
 
-        private decimal netCommonStockIssuanceField;
+        private decimal? netCommonStockIssuanceField;
 
-        private decimal netIssuancePaymentsOfDebtField;
+        private decimal? netIssuancePaymentsOfDebtField;
 
-        private decimal netLongTermDebtIssuanceField;
+        private decimal? netLongTermDebtIssuanceField;
 
-        private decimal netPreferredStockIssuanceField;
+        private decimal? netPreferredStockIssuanceField;
 
-        private decimal netShortTermDebtIssuanceField;
+        private decimal? netShortTermDebtIssuanceField;
 
-        private decimal cashFromDiscontinuedOperatingActivitiesField;
+        private decimal? cashFromDiscontinuedOperatingActivitiesField;
 
-        private decimal netForeignCurrencyExchangeGainLossField;
+        private decimal? netForeignCurrencyExchangeGainLossField;
 
-        private decimal netIncomeField;
+        private decimal? netIncomeField;
 
-        private decimal netIncomeFromContinuingOperationsField;
+        private decimal? netIncomeFromContinuingOperationsField;
 
-        private decimal netIncomeFromDiscontinuedOperationsField;
+        private decimal? netIncomeFromDiscontinuedOperationsField;
 
-        private decimal netRealizedInvestmentGainsField;
+        private decimal? netRealizedInvestmentGainsField;
 
-        private decimal operatingGainsLossesField;
+        private decimal? operatingGainsLossesField;
 
-        private decimal netOtherFinancingChargesField;
+        private decimal? netOtherFinancingChargesField;
 
-        private decimal netOtherInvestingChangesField;
+        private decimal? netOtherInvestingChangesField;
 
-        private decimal otherNonCashItemsField;
+        private decimal? otherNonCashItemsField;
 
-        private decimal paymentForLoansField;
+        private decimal? paymentForLoansField;
 
-        private decimal commonStockPaymentsField;
+        private decimal? commonStockPaymentsField;
 
-        private decimal preferredStockPaymentsField;
+        private decimal? preferredStockPaymentsField;
 
-        private decimal longTermDebtPaymentsField;
+        private decimal? longTermDebtPaymentsField;
 
-        private decimal shortTermDebtPaymentsField;
+        private decimal? shortTermDebtPaymentsField;
 
-        private decimal pensionAndEmployeeBenefitExpenseField;
+        private decimal? pensionAndEmployeeBenefitExpenseField;
 
-        private decimal preferredStockDividendPaidField;
+        private decimal? preferredStockDividendPaidField;
 
-        private decimal proceedsFromIssuanceOfWarrantsField;
+        private decimal? proceedsFromIssuanceOfWarrantsField;
 
-        private decimal proceedsFromLoansField;
+        private decimal? proceedsFromLoansField;
 
-        private decimal proceedsFromStockOptionExercisedField;
+        private decimal? proceedsFromStockOptionExercisedField;
 
-        private decimal commonStockIssuanceField;
+        private decimal? commonStockIssuanceField;
 
-        private decimal longTermDebtIssuanceField;
+        private decimal? longTermDebtIssuanceField;
 
-        private decimal preferredStockIssuanceField;
+        private decimal? preferredStockIssuanceField;
 
-        private decimal shortTermDebtIssuanceField;
+        private decimal? shortTermDebtIssuanceField;
 
-        private decimal proceedsPaymentFederalFundsSoldAndSecuritiesPurchasedUnderAgreementToResellField;
+        private decimal? proceedsPaymentFederalFundsSoldAndSecuritiesPurchasedUnderAgreementToResellField;
 
-        private decimal netProceedsPaymentForLoanField;
+        private decimal? netProceedsPaymentForLoanField;
 
-        private decimal proceedsPaymentInInterestBearingDepositsInBankField;
+        private decimal? proceedsPaymentInInterestBearingDepositsInBankField;
 
-        private decimal provisionForLoanLeaseAndOtherLossesField;
+        private decimal? provisionForLoanLeaseAndOtherLossesField;
 
-        private decimal purchaseOfEquitySecuritiesField;
+        private decimal? purchaseOfEquitySecuritiesField;
 
-        private decimal purchaseOfFixedMaturitySecuritiesField;
+        private decimal? purchaseOfFixedMaturitySecuritiesField;
 
-        private decimal purchaseOfIntangiblesField;
+        private decimal? purchaseOfIntangiblesField;
 
-        private decimal purchaseOfInvestmentField;
+        private decimal? purchaseOfInvestmentField;
 
-        private decimal purchaseOfLongTermInvestmentsField;
+        private decimal? purchaseOfLongTermInvestmentsField;
 
-        private decimal purchaseOfPPEField;
+        private decimal? purchaseOfPPEField;
 
-        private decimal purchaseOfShortTermInvestmentsField;
+        private decimal? purchaseOfShortTermInvestmentsField;
 
-        private decimal purchaseOfTechnologyField;
+        private decimal? purchaseOfTechnologyField;
 
-        private decimal purchaseOfBusinessField;
+        private decimal? purchaseOfBusinessField;
 
-        private decimal netBusinessPurchaseAndSaleField;
+        private decimal? netBusinessPurchaseAndSaleField;
 
-        private decimal netIntangiblesPurchaseAndSaleField;
+        private decimal? netIntangiblesPurchaseAndSaleField;
 
-        private decimal netInvestmentPurchaseAndSaleField;
+        private decimal? netInvestmentPurchaseAndSaleField;
 
-        private decimal netPPEPurchaseAndSaleField;
+        private decimal? netPPEPurchaseAndSaleField;
 
-        private decimal netTechnologyPurchaseAndSaleField;
+        private decimal? netTechnologyPurchaseAndSaleField;
 
-        private decimal realizedGainLossOnSaleOfLoansAndLeaseField;
+        private decimal? realizedGainLossOnSaleOfLoansAndLeaseField;
 
-        private decimal saleOfBusinessField;
+        private decimal? saleOfBusinessField;
 
-        private decimal saleOfIntangiblesField;
+        private decimal? saleOfIntangiblesField;
 
-        private decimal saleOfInvestmentField;
+        private decimal? saleOfInvestmentField;
 
-        private decimal saleOfLongTermInvestmentsField;
+        private decimal? saleOfLongTermInvestmentsField;
 
-        private decimal saleOfPPEField;
+        private decimal? saleOfPPEField;
 
-        private decimal saleOfShortTermInvestmentsField;
+        private decimal? saleOfShortTermInvestmentsField;
 
-        private decimal saleOfTechnologyField;
+        private decimal? saleOfTechnologyField;
 
-        private decimal salesOfEquitySecuritiesField;
+        private decimal? salesOfEquitySecuritiesField;
 
-        private decimal salesOfFixedMaturitySecuritiesField;
+        private decimal? salesOfFixedMaturitySecuritiesField;
 
-        private decimal stockBasedCompensationField;
+        private decimal? stockBasedCompensationField;
 
-        private decimal unrealizedGainLossOnInvestmentSecuritiesField;
+        private decimal? unrealizedGainLossOnInvestmentSecuritiesField;
 
-        private decimal unrealizedGainsLossesOnDerivativesField;
+        private decimal? unrealizedGainsLossesOnDerivativesField;
 
-        private decimal amortizationOfIntangiblesField;
+        private decimal? amortizationOfIntangiblesField;
 
-        private decimal allowanceForFundsConstructionField;
+        private decimal? allowanceForFundsConstructionField;
 
-        private decimal changesInAccountReceivablesField;
+        private decimal? changesInAccountReceivablesField;
 
-        private decimal domesticSalesField;
+        private decimal? domesticSalesField;
 
-        private decimal foreignSalesField;
+        private decimal? foreignSalesField;
 
-        private decimal incomeTaxPaidSupplementalDataField;
+        private decimal? incomeTaxPaidSupplementalDataField;
 
-        private decimal interestPaidSupplementalDataField;
+        private decimal? interestPaidSupplementalDataField;
 
-        private decimal issuanceOfCapitalStockField;
+        private decimal? issuanceOfCapitalStockField;
 
-        private decimal issuanceOfDebtField;
+        private decimal? issuanceOfDebtField;
 
-        private decimal repaymentOfDebtField;
+        private decimal? repaymentOfDebtField;
 
-        private decimal repurchaseOfCapitalStockField;
+        private decimal? repurchaseOfCapitalStockField;
 
-        private decimal freeCashFlowField;
+        private decimal? freeCashFlowField;
 
-        private decimal directCashFlowsFromOperatingActivitiesField;
+        private decimal? directCashFlowsFromOperatingActivitiesField;
 
         private string accessionNumberField;
 
         private string formTypeField;
 
-        private decimal decreaseinInterestBearingDepositsinBankField;
+        private decimal? decreaseinInterestBearingDepositsinBankField;
 
-        private decimal increaseinInterestBearingDepositsinBankField;
+        private decimal? increaseinInterestBearingDepositsinBankField;
 
-        private decimal adjustedGeographySegmentDataField;
+        private decimal? adjustedGeographySegmentDataField;
 
-        private decimal interestReceivedCFOField;
+        private decimal? interestReceivedCFOField;
 
-        private decimal interestPaidCFOField;
+        private decimal? interestPaidCFOField;
 
-        private decimal purchaseofSubsidiariesField;
+        private decimal? purchaseofSubsidiariesField;
 
-        private decimal purchaseofJointVentureAssociateField;
+        private decimal? purchaseofJointVentureAssociateField;
 
-        private decimal saleofSubsidiariesField;
+        private decimal? saleofSubsidiariesField;
 
-        private decimal saleofJointVentureAssociateField;
+        private decimal? saleofJointVentureAssociateField;
 
-        private decimal increaseDecreaseinLeaseFinancingField;
+        private decimal? increaseDecreaseinLeaseFinancingField;
 
-        private decimal increaseinLeaseFinancingField;
+        private decimal? increaseinLeaseFinancingField;
 
-        private decimal repaymentinLeaseFinancingField;
+        private decimal? repaymentinLeaseFinancingField;
 
-        private decimal shareofAssociatesField;
+        private decimal? shareofAssociatesField;
 
-        private decimal profitonDisposalsField;
+        private decimal? profitonDisposalsField;
 
-        private decimal reorganizationOtherCostsField;
+        private decimal? reorganizationOtherCostsField;
 
-        private decimal otherFinancingField;
+        private decimal? otherFinancingField;
 
-        private decimal netOutwardLoansField;
+        private decimal? netOutwardLoansField;
 
-        private decimal issueExpensesField;
+        private decimal? issueExpensesField;
 
-        private decimal changeinCertificatesofDepositsandDebtSecuritiesIssuedField;
+        private decimal? changeinCertificatesofDepositsandDebtSecuritiesIssuedField;
 
-        private decimal paymentstoAcquireHeldToMaturityInvestmentsField;
+        private decimal? paymentstoAcquireHeldToMaturityInvestmentsField;
 
-        private decimal paymentstoAcquireAvailableForSaleFinancialAssetsField;
+        private decimal? paymentstoAcquireAvailableForSaleFinancialAssetsField;
 
-        private decimal paymentstoAcquireFinancialAssetsDesignatedasFairValueField;
+        private decimal? paymentstoAcquireFinancialAssetsDesignatedasFairValueField;
 
-        private decimal proceedsfromDisposalofHeldToMaturityInvestmentsField;
+        private decimal? proceedsfromDisposalofHeldToMaturityInvestmentsField;
 
-        private decimal proceedsfromDisposalofAvailableForSaleFinancialAssetsField;
+        private decimal? proceedsfromDisposalofAvailableForSaleFinancialAssetsField;
 
-        private decimal proceedsfromDisposalofFinancialAssetsDesignatedasFairValueField;
+        private decimal? proceedsfromDisposalofFinancialAssetsDesignatedasFairValueField;
 
-        private decimal changeinFairValueofInvestmentPropertiesField;
+        private decimal? changeinFairValueofInvestmentPropertiesField;
 
-        private decimal changeinDepositsbyBanksandCustomersField;
+        private decimal? changeinDepositsbyBanksandCustomersField;
 
-        private decimal cashFlowsfromusedinOperatingActivitiesDirectField;
+        private decimal? cashFlowsfromusedinOperatingActivitiesDirectField;
 
-        private decimal classesofCashReceiptsfromOperatingActivitiesField;
+        private decimal? classesofCashReceiptsfromOperatingActivitiesField;
 
-        private decimal otherCashReceiptsfromOperatingActivitiesField;
+        private decimal? otherCashReceiptsfromOperatingActivitiesField;
 
-        private decimal classesofCashPaymentsField;
+        private decimal? classesofCashPaymentsField;
 
-        private decimal paymentstoSuppliersforGoodsandServicesField;
+        private decimal? paymentstoSuppliersforGoodsandServicesField;
 
-        private decimal paymentsfromContractsHeldforDealingorTradingPurposeField;
+        private decimal? paymentsfromContractsHeldforDealingorTradingPurposeField;
 
-        private decimal paymentsonBehalfofEmployeesField;
+        private decimal? paymentsonBehalfofEmployeesField;
 
-        private decimal paymentsforPremiumsandClaimsAnnuitiesandOtherPolicyBenefitsField;
+        private decimal? paymentsforPremiumsandClaimsAnnuitiesandOtherPolicyBenefitsField;
 
-        private decimal otherCashPaymentsfromOperatingActivitiesField;
+        private decimal? otherCashPaymentsfromOperatingActivitiesField;
 
-        private decimal dividendsPaidDirectField;
+        private decimal? dividendsPaidDirectField;
 
-        private decimal dividendsReceivedDirectField;
+        private decimal? dividendsReceivedDirectField;
 
-        private decimal interestPaidDirectField;
+        private decimal? interestPaidDirectField;
 
-        private decimal interestReceivedDirectField;
+        private decimal? interestReceivedDirectField;
 
-        private decimal taxesRefundPaidDirectField;
+        private decimal? taxesRefundPaidDirectField;
 
-        private decimal totalAdjustmentsforNonCashItemsField;
+        private decimal? totalAdjustmentsforNonCashItemsField;
 
-        private decimal impairmentLossReversalRecognizedinProfitorLossField;
+        private decimal? impairmentLossReversalRecognizedinProfitorLossField;
 
-        private decimal adjustmentsforUndistributedProfitsofAssociatesField;
+        private decimal? adjustmentsforUndistributedProfitsofAssociatesField;
 
-        private decimal otherAdjustmentsforWhichCashEffectsAreInvestingorFinancingCashFlowField;
+        private decimal? otherAdjustmentsforWhichCashEffectsAreInvestingorFinancingCashFlowField;
 
-        private decimal dividendPaidCFOField;
+        private decimal? dividendPaidCFOField;
 
-        private decimal dividendReceivedCFOField;
+        private decimal? dividendReceivedCFOField;
 
-        private decimal taxesRefundPaidField;
+        private decimal? taxesRefundPaidField;
 
-        private decimal otherOperatingInflowsOutflowsofCashField;
+        private decimal? otherOperatingInflowsOutflowsofCashField;
 
-        private decimal proceedsfromGovernmentGrantsCFIField;
+        private decimal? proceedsfromGovernmentGrantsCFIField;
 
-        private decimal cashAdvancesandLoansMadetoOtherPartiesField;
+        private decimal? cashAdvancesandLoansMadetoOtherPartiesField;
 
-        private decimal cashReceiptsfromRepaymentofAdvancesandLoansMadetoOtherPartiesField;
+        private decimal? cashReceiptsfromRepaymentofAdvancesandLoansMadetoOtherPartiesField;
 
-        private decimal cashReceiptsfromPaymentsforFinancialDerivativeContractsField;
+        private decimal? cashReceiptsfromPaymentsforFinancialDerivativeContractsField;
 
-        private decimal dividendsReceivedCFIField;
+        private decimal? dividendsReceivedCFIField;
 
-        private decimal interestReceivedCFIField;
+        private decimal? interestReceivedCFIField;
 
-        private decimal incomeTaxesRefundPaidCFIField;
+        private decimal? incomeTaxesRefundPaidCFIField;
 
-        private decimal issuancePaymentofOtherEquityInstrumentsNetField;
+        private decimal? issuancePaymentofOtherEquityInstrumentsNetField;
 
-        private decimal paymentsofOtherEquityInstrumentsField;
+        private decimal? paymentsofOtherEquityInstrumentsField;
 
-        private decimal proceedsfromIssuingOtherEquityInstrumentsField;
+        private decimal? proceedsfromIssuingOtherEquityInstrumentsField;
 
-        private decimal proceedsfromGovernmentGrantsCFFField;
+        private decimal? proceedsfromGovernmentGrantsCFFField;
 
-        private decimal interestPaidCFFField;
+        private decimal? interestPaidCFFField;
 
-        private decimal incomeTaxesRefundPaidCFFField;
+        private decimal? incomeTaxesRefundPaidCFFField;
 
-        private decimal changeinAccruedIncomeField;
+        private decimal? changeinAccruedIncomeField;
 
-        private decimal changeinDeferredIncomeField;
+        private decimal? changeinDeferredIncomeField;
 
-        private decimal changeinFinancialAssetsField;
+        private decimal? changeinFinancialAssetsField;
 
-        private decimal changeinAdvancesfromCentralBanksField;
+        private decimal? changeinAdvancesfromCentralBanksField;
 
-        private decimal changeinFinancialLiabilitiesField;
+        private decimal? changeinFinancialLiabilitiesField;
 
-        private decimal changeinInsuranceContractAssetsField;
+        private decimal? changeinInsuranceContractAssetsField;
 
-        private decimal changeinReinsuranceReceivablesField;
+        private decimal? changeinReinsuranceReceivablesField;
 
-        private decimal changeinDeferredAcquisitionCostsNetField;
+        private decimal? changeinDeferredAcquisitionCostsNetField;
 
-        private decimal changeinInsuranceFundsField;
+        private decimal? changeinInsuranceFundsField;
 
-        private decimal changeinReinsurancePayablesField;
+        private decimal? changeinReinsurancePayablesField;
 
-        private decimal changeinInvestmentContractLiabilitiesField;
+        private decimal? changeinInvestmentContractLiabilitiesField;
 
-        private decimal changeinInsuranceContractLiabilitiesField;
+        private decimal? changeinInsuranceContractLiabilitiesField;
 
-        private decimal provisionandWriteOffofAssetsField;
+        private decimal? provisionandWriteOffofAssetsField;
 
-        private decimal receiptsfromCustomersField;
+        private decimal? receiptsfromCustomersField;
 
-        private decimal receiptsfromGovernmentGrantsField;
+        private decimal? receiptsfromGovernmentGrantsField;
 
-        private decimal minorityInterestField;
+        private decimal? minorityInterestField;
 
-        private decimal cashDividendsForMinoritiesField;
+        private decimal? cashDividendsForMinoritiesField;
 
-        private decimal fundFromOperationField;
+        private decimal? fundFromOperationField;
 
         private int fiscalYearChangeField;
 
-        private decimal netInvestmentPropertiesPurchaseAndSaleField;
+        private decimal? netInvestmentPropertiesPurchaseAndSaleField;
 
-        private decimal purchaseOfInvestmentPropertiesField;
+        private decimal? purchaseOfInvestmentPropertiesField;
 
-        private decimal saleOfInvestmentPropertiesField;
+        private decimal? saleOfInvestmentPropertiesField;
 
-        private decimal otherCashAdjustIncludedIntoChangeinCashField;
+        private decimal? otherCashAdjustIncludedIntoChangeinCashField;
 
-        private decimal otherCashAdjustExcludeFromChangeinCashField;
+        private decimal? otherCashAdjustExcludeFromChangeinCashField;
 
-        private decimal changeinCashSupplementalAsReportedField;
+        private decimal? changeinCashSupplementalAsReportedField;
 
-        private decimal cashGeneratedfromOperatingActivitiesField;
+        private decimal? cashGeneratedfromOperatingActivitiesField;
 
         /// <remarks/>
         public DateTime ReportDate
@@ -593,7 +591,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal Amortization
+        public decimal? Amortization
         {
             get
             {
@@ -606,7 +604,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal AmortizationOfFinancingCostsAndDiscounts
+        public decimal? AmortizationOfFinancingCostsAndDiscounts
         {
             get
             {
@@ -619,7 +617,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal AmortizationOfSecurities
+        public decimal? AmortizationOfSecurities
         {
             get
             {
@@ -632,7 +630,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal AssetImpairmentCharge
+        public decimal? AssetImpairmentCharge
         {
             get
             {
@@ -645,7 +643,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CallsMaturitiesOfMaturitySecurities
+        public decimal? CallsMaturitiesOfMaturitySecurities
         {
             get
             {
@@ -658,7 +656,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CapitalExpenditure
+        public decimal? CapitalExpenditure
         {
             get
             {
@@ -671,7 +669,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetCapitalExpenditureDisposals
+        public decimal? NetCapitalExpenditureDisposals
         {
             get
             {
@@ -684,7 +682,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CapitalExpenditureReported
+        public decimal? CapitalExpenditureReported
         {
             get
             {
@@ -697,7 +695,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CashDividendsPaid
+        public decimal? CashDividendsPaid
         {
             get
             {
@@ -710,7 +708,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CashFlowFromContinuingFinancingActivities
+        public decimal? CashFlowFromContinuingFinancingActivities
         {
             get
             {
@@ -723,7 +721,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CashFlowFromContinuingInvestingActivities
+        public decimal? CashFlowFromContinuingInvestingActivities
         {
             get
             {
@@ -736,7 +734,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CashFlowFromContinuingOperatingActivities
+        public decimal? CashFlowFromContinuingOperatingActivities
         {
             get
             {
@@ -749,7 +747,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CashFlowFromDiscontinuedOperation
+        public decimal? CashFlowFromDiscontinuedOperation
         {
             get
             {
@@ -762,7 +760,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal FinancingCashFlow
+        public decimal? FinancingCashFlow
         {
             get
             {
@@ -775,7 +773,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal InvestingCashFlow
+        public decimal? InvestingCashFlow
         {
             get
             {
@@ -788,7 +786,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal OperatingCashFlow
+        public decimal? OperatingCashFlow
         {
             get
             {
@@ -801,7 +799,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal BeginningCashPosition
+        public decimal? BeginningCashPosition
         {
             get
             {
@@ -814,7 +812,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal EndCashPosition
+        public decimal? EndCashPosition
         {
             get
             {
@@ -827,7 +825,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CashFromDiscontinuedFinancingActivities
+        public decimal? CashFromDiscontinuedFinancingActivities
         {
             get
             {
@@ -840,7 +838,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CashFromDiscontinuedInvestingActivities
+        public decimal? CashFromDiscontinuedInvestingActivities
         {
             get
             {
@@ -853,7 +851,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInAccountPayable
+        public decimal? ChangeInAccountPayable
         {
             get
             {
@@ -866,7 +864,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInDividendPayable
+        public decimal? ChangeInDividendPayable
         {
             get
             {
@@ -879,7 +877,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInTaxPayable
+        public decimal? ChangeInTaxPayable
         {
             get
             {
@@ -892,7 +890,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInAccruedExpense
+        public decimal? ChangeInAccruedExpense
         {
             get
             {
@@ -905,7 +903,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInAccruedInvestmentIncome
+        public decimal? ChangeInAccruedInvestmentIncome
         {
             get
             {
@@ -918,7 +916,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangesInCash
+        public decimal? ChangesInCash
         {
             get
             {
@@ -931,7 +929,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInDeferredAcquisitionCosts
+        public decimal? ChangeInDeferredAcquisitionCosts
         {
             get
             {
@@ -944,7 +942,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInDeferredCharges
+        public decimal? ChangeInDeferredCharges
         {
             get
             {
@@ -957,7 +955,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInFederalFundsAndSecuritiesSoldForRepurchase
+        public decimal? ChangeInFederalFundsAndSecuritiesSoldForRepurchase
         {
             get
             {
@@ -970,7 +968,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInFundsWithheld
+        public decimal? ChangeInFundsWithheld
         {
             get
             {
@@ -983,7 +981,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInIncomeTaxPayable
+        public decimal? ChangeInIncomeTaxPayable
         {
             get
             {
@@ -996,7 +994,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInInterestPayable
+        public decimal? ChangeInInterestPayable
         {
             get
             {
@@ -1009,7 +1007,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInInventory
+        public decimal? ChangeInInventory
         {
             get
             {
@@ -1022,7 +1020,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInLoans
+        public decimal? ChangeInLoans
         {
             get
             {
@@ -1035,7 +1033,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInLossAndLossAdjustmentExpenseReserves
+        public decimal? ChangeInLossAndLossAdjustmentExpenseReserves
         {
             get
             {
@@ -1048,7 +1046,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInOtherCurrentAssets
+        public decimal? ChangeInOtherCurrentAssets
         {
             get
             {
@@ -1061,7 +1059,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInOtherCurrentLiabilities
+        public decimal? ChangeInOtherCurrentLiabilities
         {
             get
             {
@@ -1074,7 +1072,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInOtherWorkingCapital
+        public decimal? ChangeInOtherWorkingCapital
         {
             get
             {
@@ -1087,7 +1085,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInPayable
+        public decimal? ChangeInPayable
         {
             get
             {
@@ -1100,7 +1098,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInPayablesAndAccruedExpense
+        public decimal? ChangeInPayablesAndAccruedExpense
         {
             get
             {
@@ -1113,7 +1111,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInPremiumsReceivable
+        public decimal? ChangeInPremiumsReceivable
         {
             get
             {
@@ -1126,7 +1124,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInPrepaidAssets
+        public decimal? ChangeInPrepaidAssets
         {
             get
             {
@@ -1139,7 +1137,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInPrepaidReinsurancePremiums
+        public decimal? ChangeInPrepaidReinsurancePremiums
         {
             get
             {
@@ -1152,7 +1150,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInReceivables
+        public decimal? ChangeInReceivables
         {
             get
             {
@@ -1165,7 +1163,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInReinsuranceReceivableOnPaidLosses
+        public decimal? ChangeInReinsuranceReceivableOnPaidLosses
         {
             get
             {
@@ -1178,7 +1176,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInReinsuranceRecoverableOnPaidAndUnpaidLosses
+        public decimal? ChangeInReinsuranceRecoverableOnPaidAndUnpaidLosses
         {
             get
             {
@@ -1191,7 +1189,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInReinsuranceRecoverableOnUnpaidLosses
+        public decimal? ChangeInReinsuranceRecoverableOnUnpaidLosses
         {
             get
             {
@@ -1204,7 +1202,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInRestrictedCash
+        public decimal? ChangeInRestrictedCash
         {
             get
             {
@@ -1217,7 +1215,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInTradingAccountSecurities
+        public decimal? ChangeInTradingAccountSecurities
         {
             get
             {
@@ -1230,7 +1228,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInUnearnedPremiums
+        public decimal? ChangeInUnearnedPremiums
         {
             get
             {
@@ -1243,7 +1241,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInUnearnedPremiumsCeded
+        public decimal? ChangeInUnearnedPremiumsCeded
         {
             get
             {
@@ -1256,7 +1254,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeInWorkingCapital
+        public decimal? ChangeInWorkingCapital
         {
             get
             {
@@ -1269,7 +1267,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CommonStockDividendPaid
+        public decimal? CommonStockDividendPaid
         {
             get
             {
@@ -1282,7 +1280,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CumulativeEffectOfAccountingChange
+        public decimal? CumulativeEffectOfAccountingChange
         {
             get
             {
@@ -1295,7 +1293,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal DeferredIncomeTax
+        public decimal? DeferredIncomeTax
         {
             get
             {
@@ -1308,7 +1306,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal DeferredTax
+        public decimal? DeferredTax
         {
             get
             {
@@ -1321,7 +1319,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal Depletion
+        public decimal? Depletion
         {
             get
             {
@@ -1334,7 +1332,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal Depreciation
+        public decimal? Depreciation
         {
             get
             {
@@ -1347,7 +1345,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal DepreciationAndAmortization
+        public decimal? DepreciationAndAmortization
         {
             get
             {
@@ -1360,7 +1358,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal DepreciationAmortizationDepletion
+        public decimal? DepreciationAmortizationDepletion
         {
             get
             {
@@ -1373,7 +1371,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal EarningsLossesFromEquityInvestments
+        public decimal? EarningsLossesFromEquityInvestments
         {
             get
             {
@@ -1386,7 +1384,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal EffectOfExchangeRateChanges
+        public decimal? EffectOfExchangeRateChanges
         {
             get
             {
@@ -1399,7 +1397,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ExcessTaxBenefitFromStockBasedCompensation
+        public decimal? ExcessTaxBenefitFromStockBasedCompensation
         {
             get
             {
@@ -1412,7 +1410,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ExtraordinaryItems
+        public decimal? ExtraordinaryItems
         {
             get
             {
@@ -1425,7 +1423,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal GainLossOnInvestmentSecurities
+        public decimal? GainLossOnInvestmentSecurities
         {
             get
             {
@@ -1438,7 +1436,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal GainLossOnSaleOfBusiness
+        public decimal? GainLossOnSaleOfBusiness
         {
             get
             {
@@ -1451,7 +1449,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal GainLossOnSaleOfPPE
+        public decimal? GainLossOnSaleOfPPE
         {
             get
             {
@@ -1464,7 +1462,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal IncreaseDecreaseInDeposit
+        public decimal? IncreaseDecreaseInDeposit
         {
             get
             {
@@ -1477,7 +1475,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal InterestCreditedOnPolicyholderDeposits
+        public decimal? InterestCreditedOnPolicyholderDeposits
         {
             get
             {
@@ -1490,7 +1488,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetCommonStockIssuance
+        public decimal? NetCommonStockIssuance
         {
             get
             {
@@ -1503,7 +1501,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetIssuancePaymentsOfDebt
+        public decimal? NetIssuancePaymentsOfDebt
         {
             get
             {
@@ -1516,7 +1514,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetLongTermDebtIssuance
+        public decimal? NetLongTermDebtIssuance
         {
             get
             {
@@ -1529,7 +1527,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetPreferredStockIssuance
+        public decimal? NetPreferredStockIssuance
         {
             get
             {
@@ -1542,7 +1540,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetShortTermDebtIssuance
+        public decimal? NetShortTermDebtIssuance
         {
             get
             {
@@ -1555,7 +1553,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CashFromDiscontinuedOperatingActivities
+        public decimal? CashFromDiscontinuedOperatingActivities
         {
             get
             {
@@ -1568,7 +1566,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetForeignCurrencyExchangeGainLoss
+        public decimal? NetForeignCurrencyExchangeGainLoss
         {
             get
             {
@@ -1581,7 +1579,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetIncome
+        public decimal? NetIncome
         {
             get
             {
@@ -1594,7 +1592,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetIncomeFromContinuingOperations
+        public decimal? NetIncomeFromContinuingOperations
         {
             get
             {
@@ -1607,7 +1605,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetIncomeFromDiscontinuedOperations
+        public decimal? NetIncomeFromDiscontinuedOperations
         {
             get
             {
@@ -1620,7 +1618,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetRealizedInvestmentGains
+        public decimal? NetRealizedInvestmentGains
         {
             get
             {
@@ -1633,7 +1631,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal OperatingGainsLosses
+        public decimal? OperatingGainsLosses
         {
             get
             {
@@ -1646,7 +1644,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetOtherFinancingCharges
+        public decimal? NetOtherFinancingCharges
         {
             get
             {
@@ -1659,7 +1657,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetOtherInvestingChanges
+        public decimal? NetOtherInvestingChanges
         {
             get
             {
@@ -1672,7 +1670,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal OtherNonCashItems
+        public decimal? OtherNonCashItems
         {
             get
             {
@@ -1685,7 +1683,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PaymentForLoans
+        public decimal? PaymentForLoans
         {
             get
             {
@@ -1698,7 +1696,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CommonStockPayments
+        public decimal? CommonStockPayments
         {
             get
             {
@@ -1711,7 +1709,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PreferredStockPayments
+        public decimal? PreferredStockPayments
         {
             get
             {
@@ -1724,7 +1722,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal LongTermDebtPayments
+        public decimal? LongTermDebtPayments
         {
             get
             {
@@ -1737,7 +1735,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ShortTermDebtPayments
+        public decimal? ShortTermDebtPayments
         {
             get
             {
@@ -1750,7 +1748,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PensionAndEmployeeBenefitExpense
+        public decimal? PensionAndEmployeeBenefitExpense
         {
             get
             {
@@ -1763,7 +1761,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PreferredStockDividendPaid
+        public decimal? PreferredStockDividendPaid
         {
             get
             {
@@ -1776,7 +1774,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ProceedsFromIssuanceOfWarrants
+        public decimal? ProceedsFromIssuanceOfWarrants
         {
             get
             {
@@ -1789,7 +1787,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ProceedsFromLoans
+        public decimal? ProceedsFromLoans
         {
             get
             {
@@ -1802,7 +1800,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ProceedsFromStockOptionExercised
+        public decimal? ProceedsFromStockOptionExercised
         {
             get
             {
@@ -1815,7 +1813,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CommonStockIssuance
+        public decimal? CommonStockIssuance
         {
             get
             {
@@ -1828,7 +1826,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal LongTermDebtIssuance
+        public decimal? LongTermDebtIssuance
         {
             get
             {
@@ -1841,7 +1839,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PreferredStockIssuance
+        public decimal? PreferredStockIssuance
         {
             get
             {
@@ -1854,7 +1852,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ShortTermDebtIssuance
+        public decimal? ShortTermDebtIssuance
         {
             get
             {
@@ -1867,7 +1865,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ProceedsPaymentFederalFundsSoldAndSecuritiesPurchasedUnderAgreementToResell
+        public decimal? ProceedsPaymentFederalFundsSoldAndSecuritiesPurchasedUnderAgreementToResell
         {
             get
             {
@@ -1880,7 +1878,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetProceedsPaymentForLoan
+        public decimal? NetProceedsPaymentForLoan
         {
             get
             {
@@ -1893,7 +1891,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ProceedsPaymentInInterestBearingDepositsInBank
+        public decimal? ProceedsPaymentInInterestBearingDepositsInBank
         {
             get
             {
@@ -1906,7 +1904,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ProvisionForLoanLeaseAndOtherLosses
+        public decimal? ProvisionForLoanLeaseAndOtherLosses
         {
             get
             {
@@ -1919,7 +1917,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PurchaseOfEquitySecurities
+        public decimal? PurchaseOfEquitySecurities
         {
             get
             {
@@ -1932,7 +1930,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PurchaseOfFixedMaturitySecurities
+        public decimal? PurchaseOfFixedMaturitySecurities
         {
             get
             {
@@ -1945,7 +1943,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PurchaseOfIntangibles
+        public decimal? PurchaseOfIntangibles
         {
             get
             {
@@ -1958,7 +1956,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PurchaseOfInvestment
+        public decimal? PurchaseOfInvestment
         {
             get
             {
@@ -1971,7 +1969,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PurchaseOfLongTermInvestments
+        public decimal? PurchaseOfLongTermInvestments
         {
             get
             {
@@ -1984,7 +1982,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PurchaseOfPPE
+        public decimal? PurchaseOfPPE
         {
             get
             {
@@ -1997,7 +1995,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PurchaseOfShortTermInvestments
+        public decimal? PurchaseOfShortTermInvestments
         {
             get
             {
@@ -2010,7 +2008,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PurchaseOfTechnology
+        public decimal? PurchaseOfTechnology
         {
             get
             {
@@ -2023,7 +2021,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PurchaseOfBusiness
+        public decimal? PurchaseOfBusiness
         {
             get
             {
@@ -2036,7 +2034,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetBusinessPurchaseAndSale
+        public decimal? NetBusinessPurchaseAndSale
         {
             get
             {
@@ -2049,7 +2047,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetIntangiblesPurchaseAndSale
+        public decimal? NetIntangiblesPurchaseAndSale
         {
             get
             {
@@ -2062,7 +2060,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetInvestmentPurchaseAndSale
+        public decimal? NetInvestmentPurchaseAndSale
         {
             get
             {
@@ -2075,7 +2073,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetPPEPurchaseAndSale
+        public decimal? NetPPEPurchaseAndSale
         {
             get
             {
@@ -2088,7 +2086,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetTechnologyPurchaseAndSale
+        public decimal? NetTechnologyPurchaseAndSale
         {
             get
             {
@@ -2101,7 +2099,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal RealizedGainLossOnSaleOfLoansAndLease
+        public decimal? RealizedGainLossOnSaleOfLoansAndLease
         {
             get
             {
@@ -2114,7 +2112,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal SaleOfBusiness
+        public decimal? SaleOfBusiness
         {
             get
             {
@@ -2127,7 +2125,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal SaleOfIntangibles
+        public decimal? SaleOfIntangibles
         {
             get
             {
@@ -2140,7 +2138,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal SaleOfInvestment
+        public decimal? SaleOfInvestment
         {
             get
             {
@@ -2153,7 +2151,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal SaleOfLongTermInvestments
+        public decimal? SaleOfLongTermInvestments
         {
             get
             {
@@ -2166,7 +2164,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal SaleOfPPE
+        public decimal? SaleOfPPE
         {
             get
             {
@@ -2179,7 +2177,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal SaleOfShortTermInvestments
+        public decimal? SaleOfShortTermInvestments
         {
             get
             {
@@ -2192,7 +2190,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal SaleOfTechnology
+        public decimal? SaleOfTechnology
         {
             get
             {
@@ -2205,7 +2203,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal SalesOfEquitySecurities
+        public decimal? SalesOfEquitySecurities
         {
             get
             {
@@ -2218,7 +2216,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal SalesOfFixedMaturitySecurities
+        public decimal? SalesOfFixedMaturitySecurities
         {
             get
             {
@@ -2231,7 +2229,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal StockBasedCompensation
+        public decimal? StockBasedCompensation
         {
             get
             {
@@ -2244,7 +2242,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal UnrealizedGainLossOnInvestmentSecurities
+        public decimal? UnrealizedGainLossOnInvestmentSecurities
         {
             get
             {
@@ -2257,7 +2255,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal UnrealizedGainsLossesOnDerivatives
+        public decimal? UnrealizedGainsLossesOnDerivatives
         {
             get
             {
@@ -2270,7 +2268,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal AmortizationOfIntangibles
+        public decimal? AmortizationOfIntangibles
         {
             get
             {
@@ -2283,7 +2281,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal AllowanceForFundsConstruction
+        public decimal? AllowanceForFundsConstruction
         {
             get
             {
@@ -2296,7 +2294,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangesInAccountReceivables
+        public decimal? ChangesInAccountReceivables
         {
             get
             {
@@ -2309,7 +2307,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal DomesticSales
+        public decimal? DomesticSales
         {
             get
             {
@@ -2322,7 +2320,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ForeignSales
+        public decimal? ForeignSales
         {
             get
             {
@@ -2335,7 +2333,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal IncomeTaxPaidSupplementalData
+        public decimal? IncomeTaxPaidSupplementalData
         {
             get
             {
@@ -2348,7 +2346,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal InterestPaidSupplementalData
+        public decimal? InterestPaidSupplementalData
         {
             get
             {
@@ -2361,7 +2359,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal IssuanceOfCapitalStock
+        public decimal? IssuanceOfCapitalStock
         {
             get
             {
@@ -2374,7 +2372,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal IssuanceOfDebt
+        public decimal? IssuanceOfDebt
         {
             get
             {
@@ -2387,7 +2385,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal RepaymentOfDebt
+        public decimal? RepaymentOfDebt
         {
             get
             {
@@ -2400,7 +2398,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal RepurchaseOfCapitalStock
+        public decimal? RepurchaseOfCapitalStock
         {
             get
             {
@@ -2413,7 +2411,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal FreeCashFlow
+        public decimal? FreeCashFlow
         {
             get
             {
@@ -2426,7 +2424,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal DirectCashFlowsFromOperatingActivities
+        public decimal? DirectCashFlowsFromOperatingActivities
         {
             get
             {
@@ -2465,7 +2463,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal DecreaseinInterestBearingDepositsinBank
+        public decimal? DecreaseinInterestBearingDepositsinBank
         {
             get
             {
@@ -2478,7 +2476,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal IncreaseinInterestBearingDepositsinBank
+        public decimal? IncreaseinInterestBearingDepositsinBank
         {
             get
             {
@@ -2491,7 +2489,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal AdjustedGeographySegmentData
+        public decimal? AdjustedGeographySegmentData
         {
             get
             {
@@ -2504,7 +2502,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal InterestReceivedCFO
+        public decimal? InterestReceivedCFO
         {
             get
             {
@@ -2517,7 +2515,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal InterestPaidCFO
+        public decimal? InterestPaidCFO
         {
             get
             {
@@ -2530,7 +2528,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PurchaseofSubsidiaries
+        public decimal? PurchaseofSubsidiaries
         {
             get
             {
@@ -2543,7 +2541,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PurchaseofJointVentureAssociate
+        public decimal? PurchaseofJointVentureAssociate
         {
             get
             {
@@ -2556,7 +2554,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal SaleofSubsidiaries
+        public decimal? SaleofSubsidiaries
         {
             get
             {
@@ -2569,7 +2567,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal SaleofJointVentureAssociate
+        public decimal? SaleofJointVentureAssociate
         {
             get
             {
@@ -2582,7 +2580,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal IncreaseDecreaseinLeaseFinancing
+        public decimal? IncreaseDecreaseinLeaseFinancing
         {
             get
             {
@@ -2595,7 +2593,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal IncreaseinLeaseFinancing
+        public decimal? IncreaseinLeaseFinancing
         {
             get
             {
@@ -2608,7 +2606,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal RepaymentinLeaseFinancing
+        public decimal? RepaymentinLeaseFinancing
         {
             get
             {
@@ -2621,7 +2619,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ShareofAssociates
+        public decimal? ShareofAssociates
         {
             get
             {
@@ -2634,7 +2632,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ProfitonDisposals
+        public decimal? ProfitonDisposals
         {
             get
             {
@@ -2647,7 +2645,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ReorganizationOtherCosts
+        public decimal? ReorganizationOtherCosts
         {
             get
             {
@@ -2660,7 +2658,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal OtherFinancing
+        public decimal? OtherFinancing
         {
             get
             {
@@ -2673,7 +2671,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetOutwardLoans
+        public decimal? NetOutwardLoans
         {
             get
             {
@@ -2686,7 +2684,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal IssueExpenses
+        public decimal? IssueExpenses
         {
             get
             {
@@ -2699,7 +2697,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinCertificatesofDepositsandDebtSecuritiesIssued
+        public decimal? ChangeinCertificatesofDepositsandDebtSecuritiesIssued
         {
             get
             {
@@ -2712,7 +2710,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PaymentstoAcquireHeldToMaturityInvestments
+        public decimal? PaymentstoAcquireHeldToMaturityInvestments
         {
             get
             {
@@ -2725,7 +2723,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PaymentstoAcquireAvailableForSaleFinancialAssets
+        public decimal? PaymentstoAcquireAvailableForSaleFinancialAssets
         {
             get
             {
@@ -2738,7 +2736,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PaymentstoAcquireFinancialAssetsDesignatedasFairValue
+        public decimal? PaymentstoAcquireFinancialAssetsDesignatedasFairValue
         {
             get
             {
@@ -2751,7 +2749,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ProceedsfromDisposalofHeldToMaturityInvestments
+        public decimal? ProceedsfromDisposalofHeldToMaturityInvestments
         {
             get
             {
@@ -2764,7 +2762,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ProceedsfromDisposalofAvailableForSaleFinancialAssets
+        public decimal? ProceedsfromDisposalofAvailableForSaleFinancialAssets
         {
             get
             {
@@ -2777,7 +2775,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ProceedsfromDisposalofFinancialAssetsDesignatedasFairValue
+        public decimal? ProceedsfromDisposalofFinancialAssetsDesignatedasFairValue
         {
             get
             {
@@ -2790,7 +2788,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinFairValueofInvestmentProperties
+        public decimal? ChangeinFairValueofInvestmentProperties
         {
             get
             {
@@ -2803,7 +2801,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinDepositsbyBanksandCustomers
+        public decimal? ChangeinDepositsbyBanksandCustomers
         {
             get
             {
@@ -2816,7 +2814,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CashFlowsfromusedinOperatingActivitiesDirect
+        public decimal? CashFlowsfromusedinOperatingActivitiesDirect
         {
             get
             {
@@ -2829,7 +2827,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ClassesofCashReceiptsfromOperatingActivities
+        public decimal? ClassesofCashReceiptsfromOperatingActivities
         {
             get
             {
@@ -2842,7 +2840,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal OtherCashReceiptsfromOperatingActivities
+        public decimal? OtherCashReceiptsfromOperatingActivities
         {
             get
             {
@@ -2855,7 +2853,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ClassesofCashPayments
+        public decimal? ClassesofCashPayments
         {
             get
             {
@@ -2868,7 +2866,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PaymentstoSuppliersforGoodsandServices
+        public decimal? PaymentstoSuppliersforGoodsandServices
         {
             get
             {
@@ -2881,7 +2879,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PaymentsfromContractsHeldforDealingorTradingPurpose
+        public decimal? PaymentsfromContractsHeldforDealingorTradingPurpose
         {
             get
             {
@@ -2894,7 +2892,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PaymentsonBehalfofEmployees
+        public decimal? PaymentsonBehalfofEmployees
         {
             get
             {
@@ -2907,7 +2905,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PaymentsforPremiumsandClaimsAnnuitiesandOtherPolicyBenefits
+        public decimal? PaymentsforPremiumsandClaimsAnnuitiesandOtherPolicyBenefits
         {
             get
             {
@@ -2920,7 +2918,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal OtherCashPaymentsfromOperatingActivities
+        public decimal? OtherCashPaymentsfromOperatingActivities
         {
             get
             {
@@ -2933,7 +2931,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal DividendsPaidDirect
+        public decimal? DividendsPaidDirect
         {
             get
             {
@@ -2946,7 +2944,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal DividendsReceivedDirect
+        public decimal? DividendsReceivedDirect
         {
             get
             {
@@ -2959,7 +2957,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal InterestPaidDirect
+        public decimal? InterestPaidDirect
         {
             get
             {
@@ -2972,7 +2970,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal InterestReceivedDirect
+        public decimal? InterestReceivedDirect
         {
             get
             {
@@ -2985,7 +2983,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal TaxesRefundPaidDirect
+        public decimal? TaxesRefundPaidDirect
         {
             get
             {
@@ -2998,7 +2996,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal TotalAdjustmentsforNonCashItems
+        public decimal? TotalAdjustmentsforNonCashItems
         {
             get
             {
@@ -3011,7 +3009,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ImpairmentLossReversalRecognizedinProfitorLoss
+        public decimal? ImpairmentLossReversalRecognizedinProfitorLoss
         {
             get
             {
@@ -3024,7 +3022,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal AdjustmentsforUndistributedProfitsofAssociates
+        public decimal? AdjustmentsforUndistributedProfitsofAssociates
         {
             get
             {
@@ -3037,7 +3035,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal OtherAdjustmentsforWhichCashEffectsAreInvestingorFinancingCashFlow
+        public decimal? OtherAdjustmentsforWhichCashEffectsAreInvestingorFinancingCashFlow
         {
             get
             {
@@ -3050,7 +3048,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal DividendPaidCFO
+        public decimal? DividendPaidCFO
         {
             get
             {
@@ -3063,7 +3061,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal DividendReceivedCFO
+        public decimal? DividendReceivedCFO
         {
             get
             {
@@ -3076,7 +3074,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal TaxesRefundPaid
+        public decimal? TaxesRefundPaid
         {
             get
             {
@@ -3089,7 +3087,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal OtherOperatingInflowsOutflowsofCash
+        public decimal? OtherOperatingInflowsOutflowsofCash
         {
             get
             {
@@ -3102,7 +3100,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ProceedsfromGovernmentGrantsCFI
+        public decimal? ProceedsfromGovernmentGrantsCFI
         {
             get
             {
@@ -3115,7 +3113,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CashAdvancesandLoansMadetoOtherParties
+        public decimal? CashAdvancesandLoansMadetoOtherParties
         {
             get
             {
@@ -3128,7 +3126,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CashReceiptsfromRepaymentofAdvancesandLoansMadetoOtherParties
+        public decimal? CashReceiptsfromRepaymentofAdvancesandLoansMadetoOtherParties
         {
             get
             {
@@ -3141,7 +3139,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CashReceiptsfromPaymentsforFinancialDerivativeContracts
+        public decimal? CashReceiptsfromPaymentsforFinancialDerivativeContracts
         {
             get
             {
@@ -3154,7 +3152,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal DividendsReceivedCFI
+        public decimal? DividendsReceivedCFI
         {
             get
             {
@@ -3167,7 +3165,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal InterestReceivedCFI
+        public decimal? InterestReceivedCFI
         {
             get
             {
@@ -3180,7 +3178,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal IncomeTaxesRefundPaidCFI
+        public decimal? IncomeTaxesRefundPaidCFI
         {
             get
             {
@@ -3193,7 +3191,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal IssuancePaymentofOtherEquityInstrumentsNet
+        public decimal? IssuancePaymentofOtherEquityInstrumentsNet
         {
             get
             {
@@ -3206,7 +3204,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PaymentsofOtherEquityInstruments
+        public decimal? PaymentsofOtherEquityInstruments
         {
             get
             {
@@ -3219,7 +3217,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ProceedsfromIssuingOtherEquityInstruments
+        public decimal? ProceedsfromIssuingOtherEquityInstruments
         {
             get
             {
@@ -3232,7 +3230,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ProceedsfromGovernmentGrantsCFF
+        public decimal? ProceedsfromGovernmentGrantsCFF
         {
             get
             {
@@ -3245,7 +3243,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal InterestPaidCFF
+        public decimal? InterestPaidCFF
         {
             get
             {
@@ -3258,7 +3256,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal IncomeTaxesRefundPaidCFF
+        public decimal? IncomeTaxesRefundPaidCFF
         {
             get
             {
@@ -3271,7 +3269,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinAccruedIncome
+        public decimal? ChangeinAccruedIncome
         {
             get
             {
@@ -3284,7 +3282,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinDeferredIncome
+        public decimal? ChangeinDeferredIncome
         {
             get
             {
@@ -3297,7 +3295,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinFinancialAssets
+        public decimal? ChangeinFinancialAssets
         {
             get
             {
@@ -3310,7 +3308,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinAdvancesfromCentralBanks
+        public decimal? ChangeinAdvancesfromCentralBanks
         {
             get
             {
@@ -3323,7 +3321,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinFinancialLiabilities
+        public decimal? ChangeinFinancialLiabilities
         {
             get
             {
@@ -3336,7 +3334,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinInsuranceContractAssets
+        public decimal? ChangeinInsuranceContractAssets
         {
             get
             {
@@ -3349,7 +3347,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinReinsuranceReceivables
+        public decimal? ChangeinReinsuranceReceivables
         {
             get
             {
@@ -3362,7 +3360,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinDeferredAcquisitionCostsNet
+        public decimal? ChangeinDeferredAcquisitionCostsNet
         {
             get
             {
@@ -3375,7 +3373,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinInsuranceFunds
+        public decimal? ChangeinInsuranceFunds
         {
             get
             {
@@ -3388,7 +3386,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinReinsurancePayables
+        public decimal? ChangeinReinsurancePayables
         {
             get
             {
@@ -3401,7 +3399,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinInvestmentContractLiabilities
+        public decimal? ChangeinInvestmentContractLiabilities
         {
             get
             {
@@ -3414,7 +3412,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinInsuranceContractLiabilities
+        public decimal? ChangeinInsuranceContractLiabilities
         {
             get
             {
@@ -3427,7 +3425,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ProvisionandWriteOffofAssets
+        public decimal? ProvisionandWriteOffofAssets
         {
             get
             {
@@ -3440,7 +3438,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ReceiptsfromCustomers
+        public decimal? ReceiptsfromCustomers
         {
             get
             {
@@ -3453,7 +3451,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ReceiptsfromGovernmentGrants
+        public decimal? ReceiptsfromGovernmentGrants
         {
             get
             {
@@ -3466,7 +3464,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal MinorityInterest
+        public decimal? MinorityInterest
         {
             get
             {
@@ -3479,7 +3477,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CashDividendsForMinorities
+        public decimal? CashDividendsForMinorities
         {
             get
             {
@@ -3492,7 +3490,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal FundFromOperation
+        public decimal? FundFromOperation
         {
             get
             {
@@ -3518,7 +3516,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal NetInvestmentPropertiesPurchaseAndSale
+        public decimal? NetInvestmentPropertiesPurchaseAndSale
         {
             get
             {
@@ -3531,7 +3529,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal PurchaseOfInvestmentProperties
+        public decimal? PurchaseOfInvestmentProperties
         {
             get
             {
@@ -3544,7 +3542,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal SaleOfInvestmentProperties
+        public decimal? SaleOfInvestmentProperties
         {
             get
             {
@@ -3557,7 +3555,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal OtherCashAdjustIncludedIntoChangeinCash
+        public decimal? OtherCashAdjustIncludedIntoChangeinCash
         {
             get
             {
@@ -3570,7 +3568,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal OtherCashAdjustExcludeFromChangeinCash
+        public decimal? OtherCashAdjustExcludeFromChangeinCash
         {
             get
             {
@@ -3583,7 +3581,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal ChangeinCashSupplementalAsReported
+        public decimal? ChangeinCashSupplementalAsReported
         {
             get
             {
@@ -3596,7 +3594,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public decimal CashGeneratedfromOperatingActivities
+        public decimal? CashGeneratedfromOperatingActivities
         {
             get
             {

@@ -17,6 +17,10 @@ GO
 -- Description:	Merge data from temporary job table [MStar].[TBalanceSheet]
 --				to master table [MStar].[MBalanceSheet]
 -- Example: EXECUTE MergeBalanceSheet
+-- Changes: 10th Jan 2020
+--          To prevent timeout due to exceessive records of changes to merge,
+--          added a limit of merging only the last 50 ingestion task,
+--          Will require a recurring job to run this merge function to check of unprocessed tasks
 -- =============================================
 CREATE PROCEDURE [dbo].[MergeBalanceSheet]
 	-- Add the parameters for the stored procedure here
@@ -25,13 +29,14 @@ BEGIN
 	SET NOCOUNT ON;
 
     DECLARE @SummaryOfChanges TABLE(Change VARCHAR(20));
-	DECLARE @UnprocessedTasks TABLE (id uniqueidentifier);
+	DECLARE @UnprocessedTasks TABLE (id uniqueidentifier, CreatedDate DateTime);
 
 	INSERT INTO @UnprocessedTasks
-	SELECT DISTINCT IT.[IngestionTaskId]
-	FROM [IngestionDb].[MStar].[TBalanceSheet] BS
-	JOIN [IngestionDb].[dbo].[IngestionTasks] IT ON IT.[IngestionTaskId] = BS.[IngestionTaskId]
-	WHERE IT.[IsProcessed] = 0;
+	SELECT DISTINCT TOP 50 IT.[IngestionTaskId], IT.[CreatedDate]
+	FROM [MStar].[TBalanceSheet] BS
+	JOIN [dbo].[IngestionTasks] IT ON IT.[IngestionTaskId] = BS.[IngestionTaskId]
+	WHERE IT.[IsProcessed] = 0
+    ORDER BY CreatedDate;
 
 	MERGE INTO [MStar].MBalanceSheet AS TargetTable
 	USING
@@ -429,7 +434,7 @@ BEGIN
       ,BS.[TotalEquityAsReported]
       ,BS.[UnallocatedSurplus]
       ,BS.[NetDebt]
-	  FROM [IngestionDb].[MStar].[TBalanceSheet] BS
+	  FROM [MStar].[TBalanceSheet] BS
       JOIN (SELECT DISTINCT [IngestionTaskId]
 							  ,[ExchangeId]
 							  ,[CompanyName]
@@ -438,7 +443,7 @@ BEGIN
 							  ,[CIK]
 							  ,[ISIN]
 							  ,[SEDOL]
-							  ,[ShareClassId] FROM [IngestionDb].[MStar].[TGeneralInfo]) GI 
+							  ,[ShareClassId] FROM [MStar].[TGeneralInfo]) GI 
 		ON GI.[IngestionTaskId] = BS.[IngestionTaskId]
 	  WHERE BS.[IngestionTaskId] IN (SELECT ID FROM @UnprocessedTasks))
 	  AS SourceTable (

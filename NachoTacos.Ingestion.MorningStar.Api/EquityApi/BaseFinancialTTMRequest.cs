@@ -1,34 +1,27 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 
 namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
 {
 #pragma warning disable IDE1006
-    public class BaseFinancialRequest : BaseFinancialTTMRequest
+    public class BaseFinancialTTMRequest : BaseRequest
     {
-
         /// <summary>
-        /// Annual, Quarterly
-        /// For Annual, can only access up to 10 years data
-        /// For Quarterly, can only access up to 3 years data
+        /// mm/yyyy
         /// </summary>
-        [Required]
-        public string statementType { get; protected set; }
+        public string startDate { get; protected set; }
         /// <summary>
-        /// AOR, Restated, Preliminary
+        /// mm/yyyy
         /// </summary>
-        public string dataType { get; protected set; }
+        public string endDate { get; protected set; }
 
-        public new static BaseFinancialRequest Create(string token, string exchangeId, string identifierType, string identifier, string statementType, string dataType, string startDate, string endDate, string responseType = "Json")
+        public static BaseFinancialTTMRequest Create(string token, string exchangeId, string identifierType, string identifier, string startDate, string endDate, string responseType = "Json")
         {
-            return new BaseFinancialRequest
+            return new BaseFinancialTTMRequest
             {
                 exchangeId = exchangeId,
                 identifierType = identifierType,
                 identifier = identifier,
-                statementType = statementType,
-                dataType = dataType,
                 startDate = FormatDate(startDate),
                 endDate = FormatDate(endDate),
                 Token = token,

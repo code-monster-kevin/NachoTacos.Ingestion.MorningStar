@@ -40,6 +40,8 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             _mapper = mapper;
             _logger = logger;
         }
+
+        #region "Background jobs"
         [AutomaticRetry(Attempts = 0)]
         public async Task<string> GetStockExchangeSecurity(Guid id, string exchangeId, string stockStatus)
         {
@@ -48,7 +50,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                 TokenEntity tokenEntity = await GetTokenEntity(id);
                 if (tokenEntity != null)
                 {
-                    string endPoint = _configuration.GetValue<string>("MorningStar:EquityApi:StockExchangeSecurityList");
+                    string endPoint = _configuration.GetValue<string>(EndPoint.StockExchangeSecurityList);
 
                     EquityApi.StockExchangeSecurity.Request request =
                     EquityApi.StockExchangeSecurity.Request.Create(tokenEntity.Token, exchangeId, "exchangeId", exchangeId, stockStatus);
@@ -86,7 +88,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                 TokenEntity tokenEntity = await GetTokenEntity(id);
                 if (tokenEntity != null)
                 {
-                    string endPoint = _configuration.GetValue<string>("MorningStar:EquityApi:CompanyFinancialAvailabilityList");
+                    string endPoint = _configuration.GetValue<string>(EndPoint.FinancialsCoverageList);
                     EquityApi.CompanyFinancials.Request request =
                         EquityApi.CompanyFinancials.Request.Create(tokenEntity.Token, exchangeId, "exchangeId", exchangeId);
                     string requestUrl = endPoint.SetQueryParams(request);
@@ -103,10 +105,8 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                         List<ChangeTable> changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeCompanyFinancials @TaskId={0}", ingestionTask.IngestionTaskId).ToList();
                         _logger.LogInformation("MergeCompanyFinancials: {0}", JsonConvert.SerializeObject(changes));
                     }
-
                     return string.Format("{0} records saved", result);
                 }
-
                 return "Nothing was saved, invalid token";
             }
             catch (Exception ex)
@@ -116,39 +116,6 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             }
         }
         
-        //[AutomaticRetry(Attempts = 0)]
-        //public async Task<int> GetBalanceSheetAll(Guid id, string exchangeId, int year, int range, string symbol = null)
-        //{
-        //    try
-        //    {
-        //        int result = 0;
-        //        TokenEntity tokenEntity = await GetTokenEntity(id);
-        //        if (tokenEntity != null)
-        //        {
-        //            IQueryable<MCompanyFinancialAvailability> query = CreateCompanyFinancialQuery(exchangeId, symbol);
-
-        //            int recordCount = query.Count();
-        //            int pageSize = 20;
-        //            int pageCount = (int)((recordCount + pageSize) / pageSize);
-
-        //            for (int i = 0; i < pageCount; i++)
-        //            {
-        //                _logger.LogInformation(string.Format("[PagingParameter] ===> Page {0} Skip {1}", i, pageSize * i));
-
-        //                result += await IngestBalanceSheet(tokenEntity.Token, query, year, range, pageSize, i);
-        //            }
-        //        }
-
-        //        _logger.LogInformation(string.Format("[GetBalanceSheetAll] ===> {0} records saved", result));
-        //        return result;
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        _logger.LogError(ex.Message, ex.InnerException);
-        //        return 0;
-        //    }
-        //}
-
         [AutomaticRetry(Attempts = 0)]
         public async Task<int> GetCompanyFinancialReportAll(Guid id, string reportType, string exchangeId, int year, int range, string symbol = null)
         {
@@ -166,14 +133,22 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
 
                     for (int i = 0; i < pageCount; i++)
                     {
-                        _logger.LogInformation(string.Format("[PagingParameter] ===> Page {0} Skip {1}", i, pageSize * i));
                         switch(reportType)
                         {
                             case "BalanceSheet":
                                 result += await IngestBalanceSheet(tokenEntity.Token, query, year, range, pageSize, i);
                                 break;
                             case "CashFlow":
-                                // TODO IngestCashFlow(tokenEntity.Token, query, year, range, pageSize, i);
+                                result += await IngestCashFlow(tokenEntity.Token, query, year, range, pageSize, i);
+                                break;
+                            case "CashFlowTTM":
+                                result += await IngestCashFlowTTM(tokenEntity.Token, query, year, range, pageSize, i);
+                                break;
+                            case "IncomeStatement":
+                                result += await IngestIncomeStatement(tokenEntity.Token, query, year, range, pageSize, i);
+                                break;
+                            case "IncomeStatementTTM":
+                                result += await IngestIncomeStatementTTM(tokenEntity.Token, query, year, range, pageSize, i);
                                 break;
                             default:
                                 break;
@@ -191,7 +166,48 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             }
         }
 
+        /// <summary>
+        /// Executes Merge Stored Procedures until all unprocessed ingestion tasks are completed        /// 
+        /// </summary>
+        /// <param name="reportType"></param>
+        [AutomaticRetry(Attempts = 0)]
+        public void MergeFinancialTempToMaster(string reportType)
+        {
+            int max = 0;
+            while(max < 2000)
+            {
+                List<ChangeTable> changes = new List<ChangeTable>();
+                switch (reportType)
+                {
+                    case "BalanceSheet":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeBalanceSheet").ToList();
+                        break;
+                    case "CashFlow":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeCashFlow").ToList();
+                        break;
+                    case "CashFlowTTM":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeCashFlowTTM").ToList();
+                        break;
+                    case "IncomeStatement":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeIncomeStatement").ToList();
+                        break;
+                    case "IncomeStatementTTM":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeIncomeStatementTTM").ToList();
+                        break;
+                    default:
+                        break;
+                };
+                if (changes.Count == 0)
+                {
+                    max = 2001;
+                }
+                max++;
+            }
+        }
 
+        #endregion
+
+        #region "Ingest Company Financials"
         private async Task<int> IngestBalanceSheet(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
         {
             List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
@@ -213,19 +229,138 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
             return await persistence.SaveAsync(listMain);
         }
+        private async Task<int> IngestCashFlow(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
+        {
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
 
+            var listMain = new List<EquityApi.CashFlow.Response>();
+            object _lock = new object();
+
+            await stockList.ParallelForEachAsync(async (stock) =>
+            {
+                List<EquityApi.CashFlow.Response> listSymbol =
+                            await GetCashFlowResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
+
+                lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
+            },
+            maxDegreeOfParallelism: 4);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain);
+        }
+        private async Task<int> IngestCashFlowTTM(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
+        {
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
+
+            var listMain = new List<EquityApi.CashFlow.Response>();
+            object _lock = new object();
+
+            await stockList.ParallelForEachAsync(async (stock) =>
+            {
+                EquityApi.CashFlow.Response listSymbol =
+                            await GetCashFlowResponses(CreateBaseFinancialTTMRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
+
+                lock (_lock) { listMain.Add(listSymbol); }
+            },
+            maxDegreeOfParallelism: 4);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain, true);
+        }
+        private async Task<int> IngestIncomeStatement(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
+        {
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
+
+            var listMain = new List<EquityApi.IncomeStatement.Response>();
+            object _lock = new object();
+            await stockList.ParallelForEachAsync(async (stock) =>
+            {
+                List<EquityApi.IncomeStatement.Response> listSymbol =
+                            await GetIncomeStatementResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
+
+                lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
+            },
+            maxDegreeOfParallelism: 4);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain);
+        }
+        private async Task<int> IngestIncomeStatementTTM(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
+        {
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
+
+            var listMain = new List<EquityApi.IncomeStatement.Response>();
+            object _lock = new object();
+            await stockList.ParallelForEachAsync(async (stock) =>
+            {
+                EquityApi.IncomeStatement.Response listSymbol =
+                            await GetIncomeStatementResponses(CreateBaseFinancialTTMRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
+
+                lock (_lock) { listMain.Add(listSymbol); }
+            },
+            maxDegreeOfParallelism: 4);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain, true);
+        }
+        #endregion
+
+        #region "Get MorningStar API Responses"
         private async Task<List<EquityApi.BalanceSheet.Response>> GetBalanceSheetResponses(List<BaseFinancialRequest> requests)
         {
             List<EquityApi.BalanceSheet.Response> responses = new List<EquityApi.BalanceSheet.Response>();
-            string endPoint = _configuration.GetValue<string>("MorningStar:EquityApi:BalanceSheet");
+            string endPoint = _configuration.GetValue<string>(EndPoint.BalanceSheet);
             foreach (var request in requests)
             {
-                string requestUrl = endPoint.SetQueryParams(request);
-                EquityApi.BalanceSheet.Response response = await RestClient.GetDynamicResponseAsync<EquityApi.BalanceSheet.Response>(requestUrl);
-                responses.Add(response);
+                responses.Add(await RestClient.GetDynamicResponseAsync<EquityApi.BalanceSheet.Response>(endPoint.SetQueryParams(request)));
             }
             return responses;
         }
+
+        private async Task<List<EquityApi.CashFlow.Response>> GetCashFlowResponses(List<BaseFinancialRequest> requests)
+        {
+            List<EquityApi.CashFlow.Response> responses = new List<EquityApi.CashFlow.Response>();
+            string endPoint = _configuration.GetValue<string>(EndPoint.CashFlow);
+
+            foreach (var request in requests)
+            {
+                responses.Add(await RestClient.GetDynamicResponseAsync<EquityApi.CashFlow.Response>(endPoint.SetQueryParams(request)));
+            }
+            return responses;
+        }
+
+        private async Task<EquityApi.CashFlow.Response> GetCashFlowResponses(BaseFinancialTTMRequest request)
+        {
+            string endPoint = _configuration.GetValue<string>(EndPoint.CashFlowTTM);
+            return await RestClient.GetDynamicResponseAsync<EquityApi.CashFlow.Response>(endPoint.SetQueryParams(request));
+        }
+
+        private async Task<List<EquityApi.IncomeStatement.Response>> GetIncomeStatementResponses(List<BaseFinancialRequest> requests)
+        {
+            List<EquityApi.IncomeStatement.Response> responses = new List<EquityApi.IncomeStatement.Response>();
+            string endPoint = _configuration.GetValue<string>(EndPoint.IncomeStatement); 
+            foreach (var request in requests)
+            {
+                responses.Add(await RestClient.GetDynamicResponseAsync<EquityApi.IncomeStatement.Response>(endPoint.SetQueryParams(request)));
+            }
+            return responses;
+        }
+
+        private async Task<EquityApi.IncomeStatement.Response> GetIncomeStatementResponses(BaseFinancialTTMRequest request)
+        {
+            string endPoint = _configuration.GetValue<string>(EndPoint.IncomeStatementTTM);
+            return await RestClient.GetDynamicResponseAsync<EquityApi.IncomeStatement.Response>(endPoint.SetQueryParams(request));
+        }
+
+        #endregion
 
         private List<BaseFinancialRequest> CreateBaseFinancialRequestList(string token, string exchangeId, string symbol, int year, int yearRange)
         {
@@ -262,6 +397,15 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             return requests;
         }
 
+        private BaseFinancialTTMRequest CreateBaseFinancialTTMRequestList(string token, string exchangeId, string symbol, int year, int yearRange)
+        {
+            int finalYear = year - yearRange;
+            string startDate = string.Format("01/{0}", finalYear);
+            string endDate = string.Format("01/{0}", year);
+
+            return BaseFinancialTTMRequest.Create(token, exchangeId, "Symbol", symbol, startDate, endDate);
+        }
+
         private IQueryable<MCompanyFinancialAvailability> CreateCompanyFinancialQuery(string exchangeId, string symbol)
         {
             var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
@@ -275,6 +419,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             return companyFinancialQuery;
 
         }
+        
         private async Task<TokenEntity> GetTokenEntity(Guid id)
         {
             Authentication authentication = new Authentication(_ingestionContext, _logger);

@@ -1,7 +1,15 @@
+/****** Object:  StoredProcedure [dbo].[MergeStockExchangeSecurity]    Script Date: 1/9/2020 5:02:15 PM ******/
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'MergeStockExchangeSecurity')
+DROP PROCEDURE [dbo].MergeStockExchangeSecurity
+GO
+
+/****** Object:  StoredProcedure [dbo].[MergeStockExchangeSecurity]    Script Date: 1/9/2020 5:02:15 PM ******/
 SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
+
 -- =============================================
 -- Author:		Kevin Wu
 -- Create date: 6th Jan 2020
@@ -34,7 +42,7 @@ BEGIN
 		  ,[ExchangeSubMarketGlobalId]
 		  ,[ParValue]
 		  ,[SuspendedFlag]
-	  FROM [IngestionDb].[MStar].[TStockExchangeSecurity]
+	  FROM [MStar].[TStockExchangeSecurity]
 	  WHERE IngestionTaskId=@TaskId)
 	  AS SourceTable ([ExchangeId]
 		  ,[CompanyName]

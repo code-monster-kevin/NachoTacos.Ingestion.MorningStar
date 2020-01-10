@@ -26,6 +26,10 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         public DbSet<TCompanyFinancialAvailability> TCompanyFinancialAvailabilities { get; set; }
         public DbSet<TGeneralInfo> TGeneralInfo { get; set; }
         public DbSet<TBalanceSheet> TBalanceSheets { get; set; }
+        public DbSet<TCashFlow> TCashFlows { get; set; }
+        public DbSet<TCashFlowTTM> TCashFlowTTMs { get; set; }
+        public DbSet<TIncomeStatement> TIncomeStatements { get; set; }
+        public DbSet<TIncomeStatementTTM> TIncomeStatementTTMs { get; set; }
 
         #endregion
 
@@ -33,6 +37,10 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         public DbSet<MStockExchangeSecurity> MStockExchangeSecurities { get; set; }
         public DbSet<MCompanyFinancialAvailability> MCompanyFinancialAvailabilities { get; set; }
         public DbSet<MBalanceSheet> MBalanceSheets { get; set; }
+        public DbSet<MCashFlow> MCashFlows { get; set; }
+        public DbSet<MCashFlowTTM> MCashFlowTTMs { get; set; }
+        public DbSet<MIncomeStatement> MIncomeStatements { get; set; }
+        public DbSet<MIncomeStatementTTM> MIncomeStatementTTMs { get; set; }
 
         #endregion
 

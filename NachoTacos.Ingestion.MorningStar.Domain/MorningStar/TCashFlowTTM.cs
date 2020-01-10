@@ -1,17 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
+namespace NachoTacos.Ingestion.MorningStar.Domain
 {
-#pragma warning disable IDE1006
-    // NOTE: Generated code may require at least .NET Framework 4.5 or .NET Core/Standard 2.0.
-    /// <remarks/>
-    [System.SerializableAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true)]
-    [System.Xml.Serialization.XmlRootAttribute(Namespace = "", IsNullable = false)]
-    public partial class CashFlowEntity
+    [Table("TCashFlowTTM", Schema = "MStar")]
+    public partial class TCashFlowTTM : TBase
     {
-
         private DateTime reportDateField;
 
         private DateTime periodEndingDateField;
@@ -3612,6 +3606,4 @@ namespace NachoTacos.Ingestion.MorningStar.Api.EquityApi
             }
         }
     }
-
-
 }

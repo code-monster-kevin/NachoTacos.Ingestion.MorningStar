@@ -20,6 +20,13 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Exchange Coverage List
+        /// </summary>
+        /// <param name="id">Client Configuration ID</param>
+        /// <param name="exchangeId">i.e. KLS</param>
+        /// <param name="stockStatus">Active, Delisted, All</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("StockExchangeSecurity/{id}")]
         public IActionResult StockExchangeSecurityRequest(Guid id, string exchangeId, string stockStatus)
@@ -37,7 +44,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
         }
 
         /// <summary>
-        /// 
+        /// Financials Coverage List
         /// </summary>
         /// <param name="id">Client Configuration ID</param>
         /// <param name="exchangeId">Exchange ie KLS</param>
@@ -59,7 +66,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
         }
 
         /// <summary>
-        /// Retrieves the Annual and Quarterly balance sheet for all counters
+        /// Retrieves the Annual and Quarterly Balance Sheet
         /// including types "AOR", "Restated", "Preliminary"
         /// </summary>
         /// <param name="id">Client Configuration ID</param>
@@ -69,19 +76,154 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
         /// <param name="symbol">Ticker code i.e. 1155</param>
         /// <returns></returns>
         [HttpGet]
-        [Route("BalanceSheet/{id}")]
-        public IActionResult BalanceSheetAllRequest(Guid id, string exchangeId, int year, int range, string symbol = null)
+        [Route("CompanyFinancials/BalanceSheet/{id}")]
+        public IActionResult BalanceSheetRequest(Guid id, string exchangeId, int year, int range, string symbol = null)
         {
             try
             {
                 if (range > 0 && range <= 9)
                 {
-                        BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "BalanceSheet", exchangeId, year, range, symbol));
-                        return Ok();
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "BalanceSheet", exchangeId, year, range, symbol));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("BalanceSheet"));
+                    return Ok();
                 }
                 else 
                 { 
                     return BadRequest("Report range must be between 1 to 9"); 
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the Annual and Quarterly Cash Flow
+        /// including types "AOR", "Restated", "Preliminary"
+        /// </summary>
+        /// <param name="id">Client Configuration ID</param>
+        /// <param name="exchangeId">Exchange ie KLS</param>
+        /// <param name="year">ie 2019</param>
+        /// <param name="range">1 to 9</param>
+        /// <param name="symbol">Ticker code i.e. 1155</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("CompanyFinancials/CashFlow/{id}")]
+        public IActionResult CashFlowRequest(Guid id, string exchangeId, int year, int range, string symbol = null)
+        {
+            try
+            {
+                if (range > 0 && range <= 9)
+                {
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "CashFlow", exchangeId, year, range, symbol));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("CashFlow"));
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Report range must be between 1 to 9");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the Annual and Quarterly Income Statement
+        /// including types "AOR", "Restated", "Preliminary"
+        /// </summary>
+        /// <param name="id">Client Configuration ID</param>
+        /// <param name="exchangeId">Exchange ie KLS</param>
+        /// <param name="year">ie 2019</param>
+        /// <param name="range">1 to 9</param>
+        /// <param name="symbol">Ticker code i.e. 1155</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("CompanyFinancials/IncomeStatement/{id}")]
+        public IActionResult IncomeStatementRequest(Guid id, string exchangeId, int year, int range, string symbol = null)
+        {
+            try
+            {
+                if (range > 0 && range <= 9)
+                {
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "IncomeStatement", exchangeId, year, range, symbol));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("IncomeStatement"));
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Report range must be between 1 to 9");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the Cash Flow Trailing 12 Months
+        /// </summary>
+        /// <param name="id">Client Configuration ID</param>
+        /// <param name="exchangeId">Exchange ie KLS</param>
+        /// <param name="year">ie 2019</param>
+        /// <param name="range">1 to 9</param>
+        /// <param name="symbol">Ticker code i.e. 1155</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("CompanyFinancials/CashFlowTTM/{id}")]
+        public IActionResult CashFlowTTMRequest(Guid id, string exchangeId, int year, int range, string symbol = null)
+        {
+            try
+            {
+                if (range > 0 && range <= 9)
+                {
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "CashFlowTTM", exchangeId, year, range, symbol));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("CashFlowTTM"));
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Report range must be between 1 to 9");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the Income Statement Trailing 12 Months
+        /// </summary>
+        /// <param name="id">Client Configuration ID</param>
+        /// <param name="exchangeId">Exchange ie KLS</param>
+        /// <param name="year">ie 2019</param>
+        /// <param name="range">1 to 9</param>
+        /// <param name="symbol">Ticker code i.e. 1155</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("CompanyFinancials/IncomeStatementTTM/{id}")]
+        public IActionResult IncomeStatementTTMRequest(Guid id, string exchangeId, int year, int range, string symbol = null)
+        {
+            try
+            {
+                if (range > 0 && range <= 9)
+                {
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "IncomeStatementTTM", exchangeId, year, range, symbol));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("IncomeStatementTTM"));
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Report range must be between 1 to 9");
                 }
             }
             catch (Exception ex)

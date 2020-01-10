@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NachoTacos.Ingestion.MorningStar.Data;
 
 namespace NachoTacos.Ingestion.MorningStar.Data.Migrations
 {
     [DbContext(typeof(IngestionContext))]
-    partial class IngestionContextModelSnapshot : ModelSnapshot
+    [Migration("20200110065542_add-table-ttm")]
+    partial class addtablettm
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

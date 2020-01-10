@@ -1,5 +1,12 @@
-﻿SET ANSI_NULLS ON
+﻿/****** Object:  StoredProcedure [dbo].[MergeCompanyFinancials]    Script Date: 1/9/2020 5:02:15 PM ******/
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'MergeCompanyFinancials')
+DROP PROCEDURE [dbo].[MergeCompanyFinancials]
 GO
+
+/****** Object:  StoredProcedure [dbo].[MergeCompanyFinancials]    Script Date: 1/9/2020 5:02:15 PM ******/
+SET ANSI_NULLS ON
+GO
+
 SET QUOTED_IDENTIFIER ON
 GO
 -- =============================================
@@ -41,7 +48,7 @@ BEGIN
       ,[LatestSemiAnnualReportDate]
       ,[TemplateCode]
       ,[GlobalTemplateCode]
-	  FROM [IngestionDb].[MStar].[TCompanyFinancialAvailability]
+	  FROM [MStar].[TCompanyFinancialAvailability]
 	  WHERE IngestionTaskId = @TaskId)
 	  AS SourceTable (
       [CompanyName]

@@ -9,18 +9,73 @@
             Similar to IngestionController, but uses HangFire to run as background job
             </summary>
         </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.StockExchangeSecurityRequest(System.Guid,System.String,System.String)">
+            <summary>
+            Exchange Coverage List
+            </summary>
+            <param name="id">Client Configuration ID</param>
+            <param name="exchangeId">i.e. KLS</param>
+            <param name="stockStatus">Active, Delisted, All</param>
+            <returns></returns>
+        </member>
         <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.CompanyFinancialsRequest(System.Guid,System.String)">
             <summary>
-            
+            Financials Coverage List
             </summary>
             <param name="id">Client Configuration ID</param>
             <param name="exchangeId">Exchange ie KLS</param>
             <returns></returns>
         </member>
-        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.BalanceSheetAllRequest(System.Guid,System.String,System.Int32,System.Int32,System.String)">
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.BalanceSheetRequest(System.Guid,System.String,System.Int32,System.Int32,System.String)">
             <summary>
-            Retrieves the Annual and Quarterly balance sheet for all counters
+            Retrieves the Annual and Quarterly Balance Sheet
             including types "AOR", "Restated", "Preliminary"
+            </summary>
+            <param name="id">Client Configuration ID</param>
+            <param name="exchangeId">Exchange ie KLS</param>
+            <param name="year">ie 2019</param>
+            <param name="range">1 to 9</param>
+            <param name="symbol">Ticker code i.e. 1155</param>
+            <returns></returns>
+        </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.CashFlowRequest(System.Guid,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Retrieves the Annual and Quarterly Cash Flow
+            including types "AOR", "Restated", "Preliminary"
+            </summary>
+            <param name="id">Client Configuration ID</param>
+            <param name="exchangeId">Exchange ie KLS</param>
+            <param name="year">ie 2019</param>
+            <param name="range">1 to 9</param>
+            <param name="symbol">Ticker code i.e. 1155</param>
+            <returns></returns>
+        </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.IncomeStatementRequest(System.Guid,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Retrieves the Annual and Quarterly Income Statement
+            including types "AOR", "Restated", "Preliminary"
+            </summary>
+            <param name="id">Client Configuration ID</param>
+            <param name="exchangeId">Exchange ie KLS</param>
+            <param name="year">ie 2019</param>
+            <param name="range">1 to 9</param>
+            <param name="symbol">Ticker code i.e. 1155</param>
+            <returns></returns>
+        </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.CashFlowTTMRequest(System.Guid,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Retrieves the Cash Flow Trailing 12 Months
+            </summary>
+            <param name="id">Client Configuration ID</param>
+            <param name="exchangeId">Exchange ie KLS</param>
+            <param name="year">ie 2019</param>
+            <param name="range">1 to 9</param>
+            <param name="symbol">Ticker code i.e. 1155</param>
+            <returns></returns>
+        </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.IncomeStatementTTMRequest(System.Guid,System.String,System.Int32,System.Int32,System.String)">
+            <summary>
+            Retrieves the Income Statement Trailing 12 Months
             </summary>
             <param name="id">Client Configuration ID</param>
             <param name="exchangeId">Exchange ie KLS</param>
@@ -1228,12 +1283,12 @@
             AOR, Restated, Preliminary
             </summary>
         </member>
-        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.BaseFinancialRequest.startDate">
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.BaseFinancialTTMRequest.startDate">
             <summary>
             mm/yyyy
             </summary>
         </member>
-        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.BaseFinancialRequest.endDate">
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.BaseFinancialTTMRequest.endDate">
             <summary>
             mm/yyyy
             </summary>
@@ -1961,6 +2016,13 @@
         <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.CashFlowEntity.CashGeneratedfromOperatingActivities">
             <remarks/>
         </member>
+        <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.CashFlow.Request">
+            <summary>
+            Source: https://equityapi.morningstar.com/DataCatalog.aspx?catalogid=47
+            Endpoint: http://equityapi.morningstar.com/Webservice/CompanyFinancialsService.asmx/GetCashFlow
+            Request parameters are case sensitive
+            </summary>
+        </member>
         <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.CompanyFinancialAvailabilityEntity">
             <remarks/>
             Source: https://equityapi.morningstar.com/DataCatalog.aspx?catalogid=47
@@ -2031,6 +2093,988 @@
         <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.CompanyFinancialAvailabilityEntity.GlobalTemplateCode">
             <remarks/>
         </member>
+        <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ReportDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PeriodEndingDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.FileDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.StatementType">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DataType">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.Interim">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.CurrencyId">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.FiscalYearEnd">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AccretionOnPreferredStock">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AccruedPreferredStockDividends">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AcquiredInProcessRnD">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AcquisitionExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AdministrativeExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AgencyFees">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AgencyFeesAndCommissions">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AllowancesForConstruction">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.Amortization">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.SecuritiesAmortization">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.CapitalnBusinessTaxes">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.CededPremiums">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.CommissionExpenses">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.CommissionRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.CostOfRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.CreditCard">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.CumulativeEffectOfAccountingChange">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.Depletion">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.Depreciation">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DepreciationAndAmortization">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DepreciationAmortizationDepletion">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DevelopmentExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetIncomeDiscontinuousOperations">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DividendIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.EarningLossOfEquityInvestments">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.EarningsFromEquityInterest">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ElectricRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.Equipment">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ExciseTaxes">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ExplorationDevelopmentAndMineralPropertyLeaseExpenses">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetIncomeExtraordinary">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.FeeRevenueAndOtherIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.Fees">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.FeesAndCommissions">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ForeignExchangeTradingGains">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.Fuel">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.FuelAndPurchasePower">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainOnSaleOfBusiness">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainOnSaleOfPPE">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainOnSaleOfSecurity">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainsLossOnDisposalOfDiscontinuedOperations">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GasRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GeneralAccountAssets">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GeneralExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GeneralAndAdministrativeExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GrossProfit">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GrossPremiumsWritten">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ImpairmentOfCapitalAssets">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherImpairmentOfCapitalAssets">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.IncomeFromEquityMethodInvestments">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.RestructringAndMnAIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.IncreaseDecreaseInNetUnearnedPremiumReserves">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InsuranceAndClaims">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InsuranceAndPremiums">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeFromInterestBearingDeposits">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestExpenseForCapitalizedLeaseObligations">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestExpenseForDeposit">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestExpenseForFederalFundsSoldAndSecuritiesPurchaseUnderAgreementsToResell">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestExpenseForLongTermDebt">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestExpenseForLongTermDebtAndCapitalSecurities">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestExpenseForShortTermDebt">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestExpenseNonOperating">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestExpenseOperating">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeAfterProvisionForLoanLoss">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeFromDeposits">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeFromFederalFundsSoldAndSecuritiesPurchaseUnderAgreementsToResell">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeFromInvestmentSecurities">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeFromLeases">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeFromLoans">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeFromLoansAndLease">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeFromSecurities">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeFromTradingAccountSecurities">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeNonOperating">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeOperating">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetNonOperatingInterestIncomeExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetOperatingInterestIncomeExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InvestmentBankingProfit">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.LifeAnnuityPremiums">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.LoansHeldForResell">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.LossAndLossAdjustmentExpectedIncurred">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.LossAdjustmentExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.MaintenanceAndRepairs">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.MarketingExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.MinorityInterests">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeFromOtherMoneyMarketInvestments">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetForeignExchangeGainLoss">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetIncomeCommonStockholders">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetIncomeContinuousOperations">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetInterestIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetInvestmentIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetOccupancyExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetPremiumsWritten">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetRealizedGainLossOnInvestments">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TotalRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NonRecurringOperationExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NonInterestExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NonInterestIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OccupancyAndEquipment">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OperatingExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OperatingIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OperatingRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OperatingTaxesnLicenses">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OperationAndMaintenance">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherCustomerServices">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherGainLossFromDispositionOfDiscontinuedOperations">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherIncomeExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherInterestExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherInterestIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherNonInterestExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherOperatingRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherSpecialCharges">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.MiscOtherSpecialCharges">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherTaxes">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PolicyAcquisitionExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PolicyFees">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PolicyholderBenefitsCeded">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PolicyholderBenefitsGross">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetPolicyholderBenefitsAndClaims">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PolicyholderDividends">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PolicyholderInterest">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PolicyholderAndReinsurerAccounts">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TrustPreferredSecurities">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PreferredStockDividends">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TotalPremiumsEarned">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PretaxIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PrincipleTransactionRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ProfessionalExpenseAndContractServicesExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PromotionAndAdvertising">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PropertyCasualtyPremiums">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ProvisionForDoubtfulAccounts">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ProvisionForGainLossOnDisposal">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TaxProvision">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.CreditLossesProvision">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PurchasedTransportationServices">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.RealizedCapitalGain">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.RentAndLandingFees">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ResearchExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ResearchAndDevelopment">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.RestructuringAndMergernAcquisition">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.RevenuesCargo">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.RevenuesPassenger">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.SalariesAndWages">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.SecuritiesActivities">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.SellingExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.SellingAndMarketingExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.SellingGeneralAndAdministration">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ServiceChargeOnDepositorAccounts">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ShareInNetIncomeOfUnconsolidatedEntities">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.SpecialIncomeCharges">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TimeDepositsPlaced">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TotalExpenses">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TradingGainLoss">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TransportationRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TrustFeesbyCommissions">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.UnderwritingExpenses">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.WriteDown">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherWriteDown">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.WriteOff">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherWriteOff">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherNonInterestIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PremiumTaxesCredit">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AmortizationOfIntangibles">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AmortizationOfDeferredAcquisitionCosts">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetIncomeFromContinuingAndDiscontinuedOperation">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetIncomeFromOtherGainsLosses">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetIncomeFromTaxLossCarryforward">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherOperatingExpenses">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PropertyLiabilityInsuranceClaims">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TotalMoneyMarketInvestments">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ReconciledCostOfRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ReconciledDepreciation">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.EarningBeforeInterestAndTax">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NormalizedIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.EBITDA">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NonOperatingExpenses">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NonOperatingIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.BasicContinuousOperations">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.BasicDiscontinuousOperations">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.BasicExtraordinary">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.BasicAccountingChange">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.BasicEPS">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DilutedContinuousOperations">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DilutedDiscontinuousOperations">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DilutedExtraordinary">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DilutedAccountingChange">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DilutedEPS">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.BasicAverageShares">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DilutedAverageShares">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DividendPerShare">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.BasicEPSOtherGainsLosses">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ContinuingAndDiscontinuedBasicEPS">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TaxLossCarryforwardBasicEPS">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DilutedEPSOtherGainsLosses">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ContinuingAndDiscontinuedDilutedEPS">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TaxLossCarryforwardDilutedEPS">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetIncomeFromContinuingOperationNetMinorityInterest">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AccessionNumber">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.FormType">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PrincipleInvestmentGainLoss">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainLossonSaleofAssets">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainonSaleofLoans">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainonSaleofInvestmentProperty">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.SpecialIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AcquiredinProcessRnDIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.RestructuringAndMergerAndAcquisitionIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ImpairmentofCapitalAssetsIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainonExtinguishmentofDebt">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.SpecialCharge">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.LossonExtinguishmentofDebt">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.EarningsFromEquityInterestNetOfTax">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetIncomeIncludingNoncontrollingInterests">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherunderPreferredStockDividend">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.EarningsfromEquityInterestRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainLossfromDisposalSaleofAssets">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainLossfromDisposalSaleofAssetsOther">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainonSaleofOtherRealEstateOwned">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.LitigationExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherthanTemporaryImpairmentLossesInvestments">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.UnrealizedGainorLoss">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ChangesinInventoriesofFinishedGoodsandWorkinProgress">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.WorkPerformedbyEntityandCapitalized">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DistributionCosts">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.StaffCosts">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.SocialSecurityCosts">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.PensionCosts">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherOperatingIncomeTotal">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ShareofOperatingProfitLossfromJointVenturesAndAssociates">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ExceptionalItems">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.IncomefromSharesinSubsidiariesGroupUndertakings">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.IncomefromAssociatesandOtherParticipatingInterests">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TotalOtherFinanceCost">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GrossDividendPayment">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestandSimilarIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.FeesandCommissionIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.FeesandCommissionExpense">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NetTradingIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OutwardReinsurancePremiums">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherStaffCosts">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ShareBasedPayments">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainonInvestmentProperties">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AverageDilutionEarn">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainonRedemptionandExtinguishmentofDebt">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.MiscellaneousOtherOperatingIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainLossonFinancialInstrumentsDesignatedasCashFlowHedges">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainLossonDerecognitionofAvailableForSaleFinancialAssets">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainLossonDerecognitionofNonCurrentAssetsNotHeldforSaleTotal">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NegativeGoodwillImmediatelyRecognized">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainsLossesonFinancialInstrumentsDuetoFairValueAdjustmentsinHedgeAccountingTotal">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ImpairmentLossesReversalsFinancialInstrumentsNet">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ShareofProfitLossfromEquityAccountedInvestments">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ClaimsandPaidIncurred">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ReinsuranceRecoveriesClaimsandBenefits">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ChangeinInsuranceLiabilitiesNetofReinsurance">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ChangeinInvestmentContract">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ChangeinReinsuranceAssets">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.CreditRiskProvisions">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.WagesandSalaries">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherNonOperatingIncomeExpenses">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InterestIncomeOtherOperatingIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherNonOperatingIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherNonOperatingExpenses">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TotalUnusualItems">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TotalUnusualItemsExcludingGoodwill">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TaxRateForCalcs">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.CalculatedTaxEffectOfUnusualItems">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NormalizedBasicEPS">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NormalizedDilutedEPS">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainOnForeignCurrencyExchangeFromBorrowingsRelatingToInterestCosts">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.StockBasedCompensation">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.FiscalYearChange">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherGandA">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherCostofRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.RentandLandingFeesCostofRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DDACostofRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TotalOperatingIncomeAsReported">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ReportedNormalizedBasicEPS">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ReportedNormalizedDilutedEPS">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.RentExpenseSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NormalizedPretaxIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DividendCoverageRatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ResearchAndDevelopmentExpensesSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DepreciationSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AmortizationSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DilutedNIAvailtoComStockholders">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.InvestmentContractLiabilitiesIncurred">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ReinsuranceRecoveriesofInvestmentContract">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TotalDividendPaymentofEquityShares">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TotalDividendPaymentofNonEquityShares">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ChangeinTheGrossProvisionforUnearnedPremiums">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ChangeinTheGrossProvisionforUnearnedPremiumsReinsurersShare">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ClaimsandChangeinInsuranceLiabilities">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ReinsuranceRecoveriesofInsuranceLiabilities">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.TotalRevenueAsReported">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OperatingExpenseAsReported">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NormalizedIncomeAsReported">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.EffectiveTaxRateAsReported">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NormalizedEBITDAAsReported">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NormalizedEBITAsReported">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NormalizedOperatingProfitAsReported">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DisposalofBusinessesSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DiscontinuedOperationsSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.AssetDisposalsSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ImpairmentWriteOffWriteDownofCapitalAssetsSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GoodwillImpairmentWriteOffSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.ImpairmentWriteOffWriteDownofOtherAssetsSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.GainLossonExtinguishmentofDebtSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.DebtRestructuringSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.LitigationIncomeExpenseSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.MergerandAcquisitionIncomeExpenseSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.RestructuringandReorganizationExpenseSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.OtherIrregularIncomeExpensesSupplemental">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity.NormalizedEBITDA">
+            <remarks/>
+        </member>
+        <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatement.Request">
+            <summary>
+            Source: https://equityapi.morningstar.com/DataCatalog.aspx?catalogid=47
+            Endpoint: http://equityapi.morningstar.com/Webservice/CompanyFinancialsService.asmx/GetIncomeStatement
+            Request parameters are case sensitive
+            </summary>
+        </member>
         <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.StockExchangeSecurity.Request">
             <summary>
             Source: https://equityapi.morningstar.com/DataCatalog.aspx?catalogid=161
@@ -2069,6 +3113,12 @@
             </summary>
             <param name="loginResult"></param>
             <returns></returns>
+        </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Services.IngestionJobs.MergeFinancialTempToMaster(System.String)">
+            <summary>
+            Executes Merge Stored Procedures until all unprocessed ingestion tasks are completed        /// 
+            </summary>
+            <param name="reportType"></param>
         </member>
     </members>
 </doc>
