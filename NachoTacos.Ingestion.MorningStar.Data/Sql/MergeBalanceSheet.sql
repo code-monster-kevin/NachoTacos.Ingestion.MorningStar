@@ -1,5 +1,6 @@
 ﻿
 /****** Object:  StoredProcedure [dbo].[MergeBalanceSheet]    Script Date: 1/7/2020 5:14:01 PM ******/
+IF EXISTS (SELECT * FROM sys.objects WHERE type = 'P' AND name = 'MergeBalanceSheet')
 DROP PROCEDURE [dbo].[MergeBalanceSheet]
 GO
 
