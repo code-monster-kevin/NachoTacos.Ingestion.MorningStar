@@ -74,16 +74,17 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
         /// <param name="year">ie 2019</param>
         /// <param name="range">1 to 9</param>
         /// <param name="symbol">Ticker code i.e. 1155</param>
+        /// <param name="isDifferenceOnly">To only pull missing data</param>
         /// <returns></returns>
         [HttpGet]
         [Route("CompanyFinancials/BalanceSheet/{id}")]
-        public IActionResult BalanceSheetRequest(Guid id, string exchangeId, int year, int range, string symbol = null)
+        public IActionResult BalanceSheetRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
         {
             try
             {
                 if (range > 0 && range <= 9)
                 {
-                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "BalanceSheet", exchangeId, year, range, symbol));
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "BalanceSheet", exchangeId, year, range, symbol, isDifferenceOnly));
                     BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("BalanceSheet"));
                     return Ok();
                 }
@@ -108,16 +109,17 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
         /// <param name="year">ie 2019</param>
         /// <param name="range">1 to 9</param>
         /// <param name="symbol">Ticker code i.e. 1155</param>
+        /// <param name="isDifferenceOnly">To only pull missing data</param>
         /// <returns></returns>
         [HttpGet]
         [Route("CompanyFinancials/CashFlow/{id}")]
-        public IActionResult CashFlowRequest(Guid id, string exchangeId, int year, int range, string symbol = null)
+        public IActionResult CashFlowRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
         {
             try
             {
                 if (range > 0 && range <= 9)
                 {
-                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "CashFlow", exchangeId, year, range, symbol));
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "CashFlow", exchangeId, year, range, symbol, isDifferenceOnly));
                     BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("CashFlow"));
                     return Ok();
                 }
@@ -142,16 +144,17 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
         /// <param name="year">ie 2019</param>
         /// <param name="range">1 to 9</param>
         /// <param name="symbol">Ticker code i.e. 1155</param>
+        /// <param name="isDifferenceOnly">To only pull missing data</param>
         /// <returns></returns>
         [HttpGet]
         [Route("CompanyFinancials/IncomeStatement/{id}")]
-        public IActionResult IncomeStatementRequest(Guid id, string exchangeId, int year, int range, string symbol = null)
+        public IActionResult IncomeStatementRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
         {
             try
             {
                 if (range > 0 && range <= 9)
                 {
-                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "IncomeStatement", exchangeId, year, range, symbol));
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "IncomeStatement", exchangeId, year, range, symbol, isDifferenceOnly));
                     BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("IncomeStatement"));
                     return Ok();
                 }
@@ -175,16 +178,17 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
         /// <param name="year">ie 2019</param>
         /// <param name="range">1 to 9</param>
         /// <param name="symbol">Ticker code i.e. 1155</param>
+        /// <param name="isDifferenceOnly">To only pull missing data</param>
         /// <returns></returns>
         [HttpGet]
         [Route("CompanyFinancials/CashFlowTTM/{id}")]
-        public IActionResult CashFlowTTMRequest(Guid id, string exchangeId, int year, int range, string symbol = null)
+        public IActionResult CashFlowTTMRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
         {
             try
             {
                 if (range > 0 && range <= 9)
                 {
-                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "CashFlowTTM", exchangeId, year, range, symbol));
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "CashFlowTTM", exchangeId, year, range, symbol, isDifferenceOnly));
                     BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("CashFlowTTM"));
                     return Ok();
                 }
@@ -208,17 +212,115 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
         /// <param name="year">ie 2019</param>
         /// <param name="range">1 to 9</param>
         /// <param name="symbol">Ticker code i.e. 1155</param>
+        /// <param name="isDifferenceOnly">To only pull missing data</param>
         /// <returns></returns>
         [HttpGet]
         [Route("CompanyFinancials/IncomeStatementTTM/{id}")]
-        public IActionResult IncomeStatementTTMRequest(Guid id, string exchangeId, int year, int range, string symbol = null)
+        public IActionResult IncomeStatementTTMRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
         {
             try
             {
                 if (range > 0 && range <= 9)
                 {
-                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "IncomeStatementTTM", exchangeId, year, range, symbol));
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetCompanyFinancialReportAll(id, "IncomeStatementTTM", exchangeId, year, range, symbol, isDifferenceOnly));
                     BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("IncomeStatementTTM"));
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Report range must be between 1 to 9");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("FinancialRatio/EfficiencyRatio/{id}")]
+        public IActionResult EfficiencyRatioRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
+        {
+            try
+            {
+                if (range > 0 && range <= 9)
+                {
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetFinancialRatioReportAll(id, "EfficiencyRatio", exchangeId, year, range, symbol, isDifferenceOnly));
+                    //BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("ProfitabilityRatio"));
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Report range must be between 1 to 9");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("FinancialRatio/EfficiencyRatioTTM/{id}")]
+        public IActionResult EfficiencyRatioTTMRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
+        {
+            try
+            {
+                if (range > 0 && range <= 9)
+                {
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetFinancialRatioReportAll(id, "EfficiencyRatioTTM", exchangeId, year, range, symbol, isDifferenceOnly));
+                    //BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("ProfitabilityRatio"));
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Report range must be between 1 to 9");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
+        }
+
+
+        [HttpGet]
+        [Route("FinancialRatio/ProfitabilityRatio/{id}")]
+        public IActionResult ProfitabilityRatioRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
+        {
+            try
+            {
+                if (range > 0 && range <= 9)
+                {
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetFinancialRatioReportAll(id, "ProfitabilityRatio", exchangeId, year, range, symbol, isDifferenceOnly));
+                    //BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("ProfitabilityRatio"));
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Report range must be between 1 to 9");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("FinancialRatio/ProfitabilityRatioTTM/{id}")]
+        public IActionResult ProfitabilityRatioTTMRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
+        {
+            try
+            {
+                if (range > 0 && range <= 9)
+                {
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetFinancialRatioReportAll(id, "ProfitabilityRatioTTM", exchangeId, year, range, symbol, isDifferenceOnly));
+                    //BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("ProfitabilityRatio"));
                     return Ok();
                 }
                 else

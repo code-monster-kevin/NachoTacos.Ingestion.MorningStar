@@ -175,7 +175,85 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             return await _ingestionContext.SaveChangesAsync();
         }
         
-        
+        public async Task<int> SaveAsync(List<EquityApi.EfficiencyRatios.Response> responses, bool isTTM = false)
+        {
+            foreach (var response in responses)
+            {
+                List<EfficiencyEntity> entities = response.EfficiencyEntityList;
+                if (ValidateEntities(entities) != 0)
+                {
+                    GeneralInfo generalInfo = response.GeneralInfo;
+                    _logger.LogInformation("IngestionTask ==> Symbol: {0}", generalInfo.Symbol);
+
+                    IngestionTask ingestionTask = IngestionTask.Create(string.Format("EfficiencyRatios {0}", generalInfo.ExchangeId), string.Format("Symbol: {0}", generalInfo.Symbol));
+                    _ingestionContext.IngestionTasks.Add(ingestionTask);
+
+                    TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
+                    tGeneralInfo.Id = Guid.NewGuid();
+                    tGeneralInfo.IngestionTaskId = ingestionTask.IngestionTaskId;
+                    _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
+
+                    foreach (var entity in entities)
+                    {
+                        if (isTTM)
+                        {
+                            TEfficiencyRatioTTM item = _mapper.Map<TEfficiencyRatioTTM>(entity);
+                            item.Id = Guid.NewGuid();
+                            item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                            _ingestionContext.TEfficiencyRatioTTMs.Add(item);
+                        }
+                        else
+                        {
+                            TEfficiencyRatio item = _mapper.Map<TEfficiencyRatio>(entity);
+                            item.Id = Guid.NewGuid();
+                            item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                            _ingestionContext.TEfficiencyRatios.Add(item);
+                        }
+                    }
+                }
+            }
+            return await _ingestionContext.SaveChangesAsync();
+        }
+        public async Task<int> SaveAsync(List<EquityApi.ProfitabilityRatios.Response> responses, bool isTTM = false)
+        {
+            foreach (var response in responses)
+            {
+                List<ProfitabilityEntity> entities = response.ProfitabilityEntityList;
+                if (ValidateEntities(entities) != 0)
+                {
+                    GeneralInfo generalInfo = response.GeneralInfo;
+                    _logger.LogInformation("IngestionTask ==> Symbol: {0}", generalInfo.Symbol);
+
+                    IngestionTask ingestionTask = IngestionTask.Create(string.Format("ProfitabilityRatios {0}", generalInfo.ExchangeId), string.Format("Symbol: {0}", generalInfo.Symbol));
+                    _ingestionContext.IngestionTasks.Add(ingestionTask);
+
+                    TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
+                    tGeneralInfo.Id = Guid.NewGuid();
+                    tGeneralInfo.IngestionTaskId = ingestionTask.IngestionTaskId;
+                    _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
+
+                    foreach (var entity in entities)
+                    {
+                        if (isTTM)
+                        {
+                            TProfitabilityRatioTTM item = _mapper.Map<TProfitabilityRatioTTM>(entity);
+                            item.Id = Guid.NewGuid();
+                            item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                            _ingestionContext.TProfitabilityRatioTTMs.Add(item);
+                        }
+                        else
+                        {
+                            TProfitabilityRatio item = _mapper.Map<TProfitabilityRatio>(entity);
+                            item.Id = Guid.NewGuid();
+                            item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                            _ingestionContext.TProfitabilityRatios.Add(item);
+                        }
+                    }
+                }
+            }
+            return await _ingestionContext.SaveChangesAsync();
+        }
+
         private int ValidateEntities(dynamic entities)
         {
             if (entities == null) return 0;

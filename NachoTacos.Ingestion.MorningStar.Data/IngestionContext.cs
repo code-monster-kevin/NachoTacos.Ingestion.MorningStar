@@ -30,6 +30,10 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         public DbSet<TCashFlowTTM> TCashFlowTTMs { get; set; }
         public DbSet<TIncomeStatement> TIncomeStatements { get; set; }
         public DbSet<TIncomeStatementTTM> TIncomeStatementTTMs { get; set; }
+        public DbSet<TEfficiencyRatio> TEfficiencyRatios { get; set; }
+        public DbSet<TEfficiencyRatioTTM> TEfficiencyRatioTTMs { get; set; }
+        public DbSet<TProfitabilityRatio> TProfitabilityRatios { get; set; }
+        public DbSet<TProfitabilityRatioTTM> TProfitabilityRatioTTMs { get; set; }
 
         #endregion
 
@@ -41,7 +45,10 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         public DbSet<MCashFlowTTM> MCashFlowTTMs { get; set; }
         public DbSet<MIncomeStatement> MIncomeStatements { get; set; }
         public DbSet<MIncomeStatementTTM> MIncomeStatementTTMs { get; set; }
-
+        public DbSet<MEfficiencyRatio> MEfficiencyRatios { get; set; }
+        public DbSet<MEfficiencyRatioTTM> MEfficiencyRatioTTMs { get; set; }
+        public DbSet<MProfitabilityRatio> MProfitabilityRatios { get; set; }
+        public DbSet<MProfitabilityRatioTTM> MProfitabilityRatioTTMs { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

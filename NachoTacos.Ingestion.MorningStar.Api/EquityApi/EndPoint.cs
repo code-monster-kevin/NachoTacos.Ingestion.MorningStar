@@ -9,5 +9,9 @@
         public static readonly string CashFlowTTM = "MorningStar:EquityApi:CashFlowTTM";
         public static readonly string IncomeStatement = "MorningStar:EquityApi:IncomeStatement";
         public static readonly string IncomeStatementTTM = "MorningStar:EquityApi:IncomeStatementTTM";
+        public static readonly string EfficiencyRatios = "MorningStar:EquityApi:EfficiencyRatios";
+        public static readonly string EfficiencyRatiosTTM = "MorningStar:EquityApi:EfficiencyRatiosTTM";
+        public static readonly string ProfitabilityRatios = "MorningStar:EquityApi:ProfitabilityRatios";
+        public static readonly string ProfitabilityRatiosTTM = "MorningStar:EquityApi:ProfitabilityRatiosTTM";
     }
 }

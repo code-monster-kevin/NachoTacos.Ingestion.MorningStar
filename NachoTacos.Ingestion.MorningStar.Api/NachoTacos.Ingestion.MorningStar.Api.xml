@@ -26,7 +26,7 @@
             <param name="exchangeId">Exchange ie KLS</param>
             <returns></returns>
         </member>
-        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.BalanceSheetRequest(System.Guid,System.String,System.Int32,System.Int32,System.String)">
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.BalanceSheetRequest(System.Guid,System.String,System.Int32,System.Int32,System.String,System.Boolean)">
             <summary>
             Retrieves the Annual and Quarterly Balance Sheet
             including types "AOR", "Restated", "Preliminary"
@@ -36,9 +36,10 @@
             <param name="year">ie 2019</param>
             <param name="range">1 to 9</param>
             <param name="symbol">Ticker code i.e. 1155</param>
+            <param name="isDifferenceOnly">To only pull missing data</param>
             <returns></returns>
         </member>
-        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.CashFlowRequest(System.Guid,System.String,System.Int32,System.Int32,System.String)">
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.CashFlowRequest(System.Guid,System.String,System.Int32,System.Int32,System.String,System.Boolean)">
             <summary>
             Retrieves the Annual and Quarterly Cash Flow
             including types "AOR", "Restated", "Preliminary"
@@ -48,9 +49,10 @@
             <param name="year">ie 2019</param>
             <param name="range">1 to 9</param>
             <param name="symbol">Ticker code i.e. 1155</param>
+            <param name="isDifferenceOnly">To only pull missing data</param>
             <returns></returns>
         </member>
-        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.IncomeStatementRequest(System.Guid,System.String,System.Int32,System.Int32,System.String)">
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.IncomeStatementRequest(System.Guid,System.String,System.Int32,System.Int32,System.String,System.Boolean)">
             <summary>
             Retrieves the Annual and Quarterly Income Statement
             including types "AOR", "Restated", "Preliminary"
@@ -60,9 +62,10 @@
             <param name="year">ie 2019</param>
             <param name="range">1 to 9</param>
             <param name="symbol">Ticker code i.e. 1155</param>
+            <param name="isDifferenceOnly">To only pull missing data</param>
             <returns></returns>
         </member>
-        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.CashFlowTTMRequest(System.Guid,System.String,System.Int32,System.Int32,System.String)">
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.CashFlowTTMRequest(System.Guid,System.String,System.Int32,System.Int32,System.String,System.Boolean)">
             <summary>
             Retrieves the Cash Flow Trailing 12 Months
             </summary>
@@ -71,9 +74,10 @@
             <param name="year">ie 2019</param>
             <param name="range">1 to 9</param>
             <param name="symbol">Ticker code i.e. 1155</param>
+            <param name="isDifferenceOnly">To only pull missing data</param>
             <returns></returns>
         </member>
-        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.IncomeStatementTTMRequest(System.Guid,System.String,System.Int32,System.Int32,System.String)">
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.IncomeStatementTTMRequest(System.Guid,System.String,System.Int32,System.Int32,System.String,System.Boolean)">
             <summary>
             Retrieves the Income Statement Trailing 12 Months
             </summary>
@@ -82,6 +86,7 @@
             <param name="year">ie 2019</param>
             <param name="range">1 to 9</param>
             <param name="symbol">Ticker code i.e. 1155</param>
+            <param name="isDifferenceOnly">To only pull missing data</param>
             <returns></returns>
         </member>
         <member name="T:NachoTacos.Ingestion.MorningStar.Api.Controllers.IngestionController">
@@ -2093,6 +2098,93 @@
         <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.CompanyFinancialAvailabilityEntity.GlobalTemplateCode">
             <remarks/>
         </member>
+        <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.ReportDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.PeriodEndingDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.FileDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.StatementType">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.DataType">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.Interim">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.FiscalYearEnd">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.DaysInSales">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.DaysInInventory">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.DaysInPayment">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.CashConversionCycle">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.ReceivableTurnover">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.InventoryTurnover">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.PayableTurnover">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.FixedAssetsTurnover">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.AssetsTurnover">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.ROE">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.ROA">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.ROIC">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.FCFSalesRatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.FCFNetIncomeRatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.CapitalExpenditureSalesRatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.AccessionNumber">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.FormType">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.ROE5YrAvg">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.ROA5YrAvg">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.AVG5YrsROIC">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.NormalizedROIC">
+            <remarks/>
+        </member>
         <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity">
             <remarks/>
         </member>
@@ -3074,6 +3166,84 @@
             Endpoint: http://equityapi.morningstar.com/Webservice/CompanyFinancialsService.asmx/GetIncomeStatement
             Request parameters are case sensitive
             </summary>
+        </member>
+        <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.ReportDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.PeriodEndingDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.FileDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.StatementType">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.DataType">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.Interim">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.CurrencyId">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.FiscalYearEnd">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.GrossMargin">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.OperatingMargin">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.EBTMargin">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.TaxRate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.NetMargin">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.SalesPerEmployee">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.EBITMargin">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.EBITDAMargin">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.NormalizedNetProfitMargin">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.InterestCoverage">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.NetIncomeperFullTimeEmployee">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.IncPerEmployeeTotOps">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.SolvencyRatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.ExpenseRatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.LossRatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.AccessionNumber">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.FormType">
+            <remarks/>
         </member>
         <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.StockExchangeSecurity.Request">
             <summary>

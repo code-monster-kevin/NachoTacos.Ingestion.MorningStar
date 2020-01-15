@@ -1,0 +1,30 @@
+﻿<EfficiencyEntity>
+  <ReportDate>date</ReportDate>
+  <PeriodEndingDate>date</PeriodEndingDate>
+  <FileDate>date</FileDate>
+  <StatementType>string</StatementType>
+  <DataType>string</DataType>
+  <Interim>string</Interim>
+  <FiscalYearEnd>int</FiscalYearEnd>
+  <DaysInSales>decimal</DaysInSales>
+  <DaysInInventory>decimal</DaysInInventory>
+  <DaysInPayment>decimal</DaysInPayment>
+  <CashConversionCycle>decimal</CashConversionCycle>
+  <ReceivableTurnover>decimal</ReceivableTurnover>
+  <InventoryTurnover>decimal</InventoryTurnover>
+  <PayableTurnover>decimal</PayableTurnover>
+  <FixedAssetsTurnover>decimal</FixedAssetsTurnover>
+  <AssetsTurnover>decimal</AssetsTurnover>
+  <ROE>decimal</ROE>
+  <ROA>decimal</ROA>
+  <ROIC>decimal</ROIC>
+  <FCFSalesRatio>decimal</FCFSalesRatio>
+  <FCFNetIncomeRatio>decimal</FCFNetIncomeRatio>
+  <CapitalExpenditureSalesRatio>decimal</CapitalExpenditureSalesRatio>
+  <AccessionNumber>string</AccessionNumber>
+  <FormType>string</FormType>
+  <ROE5YrAvg>decimal</ROE5YrAvg>
+  <ROA5YrAvg>decimal</ROA5YrAvg>
+  <AVG5YrsROIC>decimal</AVG5YrsROIC>
+  <NormalizedROIC>decimal</NormalizedROIC>
+</EfficiencyEntity>

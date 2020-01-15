@@ -117,7 +117,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
         }
         
         [AutomaticRetry(Attempts = 0)]
-        public async Task<int> GetCompanyFinancialReportAll(Guid id, string reportType, string exchangeId, int year, int range, string symbol = null)
+        public async Task<int> GetCompanyFinancialReportAll(Guid id, string reportType, string exchangeId, int year, int range, string symbol = null, bool isDiffOnly = false)
         {
             try
             {
@@ -125,7 +125,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                 TokenEntity tokenEntity = await GetTokenEntity(id);
                 if (tokenEntity != null)
                 {
-                    IQueryable<MCompanyFinancialAvailability> query = CreateCompanyFinancialQuery(exchangeId, symbol);
+                    IQueryable<MCompanyFinancialAvailability> query = CreateCompanyFinancialQuery(exchangeId, symbol, reportType, isDiffOnly);
 
                     int recordCount = query.Count();
                     int pageSize = 20;
@@ -156,7 +156,53 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                     }
                 }
 
-                _logger.LogInformation(string.Format("[GetBalanceSheetAll] ===> {0} records saved", result));
+                _logger.LogInformation(string.Format("[GetCompanyFinancialReportAll] ===> {0} records saved", result));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return 0;
+            }
+        }
+
+        [AutomaticRetry(Attempts = 0)]
+        public async Task<int> GetFinancialRatioReportAll(Guid id, string reportType, string exchangeId, int year, int range, string symbol = null, bool isDiffOnly = false)
+        {
+            try
+            {
+                int result = 0;
+                TokenEntity tokenEntity = await GetTokenEntity(id);
+                if (tokenEntity != null)
+                {
+                    IQueryable<MCompanyFinancialAvailability> query = CreateCompanyFinancialQuery(exchangeId, symbol, reportType, isDiffOnly);
+
+                    int recordCount = query.Count();
+                    int pageSize = 20;
+                    int pageCount = (int)((recordCount + pageSize) / pageSize);
+                    for (int i = 0; i < pageCount; i++)
+                    {
+                        switch (reportType)
+                        {
+                            case "EfficiencyRatio":
+                                result += await IngestEfficiencyRatio(tokenEntity.Token, query, year, range, pageSize, i);
+                                break;
+                            case "EfficiencyRatioTTM":
+                                result += await IngestEfficiencyRatioTTM(tokenEntity.Token, query, year, range, pageSize, i);
+                                break;
+                            case "ProfitabilityRatio":
+                                result += await IngestProfitabilityRatio(tokenEntity.Token, query, year, range, pageSize, i);
+                                break;
+                            case "ProfitabilityRatioTTM":
+                                result += await IngestProfitabilityRatioTTM(tokenEntity.Token, query, year, range, pageSize, i);
+                                break;
+                            default:
+                                break;
+                        };
+                    }
+                }
+
+                _logger.LogInformation(string.Format("[GetFinancialRatioReportAll] ===> {0} records saved", result));
                 return result;
             }
             catch (Exception ex)
@@ -311,6 +357,93 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
             return await persistence.SaveAsync(listMain, true);
         }
+        
+        private async Task<int> IngestEfficiencyRatio(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
+        {
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
+
+            var listMain = new List<EquityApi.EfficiencyRatios.Response>();
+            object _lock = new object();
+
+            await stockList.ParallelForEachAsync(async (stock) =>
+            {
+                List<EquityApi.EfficiencyRatios.Response> listSymbol =
+                            await GetEfficiencyRatiosResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
+
+                lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
+            },
+            maxDegreeOfParallelism: 4);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain);
+        }
+        private async Task<int> IngestEfficiencyRatioTTM(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
+        {
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
+
+            var listMain = new List<EquityApi.EfficiencyRatios.Response>();
+            object _lock = new object();
+
+            await stockList.ParallelForEachAsync(async (stock) =>
+            {
+                EquityApi.EfficiencyRatios.Response listSymbol =
+                            await GetEfficiencyRatiosResponses(CreateBaseFinancialTTMRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
+
+                lock (_lock) { listMain.Add(listSymbol); }
+            },
+            maxDegreeOfParallelism: 4);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain, true);
+        }
+        private async Task<int> IngestProfitabilityRatio(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
+        {
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
+
+            var listMain = new List<EquityApi.ProfitabilityRatios.Response>();
+            object _lock = new object();
+
+            await stockList.ParallelForEachAsync(async (stock) =>
+            {
+                List<EquityApi.ProfitabilityRatios.Response> listSymbol =
+                            await GetProfitabilityRatiosResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
+
+                lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
+            },
+            maxDegreeOfParallelism: 4);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain);
+        }
+        private async Task<int> IngestProfitabilityRatioTTM(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
+        {
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
+
+            var listMain = new List<EquityApi.ProfitabilityRatios.Response>();
+            object _lock = new object();
+
+            await stockList.ParallelForEachAsync(async (stock) =>
+            {
+                EquityApi.ProfitabilityRatios.Response listSymbol =
+                            await GetProfitabilityRatiosResponses(CreateBaseFinancialTTMRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
+
+                lock (_lock) { listMain.Add(listSymbol); }
+            },
+            maxDegreeOfParallelism: 4);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain, true);
+        }
+
+
         #endregion
 
         #region "Get MorningStar API Responses"
@@ -359,9 +492,141 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             string endPoint = _configuration.GetValue<string>(EndPoint.IncomeStatementTTM);
             return await RestClient.GetDynamicResponseAsync<EquityApi.IncomeStatement.Response>(endPoint.SetQueryParams(request));
         }
+        private async Task<List<EquityApi.EfficiencyRatios.Response>> GetEfficiencyRatiosResponses(List<BaseFinancialRequest> requests)
+        {
+            List<EquityApi.EfficiencyRatios.Response> responses = new List<EquityApi.EfficiencyRatios.Response>();
+            string endPoint = _configuration.GetValue<string>(EndPoint.EfficiencyRatios);
+            foreach (var request in requests)
+            {
+                responses.Add(await RestClient.GetDynamicResponseAsync<EquityApi.EfficiencyRatios.Response>(endPoint.SetQueryParams(request)));
+            }
+            return responses;
+        }
+        private async Task<List<EquityApi.ProfitabilityRatios.Response>> GetProfitabilityRatiosResponses(List<BaseFinancialRequest> requests)
+        {
+            List<EquityApi.ProfitabilityRatios.Response> responses = new List<EquityApi.ProfitabilityRatios.Response>();
+            string endPoint = _configuration.GetValue<string>(EndPoint.ProfitabilityRatios);
+            foreach (var request in requests)
+            {
+                responses.Add(await RestClient.GetDynamicResponseAsync<EquityApi.ProfitabilityRatios.Response>(endPoint.SetQueryParams(request)));
+            }
+            return responses;
+        }
+        private async Task<EquityApi.EfficiencyRatios.Response> GetEfficiencyRatiosResponses(BaseFinancialTTMRequest request)
+        {
+            string endPoint = _configuration.GetValue<string>(EndPoint.EfficiencyRatiosTTM);
+            return await RestClient.GetDynamicResponseAsync<EquityApi.EfficiencyRatios.Response>(endPoint.SetQueryParams(request));
+        }
+        private async Task<EquityApi.ProfitabilityRatios.Response> GetProfitabilityRatiosResponses(BaseFinancialTTMRequest request)
+        {
+            string endPoint = _configuration.GetValue<string>(EndPoint.ProfitabilityRatiosTTM);
+            return await RestClient.GetDynamicResponseAsync<EquityApi.ProfitabilityRatios.Response>(endPoint.SetQueryParams(request));
+        }
 
         #endregion
 
+        #region Data Queries
+        private IQueryable<MCompanyFinancialAvailability> CreateCompanyFinancialQuery(string exchangeId, string symbol, string reportType, bool isDiffOnly)
+        {
+            if (isDiffOnly == true)
+            {
+                switch(reportType)
+                {
+                    case "BalanceSheet":
+                        return CreateCompanyFinancialBalanceSheetDiffQuery(exchangeId);
+                    case "CashFlow":
+                        return CreateCompanyFinancialCashFlowDiffQuery(exchangeId);
+                    case "CashFlowTTM":
+                        return CreateCompanyFinancialCashFlowTTMDiffQuery(exchangeId);
+                    case "IncomeStatement":
+                        return CreateCompanyFinancialIncomeStatementDiffQuery(exchangeId);
+                    case "IncomeStatementTTM":
+                        return CreateCompanyFinancialIncomeStatementTTMDiffQuery(exchangeId);
+                    default:
+                        return CreateStandardCompanyFinancialQuery(exchangeId, symbol);
+                }
+            }
+            else
+            {
+                return CreateStandardCompanyFinancialQuery(exchangeId, symbol);
+            }
+        }
+
+        private IQueryable<MCompanyFinancialAvailability> CreateStandardCompanyFinancialQuery(string exchangeId, string symbol)
+        {
+            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
+                                                    .Where(x => x.ExchangeId == exchangeId);
+
+            if (!string.IsNullOrEmpty(symbol))
+            {
+                companyFinancialQuery = companyFinancialQuery.AsQueryable().Where(x => x.Symbol == symbol);
+            }
+
+            return companyFinancialQuery;
+        }
+
+        private IQueryable<MCompanyFinancialAvailability> CreateCompanyFinancialBalanceSheetDiffQuery(string exchangeId)
+        {
+            var existingSymbols = _ingestionContext.MBalanceSheets.AsQueryable()
+                                                    .Where(x => x.ExchangeId == exchangeId)
+                                                    .Select(x => x.Symbol).Distinct();
+
+            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
+                                                         .Where(x => !existingSymbols.Contains(x.Symbol));
+
+            return companyFinancialQuery;
+        }
+
+        private IQueryable<MCompanyFinancialAvailability> CreateCompanyFinancialCashFlowDiffQuery(string exchangeId)
+        {
+            var existingSymbols = _ingestionContext.MCashFlows.AsQueryable()
+                                                    .Where(x => x.ExchangeId == exchangeId)
+                                                    .Select(x => x.Symbol).Distinct();
+
+            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
+                                                         .Where(x => !existingSymbols.Contains(x.Symbol));
+
+            return companyFinancialQuery;
+        }
+
+        private IQueryable<MCompanyFinancialAvailability> CreateCompanyFinancialCashFlowTTMDiffQuery(string exchangeId)
+        {
+            var existingSymbols = _ingestionContext.MCashFlowTTMs.AsQueryable()
+                                                    .Where(x => x.ExchangeId == exchangeId)
+                                                    .Select(x => x.Symbol).Distinct();
+
+            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
+                                                         .Where(x => !existingSymbols.Contains(x.Symbol));
+
+            return companyFinancialQuery;
+        }
+
+        private IQueryable<MCompanyFinancialAvailability> CreateCompanyFinancialIncomeStatementDiffQuery(string exchangeId)
+        {
+            var existingSymbols = _ingestionContext.MIncomeStatements.AsQueryable()
+                                                    .Where(x => x.ExchangeId == exchangeId)
+                                                    .Select(x => x.Symbol).Distinct();
+
+            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
+                                                         .Where(x => !existingSymbols.Contains(x.Symbol));
+
+            return companyFinancialQuery;
+        }
+
+        private IQueryable<MCompanyFinancialAvailability> CreateCompanyFinancialIncomeStatementTTMDiffQuery(string exchangeId)
+        {
+            var existingSymbols = _ingestionContext.MIncomeStatementTTMs.AsQueryable()
+                                                    .Where(x => x.ExchangeId == exchangeId)
+                                                    .Select(x => x.Symbol).Distinct();
+
+            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
+                                                         .Where(x => !existingSymbols.Contains(x.Symbol));
+
+            return companyFinancialQuery;
+        }
+        #endregion
+
+        #region Utility functions
         private List<BaseFinancialRequest> CreateBaseFinancialRequestList(string token, string exchangeId, string symbol, int year, int yearRange)
         {
             List<BaseFinancialRequest> requests = new List<BaseFinancialRequest>();
@@ -406,25 +671,13 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             return BaseFinancialTTMRequest.Create(token, exchangeId, "Symbol", symbol, startDate, endDate);
         }
 
-        private IQueryable<MCompanyFinancialAvailability> CreateCompanyFinancialQuery(string exchangeId, string symbol)
-        {
-            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
-                                                    .Where(x => x.ExchangeId == exchangeId);
-
-            if (!string.IsNullOrEmpty(symbol))
-            {
-                companyFinancialQuery = companyFinancialQuery.AsQueryable().Where(x => x.Symbol == symbol);
-            }
-
-            return companyFinancialQuery;
-
-        }
-        
         private async Task<TokenEntity> GetTokenEntity(Guid id)
         {
             Authentication authentication = new Authentication(_ingestionContext, _logger);
             return await authentication.GetAccessTokenByClientConfigId(id);
         }
+
+        #endregion
 
     }
 }

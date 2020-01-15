@@ -1,0 +1,27 @@
+﻿<ProfitabilityEntity>
+  <ReportDate>date</ReportDate>
+  <PeriodEndingDate>date</PeriodEndingDate>
+  <FileDate>date</FileDate>
+  <StatementType>string</StatementType>
+  <DataType>string</DataType>
+  <Interim>string</Interim>
+  <CurrencyId>string</CurrencyId>
+  <FiscalYearEnd>int</FiscalYearEnd>
+  <GrossMargin>decimal</GrossMargin>
+  <OperatingMargin>decimal</OperatingMargin>
+  <EBTMargin>decimal</EBTMargin>
+  <TaxRate>decimal</TaxRate>
+  <NetMargin>decimal</NetMargin>
+  <SalesPerEmployee>decimal</SalesPerEmployee>
+  <EBITMargin>decimal</EBITMargin>
+  <EBITDAMargin>decimal</EBITDAMargin>
+  <NormalizedNetProfitMargin>decimal</NormalizedNetProfitMargin>
+  <InterestCoverage>decimal</InterestCoverage>
+  <NetIncomeperFullTimeEmployee>decimal</NetIncomeperFullTimeEmployee>
+  <IncPerEmployeeTotOps>decimal</IncPerEmployeeTotOps>
+  <SolvencyRatio>decimal</SolvencyRatio>
+  <ExpenseRatio>decimal</ExpenseRatio>
+  <LossRatio>decimal</LossRatio>
+  <AccessionNumber>string</AccessionNumber>
+  <FormType>string</FormType>
+</ProfitabilityEntity>

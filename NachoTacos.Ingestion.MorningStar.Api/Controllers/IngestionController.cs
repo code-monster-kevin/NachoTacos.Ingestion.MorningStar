@@ -125,6 +125,20 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
 
             return Ok(stockList.Count);
         }
+
+        [HttpGet]
+        [Route("CompanyFinancials/CashFlow/Difference")]
+        public IActionResult CashFlowDifference(string exchangeId)
+        {
+            var existingSymbols = _ingestionContext.MCashFlows.AsQueryable()
+                                                    .Where(x => x.ExchangeId == exchangeId)
+                                                    .Select(x => x.Symbol).Distinct();
+
+            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
+                                                         .Where(x => !existingSymbols.Contains(x.Symbol));
+
+            return Ok(companyFinancialQuery.ToList());
+        }
         #endregion
     }
 }

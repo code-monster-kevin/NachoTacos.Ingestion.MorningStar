@@ -16,6 +16,10 @@ namespace NachoTacos.Ingestion.MorningStar.Api
             CreateMap<IncomeStatementEntity, TIncomeStatement>();
             CreateMap<CashFlowEntity, TCashFlowTTM>();
             CreateMap<IncomeStatementEntity, TIncomeStatementTTM>();
+            CreateMap<EfficiencyEntity, TEfficiencyRatio>();
+            CreateMap<EfficiencyEntity, TEfficiencyRatioTTM>();
+            CreateMap<ProfitabilityEntity, TProfitabilityRatio>();
+            CreateMap<ProfitabilityEntity, TProfitabilityRatioTTM>();
         }
     }
 }
