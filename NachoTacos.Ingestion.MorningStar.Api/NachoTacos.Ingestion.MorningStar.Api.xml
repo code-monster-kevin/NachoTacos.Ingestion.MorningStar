@@ -89,6 +89,54 @@
             <param name="isDifferenceOnly">To only pull missing data</param>
             <returns></returns>
         </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.EfficiencyRatioRequest(System.Guid,System.String,System.Int32,System.Int32,System.String,System.Boolean)">
+            <summary>
+            Retrieves the Efficiency Ratios
+            </summary>
+            <param name="id">Client Configuration ID</param>
+            <param name="exchangeId">Exchange ie KLS</param>
+            <param name="year">ie 2019</param>
+            <param name="range">1 to 9</param>
+            <param name="symbol">Ticker code i.e. 1155</param>
+            <param name="isDifferenceOnly">To only pull missing data</param>
+            <returns></returns>
+        </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.EfficiencyRatioTTMRequest(System.Guid,System.String,System.Int32,System.Int32,System.String,System.Boolean)">
+            <summary>
+            Retrieves the Efficiency Ratios trailing 12 months
+            </summary>
+            <param name="id">Client Configuration ID</param>
+            <param name="exchangeId">Exchange ie KLS</param>
+            <param name="year">ie 2019</param>
+            <param name="range">1 to 9</param>
+            <param name="symbol">Ticker code i.e. 1155</param>
+            <param name="isDifferenceOnly">To only pull missing data</param>
+            <returns></returns>
+        </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.ProfitabilityRatioRequest(System.Guid,System.String,System.Int32,System.Int32,System.String,System.Boolean)">
+            <summary>
+            Retrives the profitability ratios
+            </summary>
+            <param name="id">Client Configuration ID</param>
+            <param name="exchangeId">Exchange ie KLS</param>
+            <param name="year">ie 2019</param>
+            <param name="range">1 to 9</param>
+            <param name="symbol">Ticker code i.e. 1155</param>
+            <param name="isDifferenceOnly">To only pull missing data</param>
+            <returns></returns>
+        </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.BackgroundJobController.ProfitabilityRatioTTMRequest(System.Guid,System.String,System.Int32,System.Int32,System.String,System.Boolean)">
+            <summary>
+            Retrives the profitability ratios trailing 12 months
+            </summary>
+            <param name="id">Client Configuration ID</param>
+            <param name="exchangeId">Exchange ie KLS</param>
+            <param name="year">ie 2019</param>
+            <param name="range">1 to 9</param>
+            <param name="symbol">Ticker code i.e. 1155</param>
+            <param name="isDifferenceOnly">To only pull missing data</param>
+            <returns></returns>
+        </member>
         <member name="T:NachoTacos.Ingestion.MorningStar.Api.Controllers.IngestionController">
             <summary>
             Manually calls the MorningStar API and saves the results to DB

@@ -31,7 +31,8 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
         private readonly IMapper _mapper;
         private readonly IIngestionContext _ingestionContext;
 
-        private readonly string[] _dataTypes = { "AOR", "Restated", "Preliminary" };
+        private readonly string[] _companyFinancialDataTypes = { "AOR", "Restated", "Preliminary" };
+        private readonly string[] _financialRatioDataTypes = { "AOR", "Restated" };
 
         public IngestionJobs(IIngestionContext ingestionContext, IConfiguration configuration, IMapper mapper, ILogger<IngestionJobs> logger)
         {
@@ -240,6 +241,18 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                     case "IncomeStatementTTM":
                         changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeIncomeStatementTTM").ToList();
                         break;
+                    case "EfficiencyRatio":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeEfficiencyRatio").ToList();
+                        break;
+                    case "EfficiencyRatioTTM":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeEfficiencyRatioTTM").ToList();
+                        break;
+                    case "ProfitabilityRatio":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeProfitabilityRatio").ToList();
+                        break;
+                    case "ProfitabilityRatioTTM":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeProfitabilityRatioTTM").ToList();
+                        break;
                     default:
                         break;
                 };
@@ -266,7 +279,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             await stockList.ParallelForEachAsync(async (stock) =>
             {
                 List<EquityApi.BalanceSheet.Response> listSymbol =
-                            await GetBalanceSheetResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
+                            await GetBalanceSheetResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, _companyFinancialDataTypes, year, range));
 
                 lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
             },
@@ -287,7 +300,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             await stockList.ParallelForEachAsync(async (stock) =>
             {
                 List<EquityApi.CashFlow.Response> listSymbol =
-                            await GetCashFlowResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
+                            await GetCashFlowResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, _companyFinancialDataTypes, year, range));
 
                 lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
             },
@@ -328,7 +341,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             await stockList.ParallelForEachAsync(async (stock) =>
             {
                 List<EquityApi.IncomeStatement.Response> listSymbol =
-                            await GetIncomeStatementResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
+                            await GetIncomeStatementResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, _companyFinancialDataTypes, year, range));
 
                 lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
             },
@@ -370,7 +383,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             await stockList.ParallelForEachAsync(async (stock) =>
             {
                 List<EquityApi.EfficiencyRatios.Response> listSymbol =
-                            await GetEfficiencyRatiosResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
+                            await GetEfficiencyRatiosResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, _financialRatioDataTypes, year, range));
 
                 lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
             },
@@ -412,7 +425,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             await stockList.ParallelForEachAsync(async (stock) =>
             {
                 List<EquityApi.ProfitabilityRatios.Response> listSymbol =
-                            await GetProfitabilityRatiosResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
+                            await GetProfitabilityRatiosResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, _financialRatioDataTypes, year, range));
 
                 lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
             },
@@ -627,7 +640,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
         #endregion
 
         #region Utility functions
-        private List<BaseFinancialRequest> CreateBaseFinancialRequestList(string token, string exchangeId, string symbol, int year, int yearRange)
+        private List<BaseFinancialRequest> CreateBaseFinancialRequestList(string token, string exchangeId, string symbol, string[] dataTypes, int year, int yearRange)
         {
             List<BaseFinancialRequest> requests = new List<BaseFinancialRequest>();
 
@@ -635,7 +648,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             if (yearRange == 1) quarterlyYear = 1;
             int finalYear = year - yearRange;
 
-            foreach (string dataType in _dataTypes)
+            foreach (string dataType in dataTypes)
             {
                 string statementType = StatementType.Annual.Value;
                 string startDate = string.Format("01/{0}", finalYear);

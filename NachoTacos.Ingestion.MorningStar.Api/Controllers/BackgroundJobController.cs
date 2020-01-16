@@ -238,6 +238,16 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Retrieves the Efficiency Ratios
+        /// </summary>
+        /// <param name="id">Client Configuration ID</param>
+        /// <param name="exchangeId">Exchange ie KLS</param>
+        /// <param name="year">ie 2019</param>
+        /// <param name="range">1 to 9</param>
+        /// <param name="symbol">Ticker code i.e. 1155</param>
+        /// <param name="isDifferenceOnly">To only pull missing data</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("FinancialRatio/EfficiencyRatio/{id}")]
         public IActionResult EfficiencyRatioRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
@@ -247,7 +257,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
                 if (range > 0 && range <= 9)
                 {
                     var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetFinancialRatioReportAll(id, "EfficiencyRatio", exchangeId, year, range, symbol, isDifferenceOnly));
-                    //BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("ProfitabilityRatio"));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("EfficiencyRatio"));
                     return Ok();
                 }
                 else
@@ -262,6 +272,16 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Retrieves the Efficiency Ratios trailing 12 months
+        /// </summary>
+        /// <param name="id">Client Configuration ID</param>
+        /// <param name="exchangeId">Exchange ie KLS</param>
+        /// <param name="year">ie 2019</param>
+        /// <param name="range">1 to 9</param>
+        /// <param name="symbol">Ticker code i.e. 1155</param>
+        /// <param name="isDifferenceOnly">To only pull missing data</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("FinancialRatio/EfficiencyRatioTTM/{id}")]
         public IActionResult EfficiencyRatioTTMRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
@@ -271,7 +291,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
                 if (range > 0 && range <= 9)
                 {
                     var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetFinancialRatioReportAll(id, "EfficiencyRatioTTM", exchangeId, year, range, symbol, isDifferenceOnly));
-                    //BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("ProfitabilityRatio"));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("EfficiencyRatioTTM"));
                     return Ok();
                 }
                 else
@@ -286,7 +306,16 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Retrives the profitability ratios
+        /// </summary>
+        /// <param name="id">Client Configuration ID</param>
+        /// <param name="exchangeId">Exchange ie KLS</param>
+        /// <param name="year">ie 2019</param>
+        /// <param name="range">1 to 9</param>
+        /// <param name="symbol">Ticker code i.e. 1155</param>
+        /// <param name="isDifferenceOnly">To only pull missing data</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("FinancialRatio/ProfitabilityRatio/{id}")]
         public IActionResult ProfitabilityRatioRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
@@ -296,7 +325,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
                 if (range > 0 && range <= 9)
                 {
                     var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetFinancialRatioReportAll(id, "ProfitabilityRatio", exchangeId, year, range, symbol, isDifferenceOnly));
-                    //BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("ProfitabilityRatio"));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("ProfitabilityRatio"));
                     return Ok();
                 }
                 else
@@ -311,6 +340,16 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Retrives the profitability ratios trailing 12 months
+        /// </summary>
+        /// <param name="id">Client Configuration ID</param>
+        /// <param name="exchangeId">Exchange ie KLS</param>
+        /// <param name="year">ie 2019</param>
+        /// <param name="range">1 to 9</param>
+        /// <param name="symbol">Ticker code i.e. 1155</param>
+        /// <param name="isDifferenceOnly">To only pull missing data</param>
+        /// <returns></returns>
         [HttpGet]
         [Route("FinancialRatio/ProfitabilityRatioTTM/{id}")]
         public IActionResult ProfitabilityRatioTTMRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
@@ -320,7 +359,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
                 if (range > 0 && range <= 9)
                 {
                     var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetFinancialRatioReportAll(id, "ProfitabilityRatioTTM", exchangeId, year, range, symbol, isDifferenceOnly));
-                    //BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("ProfitabilityRatio"));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("ProfitabilityRatioTTM"));
                     return Ok();
                 }
                 else

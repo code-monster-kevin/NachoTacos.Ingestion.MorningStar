@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace NachoTacos.Ingestion.MorningStar.Domain
 {
@@ -6,11 +7,11 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
     public partial class TEfficiencyRatio : TBase
     {
 
-        private string reportDateField;
+        private DateTime reportDateField;
 
-        private string periodEndingDateField;
+        private DateTime periodEndingDateField;
 
-        private string fileDateField;
+        private DateTime? fileDateField;
 
         private string statementTypeField;
 
@@ -18,52 +19,52 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
 
         private string interimField;
 
-        private string fiscalYearEndField;
+        private int fiscalYearEndField;
 
-        private string daysInSalesField;
+        private decimal? daysInSalesField;
 
-        private string daysInInventoryField;
+        private decimal? daysInInventoryField;
 
-        private string daysInPaymentField;
+        private decimal? daysInPaymentField;
 
-        private string cashConversionCycleField;
+        private decimal? cashConversionCycleField;
 
-        private string receivableTurnoverField;
+        private decimal? receivableTurnoverField;
 
-        private string inventoryTurnoverField;
+        private decimal? inventoryTurnoverField;
 
-        private string payableTurnoverField;
+        private decimal? payableTurnoverField;
 
-        private string fixedAssetsTurnoverField;
+        private decimal? fixedAssetsTurnoverField;
 
-        private string assetsTurnoverField;
+        private decimal? assetsTurnoverField;
 
-        private string rOEField;
+        private decimal? rOEField;
 
-        private string rOAField;
+        private decimal? rOAField;
 
-        private string rOICField;
+        private decimal? rOICField;
 
-        private string fCFSalesRatioField;
+        private decimal? fCFSalesRatioField;
 
-        private string fCFNetIncomeRatioField;
+        private decimal? fCFNetIncomeRatioField;
 
-        private string capitalExpenditureSalesRatioField;
+        private decimal? capitalExpenditureSalesRatioField;
 
         private string accessionNumberField;
 
         private string formTypeField;
 
-        private string rOE5YrAvgField;
+        private decimal? rOE5YrAvgField;
 
-        private string rOA5YrAvgField;
+        private decimal? rOA5YrAvgField;
 
-        private string aVG5YrsROICField;
+        private decimal? aVG5YrsROICField;
 
-        private string normalizedROICField;
+        private decimal? normalizedROICField;
 
         /// <remarks/>
-        public string ReportDate
+        public DateTime ReportDate
         {
             get
             {
@@ -76,7 +77,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string PeriodEndingDate
+        public DateTime PeriodEndingDate
         {
             get
             {
@@ -89,7 +90,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string FileDate
+        public DateTime? FileDate
         {
             get
             {
@@ -141,7 +142,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string FiscalYearEnd
+        public int FiscalYearEnd
         {
             get
             {
@@ -154,7 +155,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string DaysInSales
+        public decimal? DaysInSales
         {
             get
             {
@@ -167,7 +168,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string DaysInInventory
+        public decimal? DaysInInventory
         {
             get
             {
@@ -180,7 +181,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string DaysInPayment
+        public decimal? DaysInPayment
         {
             get
             {
@@ -193,7 +194,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string CashConversionCycle
+        public decimal? CashConversionCycle
         {
             get
             {
@@ -206,7 +207,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string ReceivableTurnover
+        public decimal? ReceivableTurnover
         {
             get
             {
@@ -219,7 +220,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string InventoryTurnover
+        public decimal? InventoryTurnover
         {
             get
             {
@@ -232,7 +233,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string PayableTurnover
+        public decimal? PayableTurnover
         {
             get
             {
@@ -245,7 +246,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string FixedAssetsTurnover
+        public decimal? FixedAssetsTurnover
         {
             get
             {
@@ -258,7 +259,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string AssetsTurnover
+        public decimal? AssetsTurnover
         {
             get
             {
@@ -271,7 +272,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string ROE
+        public decimal? ROE
         {
             get
             {
@@ -284,7 +285,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string ROA
+        public decimal? ROA
         {
             get
             {
@@ -297,7 +298,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string ROIC
+        public decimal? ROIC
         {
             get
             {
@@ -310,7 +311,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string FCFSalesRatio
+        public decimal? FCFSalesRatio
         {
             get
             {
@@ -323,7 +324,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string FCFNetIncomeRatio
+        public decimal? FCFNetIncomeRatio
         {
             get
             {
@@ -336,7 +337,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string CapitalExpenditureSalesRatio
+        public decimal? CapitalExpenditureSalesRatio
         {
             get
             {
@@ -375,7 +376,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string ROE5YrAvg
+        public decimal? ROE5YrAvg
         {
             get
             {
@@ -388,7 +389,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string ROA5YrAvg
+        public decimal? ROA5YrAvg
         {
             get
             {
@@ -401,7 +402,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string AVG5YrsROIC
+        public decimal? AVG5YrsROIC
         {
             get
             {
@@ -414,7 +415,7 @@ namespace NachoTacos.Ingestion.MorningStar.Domain
         }
 
         /// <remarks/>
-        public string NormalizedROIC
+        public decimal? NormalizedROIC
         {
             get
             {
