@@ -20,6 +20,15 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         DbSet<TEfficiencyRatioTTM> TEfficiencyRatioTTMs { get; set; }
         DbSet<TProfitabilityRatio> TProfitabilityRatios { get; set; }
         DbSet<TProfitabilityRatioTTM> TProfitabilityRatioTTMs { get; set; }
+
+        DbSet<TFinancialHealthRatio> TFinancialHealthRatios { get; set; }
+        DbSet<TGrowthRatio> TGrowthRatios { get; set; }
+        DbSet<TValuationRatio> TValuationRatios { get; set; }
+        DbSet<TQuantitativeRating> TQuantitativeRatings { get; set; }
+        DbSet<TMonthlyMarketCapitalizationHistory> TMonthlyMarketCapitalizationHistories { get; set; }
+        DbSet<TEODPriceHistory> TEODPriceHistories { get; set; }
+
+
         DbSet<TGeneralInfo> TGeneralInfo { get; set; }
         DbSet<ChangeTable> ChangeTables { get; set; }
         DbSet<MStockExchangeSecurity> MStockExchangeSecurities { get; set; }
@@ -33,6 +42,13 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         DbSet<MEfficiencyRatioTTM> MEfficiencyRatioTTMs { get; set; }
         DbSet<MProfitabilityRatio> MProfitabilityRatios { get; set; }
         DbSet<MProfitabilityRatioTTM> MProfitabilityRatioTTMs { get; set; }
+
+        DbSet<MFinancialHealthRatio> MFinancialHealthRatios { get; set; }
+        DbSet<MGrowthRatio> MGrowthRatios { get; set; }
+        DbSet<MValuationRatio> MValuationRatios { get; set; }
+        DbSet<MQuantitativeRating> MQuantitativeRatings { get; set; }
+        DbSet<MMonthlyMarketCapitalizationHistory> MMonthlyMarketCapitalizationHistories { get; set; }
+        DbSet<MEODPriceHistory> MEODPriceHistories { get; set; }
 
         int SaveChanges();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);

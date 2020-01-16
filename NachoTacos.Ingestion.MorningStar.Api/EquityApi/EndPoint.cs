@@ -13,5 +13,11 @@
         public static readonly string EfficiencyRatiosTTM = "MorningStar:EquityApi:EfficiencyRatiosTTM";
         public static readonly string ProfitabilityRatios = "MorningStar:EquityApi:ProfitabilityRatios";
         public static readonly string ProfitabilityRatiosTTM = "MorningStar:EquityApi:ProfitabilityRatiosTTM";
+        public static readonly string FinancialHealthRatios = "MorningStar:EquityApi:FinancialHealthRatios";
+        public static readonly string GrowthRatios = "MorningStar:EquityApi:GrowthRatios";
+        public static readonly string ValuationRatio = "MorningStar:EquityApi:ValuationRatios";
+        public static readonly string QuantitativeRating = "MorningStar:EquityApi:RatingsHistory";
+        public static readonly string MarketCapitalization = "MorningStar:EquityApi:MonthlyMarketCapitalizationHistory";
+        public static readonly string EODPrice = "MorningStar:EquityApi:EODPriceHistory";
     }
 }

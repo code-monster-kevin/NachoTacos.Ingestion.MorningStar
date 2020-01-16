@@ -47,7 +47,6 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                 throw new Exception(ex.Message, ex.InnerException);
             }
         }
-
         public async Task<int> SaveAsync(Guid ingestionTaskId, EquityApi.CompanyFinancials.Response response)
         {
             List<CompanyFinancialAvailabilityEntity> entities = response.CompanyFinancialAvailabilityEntityList;
@@ -64,7 +63,6 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             _ingestionContext.TCompanyFinancialAvailabilities.AddRange(list);
             return await _ingestionContext.SaveChangesAsync();
         }
-
         public async Task<int> SaveAsync(List<EquityApi.BalanceSheet.Response> responses)
         {
             foreach (var response in responses)
@@ -94,7 +92,6 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             }
             return await _ingestionContext.SaveChangesAsync();
         }
-
         public async Task<int> SaveAsync(List<EquityApi.CashFlow.Response> responses, bool isTTM = false)
         {
             foreach (var response in responses)
@@ -134,7 +131,6 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             }
             return await _ingestionContext.SaveChangesAsync();
         }
-
         public async Task<int> SaveAsync(List<EquityApi.IncomeStatement.Response> responses, bool isTTM = false)
         {
             foreach (var response in responses)
@@ -173,8 +169,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                 }
             }
             return await _ingestionContext.SaveChangesAsync();
-        }
-        
+        }        
         public async Task<int> SaveAsync(List<EquityApi.EfficiencyRatios.Response> responses, bool isTTM = false)
         {
             foreach (var response in responses)
@@ -248,6 +243,181 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                             item.IngestionTaskId = ingestionTask.IngestionTaskId;
                             _ingestionContext.TProfitabilityRatios.Add(item);
                         }
+                    }
+                }
+            }
+            return await _ingestionContext.SaveChangesAsync();
+        }
+
+        public async Task<int> SaveAsync(List<EquityApi.FinancialHealthRatios.Response> responses)
+        {
+            foreach (var response in responses)
+            {
+                List<FinancialHealthEntity> entities = response.FinancialHealthEntityList;
+                if (ValidateEntities(entities) != 0)
+                {
+                    GeneralInfo generalInfo = response.GeneralInfo;
+                    _logger.LogInformation("IngestionTask ==> Symbol: {0}", generalInfo.Symbol);
+
+                    IngestionTask ingestionTask = IngestionTask.Create(string.Format("FinancialHealthRatios {0}", generalInfo.ExchangeId), string.Format("Symbol: {0}", generalInfo.Symbol));
+                    _ingestionContext.IngestionTasks.Add(ingestionTask);
+
+                    TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
+                    tGeneralInfo.Id = Guid.NewGuid();
+                    tGeneralInfo.IngestionTaskId = ingestionTask.IngestionTaskId;
+                    _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
+
+                    foreach (var entity in entities)
+                    {
+                            TFinancialHealthRatio item = _mapper.Map<TFinancialHealthRatio>(entity);
+                            item.Id = Guid.NewGuid();
+                            item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                            _ingestionContext.TFinancialHealthRatios.Add(item);
+                    }
+                }
+            }
+            return await _ingestionContext.SaveChangesAsync();
+        }
+        public async Task<int> SaveAsync(List<EquityApi.GrowthRatios.Response> responses)
+        {
+            foreach (var response in responses)
+            {
+                List<GrowthEntity> entities = response.GrowthEntityList;
+                if (ValidateEntities(entities) != 0)
+                {
+                    GeneralInfo generalInfo = response.GeneralInfo;
+                    _logger.LogInformation("IngestionTask ==> Symbol: {0}", generalInfo.Symbol);
+
+                    IngestionTask ingestionTask = IngestionTask.Create(string.Format("GrowthRatios {0}", generalInfo.ExchangeId), string.Format("Symbol: {0}", generalInfo.Symbol));
+                    _ingestionContext.IngestionTasks.Add(ingestionTask);
+
+                    TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
+                    tGeneralInfo.Id = Guid.NewGuid();
+                    tGeneralInfo.IngestionTaskId = ingestionTask.IngestionTaskId;
+                    _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
+
+                    foreach (var entity in entities)
+                    {
+                        TGrowthRatio item = _mapper.Map<TGrowthRatio>(entity);
+                        item.Id = Guid.NewGuid();
+                        item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                        _ingestionContext.TGrowthRatios.Add(item);
+                    }
+                }
+            }
+            return await _ingestionContext.SaveChangesAsync();
+        }
+        public async Task<int> SaveAsync(List<EquityApi.ValuationRatio.Response> responses)
+        {
+            foreach (var response in responses)
+            {
+                List<ValuationRatioEntity> entities = response.ValuationRatioEntityList;
+                if (ValidateEntities(entities) != 0)
+                {
+                    GeneralInfo generalInfo = response.GeneralInfo;
+                    _logger.LogInformation("IngestionTask ==> Symbol: {0}", generalInfo.Symbol);
+
+                    IngestionTask ingestionTask = IngestionTask.Create(string.Format("ValuationRatio {0}", generalInfo.ExchangeId), string.Format("Symbol: {0}", generalInfo.Symbol));
+                    _ingestionContext.IngestionTasks.Add(ingestionTask);
+
+                    TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
+                    tGeneralInfo.Id = Guid.NewGuid();
+                    tGeneralInfo.IngestionTaskId = ingestionTask.IngestionTaskId;
+                    _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
+
+                    foreach (var entity in entities)
+                    {
+                        TValuationRatio item = _mapper.Map<TValuationRatio>(entity);
+                        item.Id = Guid.NewGuid();
+                        item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                        _ingestionContext.TValuationRatios.Add(item);
+                    }
+                }
+            }
+            return await _ingestionContext.SaveChangesAsync();
+        }
+        public async Task<int> SaveAsync(List<EquityApi.QuantitativeRating.Response> responses)
+        {
+            foreach (var response in responses)
+            {
+                List<QuantitativeRatingEntity> entities = response.QuantitativeRatingEntityList;
+                if (ValidateEntities(entities) != 0)
+                {
+                    GeneralInfo generalInfo = response.GeneralInfo;
+                    _logger.LogInformation("IngestionTask ==> Symbol: {0}", generalInfo.Symbol);
+
+                    IngestionTask ingestionTask = IngestionTask.Create(string.Format("QuantitativeRating {0}", generalInfo.ExchangeId), string.Format("Symbol: {0}", generalInfo.Symbol));
+                    _ingestionContext.IngestionTasks.Add(ingestionTask);
+
+                    TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
+                    tGeneralInfo.Id = Guid.NewGuid();
+                    tGeneralInfo.IngestionTaskId = ingestionTask.IngestionTaskId;
+                    _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
+
+                    foreach (var entity in entities)
+                    {
+                        TQuantitativeRating item = _mapper.Map<TQuantitativeRating>(entity);
+                        item.Id = Guid.NewGuid();
+                        item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                        _ingestionContext.TQuantitativeRatings.Add(item);
+                    }
+                }
+            }
+            return await _ingestionContext.SaveChangesAsync();
+        }
+        public async Task<int> SaveAsync(List<EquityApi.MarketCapitalization.Response> responses)
+        {
+            foreach (var response in responses)
+            {
+                List<MarketCapitalizationEntity> entities = response.MarketCapitalizationEntityList;
+                if (ValidateEntities(entities) != 0)
+                {
+                    GeneralInfo generalInfo = response.GeneralInfo;
+                    _logger.LogInformation("IngestionTask ==> Symbol: {0}", generalInfo.Symbol);
+
+                    IngestionTask ingestionTask = IngestionTask.Create(string.Format("MarketCapitalization {0}", generalInfo.ExchangeId), string.Format("Symbol: {0}", generalInfo.Symbol));
+                    _ingestionContext.IngestionTasks.Add(ingestionTask);
+
+                    TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
+                    tGeneralInfo.Id = Guid.NewGuid();
+                    tGeneralInfo.IngestionTaskId = ingestionTask.IngestionTaskId;
+                    _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
+
+                    foreach (var entity in entities)
+                    {
+                        TMonthlyMarketCapitalizationHistory item = _mapper.Map<TMonthlyMarketCapitalizationHistory>(entity);
+                        item.Id = Guid.NewGuid();
+                        item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                        _ingestionContext.TMonthlyMarketCapitalizationHistories.Add(item);
+                    }
+                }
+            }
+            return await _ingestionContext.SaveChangesAsync();
+        }
+        public async Task<int> SaveAsync(List<EquityApi.EODPrice.Response> responses)
+        {
+            foreach (var response in responses)
+            {
+                List<EODPriceEntity> entities = response.EODPriceEntityList;
+                if (ValidateEntities(entities) != 0)
+                {
+                    GeneralInfo generalInfo = response.GeneralInfo;
+                    _logger.LogInformation("IngestionTask ==> Symbol: {0}", generalInfo.Symbol);
+
+                    IngestionTask ingestionTask = IngestionTask.Create(string.Format("EODPrice {0}", generalInfo.ExchangeId), string.Format("Symbol: {0}", generalInfo.Symbol));
+                    _ingestionContext.IngestionTasks.Add(ingestionTask);
+
+                    TGeneralInfo tGeneralInfo = _mapper.Map<TGeneralInfo>(generalInfo);
+                    tGeneralInfo.Id = Guid.NewGuid();
+                    tGeneralInfo.IngestionTaskId = ingestionTask.IngestionTaskId;
+                    _ingestionContext.TGeneralInfo.Add(tGeneralInfo);
+
+                    foreach (var entity in entities)
+                    {
+                        TEODPriceHistory item = _mapper.Map<TEODPriceHistory>(entity);
+                        item.Id = Guid.NewGuid();
+                        item.IngestionTaskId = ingestionTask.IngestionTaskId;
+                        _ingestionContext.TEODPriceHistories.Add(item);
                     }
                 }
             }

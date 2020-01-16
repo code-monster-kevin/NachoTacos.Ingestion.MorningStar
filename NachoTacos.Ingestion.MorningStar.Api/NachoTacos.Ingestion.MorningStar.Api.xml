@@ -2233,6 +2233,432 @@
         <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.EfficiencyEntity.NormalizedROIC">
             <remarks/>
         </member>
+        <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.ReportDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.PeriodEndingDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.FileDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.StatementType">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.DataType">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.Interim">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.FiscalYearEnd">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.CurrentRatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.QuickRatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.DebtTotalCapitalRatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.DebtEquityRatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.FinancialLeverage">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.TotalDebtToEquity">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.AccessionNumber">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.FormType">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.DebttoAssets">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.FinancialHealthEntity.CommonEquityToAssets">
+            <remarks/>
+        </member>
+        <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.ReportDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.PeriodEndingDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.FileDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.StatementType">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DataType">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Interim">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.FiscalYearEnd">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedEPS3MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedEPS6MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedEPS9MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedEPSSequentialGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedEPS1YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedEPS3YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedEPS5YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedEPS10YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedContinuousEPS3MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedContinuousEPS6MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedContinuousEPS9MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedContinuousEPSSequentialGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedContinuousEPS1YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedContinuousEPS3YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedContinuousEPS5YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DilutedContinuousEPS10YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Dividend3MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Dividend6MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Dividend9MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.DividendSequentialGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Dividend1YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Dividend3YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Dividend5YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Dividend10YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.EquityPerShare3MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.EquityPerShare6MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.EquityPerShare9MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.EquityPerShareSequentialGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.EquityPerShare1YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.EquityPerShare3YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.EquityPerShare5YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.EquityPerShare10YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Revenue3MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Revenue6MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Revenue9MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.RevenueSequentialGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Revenue1YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Revenue3YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Revenue5YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.Revenue10YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingIncome3MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingIncome6MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingIncome9MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingIncomeSequentialGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingIncome1YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingIncome3YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingIncome5YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingIncome10YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncome3MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncome6MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncome9MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncomeSequentialGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncome1YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncome3YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncome5YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncome10YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncomeContOps3MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncomeContOps6MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncomeContOps9MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncomeContOpsSequentialGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncomeContOps1YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncomeContOps3YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncomeContOps5YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NetIncomeContOps10YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.CFO3MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.CFO6MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.CFO9MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.CFOSequentialGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.CFO1YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.CFO3YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.CFO5YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.CFO10YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.FCF3MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.FCF6MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.FCF9MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.FCFSequentialGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.FCF1YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.FCF3YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.FCF5YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.FCF10YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingRevenue3MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingRevenue6MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingRevenue9MonthSamePeriodGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingRevenueSequentialGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingRevenue1YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingRevenue3YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingRevenue5YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.OperatingRevenue10YearGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.GrowthAnnCapitalSpending5Year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.GrowthAnnGrossProfit5Year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.AvgGrossMargin5Year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.AvgPostTaxMargin5Year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.AvgPreTaxMargin5Year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.AvgNetProfitMargin5Year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.AvgRetCommonEquity5Year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.AvgRetAssets5Year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.AvgRetInvestedCapital5Year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.AccessionNumber">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.FormType">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.RegressionGrowthOperatingRevenue5Years">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedDilutedEPSGrowth1year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedDilutedEPSGrowth3year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedDilutedEPSGrowth5year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedDilutedEPSGrowth10year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedDilutedEPSSamePeriodGrowth3months">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedDilutedEPSSamePeriodGrowth6months">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedDilutedEPSSamePeriodGrowth9months">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedDilutedEPSSequentialGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedBasicEPSGrowth1year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedBasicEPSGrowth3year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedBasicEPSGrowth5year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedBasicEPSGrowth10year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedBasicEPSSamePeriodGrowth3months">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedBasicEPSSamePeriodGrowth6months">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedBasicEPSSamePeriodGrowth9months">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.GrowthEntity.NormalizedBasicEPSSequentialGrowth">
+            <remarks/>
+        </member>
         <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.IncomeStatementEntity">
             <remarks/>
         </member>
@@ -3293,6 +3719,60 @@
         <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ProfitabilityEntity.FormType">
             <remarks/>
         </member>
+        <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.AsOfDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeMoat">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeMoatLabel">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeValuation">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeValuationUpdateTime">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeValuationLabel">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeValuationLabelUpdateTime">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeValuationUncertainty">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeValuationUncertaintyLabel">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeFinancialHealth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeFinancialHealthLabel">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.SolvencyScore">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeFinancialHealthDecile">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeStarRating">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeStarRatingUpdateTime">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeFairValue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.QuantitativeRatingEntity.QuantitativeFairValueUpdateTime">
+            <remarks/>
+        </member>
         <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.StockExchangeSecurity.Request">
             <summary>
             Source: https://equityapi.morningstar.com/DataCatalog.aspx?catalogid=161
@@ -3311,6 +3791,204 @@
             Source: https://equityapi.morningstar.com/DataCatalog.aspx?catalogid=161
             Endpoint: http://equityapi.morningstar.com/Webservice/GlobalMasterListsService.asmx/GetStockExchangeSecurityList
             </summary>
+        </member>
+        <member name="T:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.AsOfDate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.SalesPerShare">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.GrowthAnnSalesPerShare5Year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.BookValuePerShare">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.CFPerShare">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.FCFPerShare">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.PriceToEPS">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.RatioPE5YearHigh">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.RatioPE5YearLow">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.PriceToBook">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.PriceToSales">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.PriceToCashFlow">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.PriceToFreeCashFlow">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.DivRate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.DividendYield">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.DivPayoutTotOps">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.DivPayout5Year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.DivYield5Year">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.PayoutRatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.SustainableGrowthRate">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.CashReturn">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.ForwardEarningYield">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.PEGRatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.PEGPayback">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.ForwardDividendYield">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.ForwardPERatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.TangibleBookValuePerShare">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.TangibleBVPerShare3YrAvg">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.TangibleBVPerShare5YrAvg">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.EVToEBITDA">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.RatioPE5YearAverage">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.NormalizedPERatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.FCFYield">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.EVToForwardEBIT">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.EVToForwardEBITDA">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.EVToForwardRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.TwoYearsEVToForwardEBIT">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.TwoYearsEVToForwardEBITDA">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.FirstYearEstimatedEPSGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.SecondYearEstimatedEPSGrowth">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.NormalizedPEG">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.EarningYield">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.SalesYield">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.BookValueYield">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.CashFlowYield">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.ForwardDividend">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.WorkingCapitalPerShare">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.WorkingCapitalPerShare3YrAvg">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.WorkingCapitalPerShare5YrAvg">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.BuyBackYield">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.TotalYield">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.PricetoEBITDA">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.ForwardROE">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.ForwardROA">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.TwoYearsForwardEarningYield">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.TwoYearsForwardPERatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.TotalAssetPerShare">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.EVtoRevenue">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.EVtoPreTaxIncome">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.EVtoTotalAssets">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.EVtoFCF">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.EVtoEBIT">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.FFOPerShare">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.PricetoCashRatio">
+            <remarks/>
+        </member>
+        <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.ValuationRatioEntity.CAPERatio">
+            <remarks/>
         </member>
         <member name="T:NachoTacos.Ingestion.MorningStar.Api.LogHelper">
             <summary>

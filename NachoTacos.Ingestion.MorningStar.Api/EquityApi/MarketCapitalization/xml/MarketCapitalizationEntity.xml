@@ -1,0 +1,8 @@
+﻿<MarketCapitalizationEntity>
+  <MarketCapDate>2019-01-31</MarketCapDate>
+  <MarketCap>19600000</MarketCap>
+  <EnterpriseValue>30945000</EnterpriseValue>
+  <CurrencyId>MYR</CurrencyId>
+  <SharesOutstanding>70000000</SharesOutstanding>
+  <SharesDate>2018-12-31</SharesDate>
+</MarketCapitalizationEntity>

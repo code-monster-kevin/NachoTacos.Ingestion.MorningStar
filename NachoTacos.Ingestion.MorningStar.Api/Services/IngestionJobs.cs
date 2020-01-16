@@ -33,6 +33,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
 
         private readonly string[] _companyFinancialDataTypes = { "AOR", "Restated", "Preliminary" };
         private readonly string[] _financialRatioDataTypes = { "AOR", "Restated" };
+        private readonly string[] _periodTypes = { "Snapshot", "Year_End_5Year", "Year_End_10Year", "Year_End_10FiscalYear", "Month_End_1YTD" };
 
         public IngestionJobs(IIngestionContext ingestionContext, IConfiguration configuration, IMapper mapper, ILogger<IngestionJobs> logger)
         {
@@ -196,6 +197,24 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                                 break;
                             case "ProfitabilityRatioTTM":
                                 result += await IngestProfitabilityRatioTTM(tokenEntity.Token, query, year, range, pageSize, i);
+                                break;
+                            case "FinancialHealthRatio":
+                                result += await IngestFinancialHealthRatio(tokenEntity.Token, query, year, range, pageSize, i);
+                                break;
+                            case "GrowthRatio":
+                                result += await IngestGrowthRatio(tokenEntity.Token, query, year, range, pageSize, i);
+                                break;
+                            case "ValuationRatio":
+                                result += await IngestValuationRatio(tokenEntity.Token, query, pageSize, i);
+                                break;
+                            case "QuantitativeRating":
+                                result += await IngestQuantitativeRating(tokenEntity.Token, query, year, range, pageSize, i);
+                                break;
+                            case "MarketCapitalization":
+                                result += await IngestMarketCapitalization(tokenEntity.Token, query, year, range, pageSize, i);
+                                break;
+                            case "EODPriceHistory":
+                                result += await IngestEODPrice(tokenEntity.Token, query, year, range, pageSize, i);
                                 break;
                             default:
                                 break;
@@ -456,7 +475,137 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             return await persistence.SaveAsync(listMain, true);
         }
 
+        private async Task<int> IngestFinancialHealthRatio(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
+        {
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
 
+            var listMain = new List<EquityApi.FinancialHealthRatios.Response>();
+            object _lock = new object();
+
+            await stockList.ParallelForEachAsync(async (stock) =>
+            {
+                List<EquityApi.FinancialHealthRatios.Response> listSymbol =
+                            await GetFinancialHealthRatiosResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, _financialRatioDataTypes, year, range));
+
+                lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
+            },
+            maxDegreeOfParallelism: 4);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain);
+        }
+
+        private async Task<int> IngestGrowthRatio(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
+        {
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
+
+            var listMain = new List<EquityApi.GrowthRatios.Response>();
+            object _lock = new object();
+
+            await stockList.ParallelForEachAsync(async (stock) =>
+            {
+                List<EquityApi.GrowthRatios.Response> listSymbol =
+                            await GetGrowthRatiosResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, _financialRatioDataTypes, year, range));
+
+                lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
+            },
+            maxDegreeOfParallelism: 4);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain);
+        }
+
+        private async Task<int> IngestValuationRatio(string token, IQueryable<MCompanyFinancialAvailability> query, int pageSize, int pageNumber)
+        {
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
+
+            var listMain = new List<EquityApi.ValuationRatio.Response>();
+            object _lock = new object();
+
+            await stockList.ParallelForEachAsync(async (stock) =>
+            {
+                List<EquityApi.ValuationRatio.Response> listSymbol =
+                            await GetValuationRatioResponses(CreateValuationRequestList(token, stock.ExchangeId, stock.Symbol, _periodTypes));
+
+                lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
+            },
+            maxDegreeOfParallelism: 4);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain);
+        }
+
+        private async Task<int> IngestQuantitativeRating(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
+        {
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
+
+            var listMain = new List<EquityApi.QuantitativeRating.Response>();
+            object _lock = new object();
+
+            await stockList.ParallelForEachAsync(async (stock) =>
+            {
+                List<EquityApi.QuantitativeRating.Response> listSymbol =
+                            await GetQuantitativeRatingResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, _financialRatioDataTypes, year, range));
+
+                lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
+            },
+            maxDegreeOfParallelism: 4);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain);
+        }
+
+        private async Task<int> IngestMarketCapitalization(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
+        {
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
+
+            var listMain = new List<EquityApi.MarketCapitalization.Response>();
+            object _lock = new object();
+
+            await stockList.ParallelForEachAsync(async (stock) =>
+            {
+                List<EquityApi.MarketCapitalization.Response> listSymbol =
+                            await GetMarketCapitalizationResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, _financialRatioDataTypes, year, range));
+
+                lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
+            },
+            maxDegreeOfParallelism: 4);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain);
+        }
+
+        private async Task<int> IngestEODPrice(string token, IQueryable<MCompanyFinancialAvailability> query, int year, int range, int pageSize, int pageNumber)
+        {
+            List<MCompanyFinancialAvailability> stockList = query.Skip(pageSize * pageNumber)
+                                                                 .Take(pageSize)
+                                                                 .ToList();
+
+            var listMain = new List<EquityApi.EODPrice.Response>();
+            object _lock = new object();
+
+            await stockList.ParallelForEachAsync(async (stock) =>
+            {
+                List<EquityApi.EODPrice.Response> listSymbol =
+                            await GetEODPriceResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, _financialRatioDataTypes, year, range));
+
+                lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
+            },
+            maxDegreeOfParallelism: 4);
+
+            PersistenceService persistence = new PersistenceService(_ingestionContext, _mapper, _logger);
+            return await persistence.SaveAsync(listMain);
+        }
         #endregion
 
         #region "Get MorningStar API Responses"
@@ -534,6 +683,72 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
         {
             string endPoint = _configuration.GetValue<string>(EndPoint.ProfitabilityRatiosTTM);
             return await RestClient.GetDynamicResponseAsync<EquityApi.ProfitabilityRatios.Response>(endPoint.SetQueryParams(request));
+        }
+
+        private async Task<List<EquityApi.FinancialHealthRatios.Response>> GetFinancialHealthRatiosResponses(List<BaseFinancialRequest> requests)
+        {
+            List<EquityApi.FinancialHealthRatios.Response> responses = new List<EquityApi.FinancialHealthRatios.Response>();
+            string endPoint = _configuration.GetValue<string>(EndPoint.FinancialHealthRatios);
+            foreach (var request in requests)
+            {
+                responses.Add(await RestClient.GetDynamicResponseAsync<EquityApi.FinancialHealthRatios.Response>(endPoint.SetQueryParams(request)));
+            }
+            return responses;
+        }
+
+        private async Task<List<EquityApi.GrowthRatios.Response>> GetGrowthRatiosResponses(List<BaseFinancialRequest> requests)
+        {
+            List<EquityApi.GrowthRatios.Response> responses = new List<EquityApi.GrowthRatios.Response>();
+            string endPoint = _configuration.GetValue<string>(EndPoint.GrowthRatios);
+            foreach (var request in requests)
+            {
+                responses.Add(await RestClient.GetDynamicResponseAsync<EquityApi.GrowthRatios.Response>(endPoint.SetQueryParams(request)));
+            }
+            return responses;
+        }
+
+        private async Task<List<EquityApi.ValuationRatio.Response>> GetValuationRatioResponses(List<EquityApi.ValuationRatio.Request> requests)
+        {
+            List<EquityApi.ValuationRatio.Response> responses = new List<EquityApi.ValuationRatio.Response>();
+            string endPoint = _configuration.GetValue<string>(EndPoint.ValuationRatio);
+            foreach (var request in requests)
+            {
+                responses.Add(await RestClient.GetDynamicResponseAsync<EquityApi.ValuationRatio.Response>(endPoint.SetQueryParams(request)));
+            }
+            return responses;
+        }
+
+        private async Task<List<EquityApi.QuantitativeRating.Response>> GetQuantitativeRatingResponses(List<BaseFinancialRequest> requests)
+        {
+            List<EquityApi.QuantitativeRating.Response> responses = new List<EquityApi.QuantitativeRating.Response>();
+            string endPoint = _configuration.GetValue<string>(EndPoint.QuantitativeRating);
+            foreach (var request in requests)
+            {
+                responses.Add(await RestClient.GetDynamicResponseAsync<EquityApi.QuantitativeRating.Response>(endPoint.SetQueryParams(request)));
+            }
+            return responses;
+        }
+
+        private async Task<List<EquityApi.MarketCapitalization.Response>> GetMarketCapitalizationResponses(List<BaseFinancialRequest> requests)
+        {
+            List<EquityApi.MarketCapitalization.Response> responses = new List<EquityApi.MarketCapitalization.Response>();
+            string endPoint = _configuration.GetValue<string>(EndPoint.MarketCapitalization);
+            foreach (var request in requests)
+            {
+                responses.Add(await RestClient.GetDynamicResponseAsync<EquityApi.MarketCapitalization.Response>(endPoint.SetQueryParams(request)));
+            }
+            return responses;
+        }
+
+        private async Task<List<EquityApi.EODPrice.Response>> GetEODPriceResponses(List<BaseFinancialRequest> requests)
+        {
+            List<EquityApi.EODPrice.Response> responses = new List<EquityApi.EODPrice.Response>();
+            string endPoint = _configuration.GetValue<string>(EndPoint.EODPrice);
+            foreach (var request in requests)
+            {
+                responses.Add(await RestClient.GetDynamicResponseAsync<EquityApi.EODPrice.Response>(endPoint.SetQueryParams(request)));
+            }
+            return responses;
         }
 
         #endregion
@@ -682,6 +897,17 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             string endDate = string.Format("01/{0}", year);
 
             return BaseFinancialTTMRequest.Create(token, exchangeId, "Symbol", symbol, startDate, endDate);
+        }
+
+        private List<EquityApi.ValuationRatio.Request> CreateValuationRequestList(string token, string exchangeId, string symbol, string[] periodTypes)
+        {
+            List<EquityApi.ValuationRatio.Request> requests = new List<EquityApi.ValuationRatio.Request>();
+
+            foreach (string period in periodTypes)
+            {
+                requests.Add(EquityApi.ValuationRatio.Request.Create(token, exchangeId, "Symbol", symbol, period));
+            }
+            return requests;
         }
 
         private async Task<TokenEntity> GetTokenEntity(Guid id)

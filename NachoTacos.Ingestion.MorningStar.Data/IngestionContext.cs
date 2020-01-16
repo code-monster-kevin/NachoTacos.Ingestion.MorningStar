@@ -35,6 +35,13 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         public DbSet<TProfitabilityRatio> TProfitabilityRatios { get; set; }
         public DbSet<TProfitabilityRatioTTM> TProfitabilityRatioTTMs { get; set; }
 
+        public DbSet<TFinancialHealthRatio> TFinancialHealthRatios { get; set; }
+        public DbSet<TGrowthRatio> TGrowthRatios { get; set; }
+        public DbSet<TValuationRatio> TValuationRatios { get; set; }
+        public DbSet<TQuantitativeRating> TQuantitativeRatings { get; set; }
+        public DbSet<TMonthlyMarketCapitalizationHistory> TMonthlyMarketCapitalizationHistories { get; set; }
+        public DbSet<TEODPriceHistory> TEODPriceHistories { get; set; }
+
         #endregion
 
         #region "MorningStar Master Tables"
@@ -49,6 +56,13 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         public DbSet<MEfficiencyRatioTTM> MEfficiencyRatioTTMs { get; set; }
         public DbSet<MProfitabilityRatio> MProfitabilityRatios { get; set; }
         public DbSet<MProfitabilityRatioTTM> MProfitabilityRatioTTMs { get; set; }
+
+        public DbSet<MFinancialHealthRatio> MFinancialHealthRatios { get; set; }
+        public DbSet<MGrowthRatio> MGrowthRatios { get; set; }
+        public DbSet<MValuationRatio> MValuationRatios { get; set; }
+        public DbSet<MQuantitativeRating> MQuantitativeRatings { get; set; }
+        public DbSet<MMonthlyMarketCapitalizationHistory> MMonthlyMarketCapitalizationHistories { get; set; }
+        public DbSet<MEODPriceHistory> MEODPriceHistories { get; set; }
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

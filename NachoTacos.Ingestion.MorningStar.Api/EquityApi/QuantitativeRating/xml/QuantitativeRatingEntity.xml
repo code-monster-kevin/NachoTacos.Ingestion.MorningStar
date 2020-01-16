@@ -1,0 +1,19 @@
+﻿<QuantitativeRatingEntity>
+  <AsOfDate>2019-01-01</AsOfDate>
+  <QuantitativeMoat>0.152001</QuantitativeMoat>
+  <QuantitativeMoatLabel>None</QuantitativeMoatLabel>
+  <QuantitativeValuation>1.592470</QuantitativeValuation>
+  <QuantitativeValuationUpdateTime>2019-01-01 17:34:00</QuantitativeValuationUpdateTime>
+  <QuantitativeValuationLabel>Undervalued</QuantitativeValuationLabel>
+  <QuantitativeValuationLabelUpdateTime>2019-01-01 17:34:00</QuantitativeValuationLabelUpdateTime>
+  <QuantitativeValuationUncertainty>0.955800</QuantitativeValuationUncertainty>
+  <QuantitativeValuationUncertaintyLabel>Extreme</QuantitativeValuationUncertaintyLabel>
+  <QuantitativeFinancialHealth>0.270590</QuantitativeFinancialHealth>
+  <QuantitativeFinancialHealthLabel>Moderate</QuantitativeFinancialHealthLabel>
+  <SolvencyScore>581.85</SolvencyScore>
+  <QuantitativeFinancialHealthDecile>8</QuantitativeFinancialHealthDecile>
+  <QuantitativeStarRating>3</QuantitativeStarRating>
+  <QuantitativeStarRatingUpdateTime>2019-01-01 17:34:00</QuantitativeStarRatingUpdateTime>
+  <QuantitativeFairValue>0.382193</QuantitativeFairValue>
+  <QuantitativeFairValueUpdateTime>2019-01-02 09:17:26</QuantitativeFairValueUpdateTime>
+</QuantitativeRatingEntity>

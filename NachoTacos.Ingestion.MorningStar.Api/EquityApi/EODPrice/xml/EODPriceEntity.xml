@@ -1,0 +1,9 @@
+﻿<EODPriceEntity>
+  <TradingDate>2018-12-28</TradingDate>
+  <OpenPrice>0.24</OpenPrice>
+  <HighPrice>0.24</HighPrice>
+  <LowPrice>0.24</LowPrice>
+  <ClosePrice>0.24</ClosePrice>
+  <Volume>2000</Volume>
+  <PriceCurrencyId>MYR</PriceCurrencyId>
+</EODPriceEntity>

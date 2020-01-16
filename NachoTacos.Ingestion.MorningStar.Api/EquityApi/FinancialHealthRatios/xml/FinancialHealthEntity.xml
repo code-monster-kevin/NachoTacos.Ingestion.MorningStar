@@ -1,0 +1,19 @@
+﻿<FinancialHealthEntity>
+  <ReportDate>date</ReportDate>
+  <PeriodEndingDate>date</PeriodEndingDate>
+  <FileDate>date</FileDate>
+  <StatementType>string</StatementType>
+  <DataType>string</DataType>
+  <Interim>string</Interim>
+  <FiscalYearEnd>int</FiscalYearEnd>
+  <CurrentRatio>decimal</CurrentRatio>
+  <QuickRatio>decimal</QuickRatio>
+  <DebtTotalCapitalRatio>decimal</DebtTotalCapitalRatio>
+  <DebtEquityRatio>decimal</DebtEquityRatio>
+  <FinancialLeverage>decimal</FinancialLeverage>
+  <TotalDebtToEquity>decimal</TotalDebtToEquity>
+  <AccessionNumber>string</AccessionNumber>
+  <FormType>string</FormType>
+  <DebttoAssets>decimal</DebttoAssets>
+  <CommonEquityToAssets>decimal</CommonEquityToAssets>
+</FinancialHealthEntity>

@@ -374,5 +374,154 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             }
         }
 
+
+        [HttpGet]
+        [Route("FinancialRatio/FinancialHealthRatio/{id}")]
+        public IActionResult FinancialHealthRatioRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
+        {
+            try
+            {
+                if (range > 0 && range <= 9)
+                {
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetFinancialRatioReportAll(id, "FinancialHealthRatio", exchangeId, year, range, symbol, isDifferenceOnly));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("FinancialHealthRatio"));
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Report range must be between 1 to 9");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
+        }
+
+
+        [HttpGet]
+        [Route("FinancialRatio/GrowthRatio/{id}")]
+        public IActionResult GrowthRatioRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
+        {
+            try
+            {
+                if (range > 0 && range <= 9)
+                {
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetFinancialRatioReportAll(id, "GrowthRatio", exchangeId, year, range, symbol, isDifferenceOnly));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("GrowthRatio"));
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Report range must be between 1 to 9");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
+        }
+
+
+        [HttpGet]
+        [Route("FinancialRatio/ValuationRatio/{id}")]
+        public IActionResult ValuationRatioRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
+        {
+            try
+            {
+                if (range > 0 && range <= 9)
+                {
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetFinancialRatioReportAll(id, "ValuationRatio", exchangeId, year, range, symbol, isDifferenceOnly));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("ValuationRatio"));
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Report range must be between 1 to 9");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
+        }
+
+
+        [HttpGet]
+        [Route("FinancialRatio/QuantitativeRating/{id}")]
+        public IActionResult QuantitativeRatingRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
+        {
+            try
+            {
+                if (range > 0 && range <= 9)
+                {
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetFinancialRatioReportAll(id, "QuantitativeRating", exchangeId, year, range, symbol, isDifferenceOnly));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("QuantitativeRating"));
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Report range must be between 1 to 9");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("FinancialRatio/MonthlyMarketCap/{id}")]
+        public IActionResult MonthlyMarketCapRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
+        {
+            try
+            {
+                if (range > 0 && range <= 9)
+                {
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetFinancialRatioReportAll(id, "MarketCapitalization", exchangeId, year, range, symbol, isDifferenceOnly));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("MarketCapitalization"));
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Report range must be between 1 to 9");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("FinancialRatio/EODPriceHistory/{id}")]
+        public IActionResult EODPriceHistoryRequest(Guid id, string exchangeId, int year, int range, string symbol = null, bool isDifferenceOnly = false)
+        {
+            try
+            {
+                if (range > 0 && range <= 9)
+                {
+                    var jobId = BackgroundJob.Enqueue<IngestionJobs>(x => x.GetFinancialRatioReportAll(id, "EODPriceHistory", exchangeId, year, range, symbol, isDifferenceOnly));
+                    BackgroundJob.ContinueJobWith<IngestionJobs>(jobId, x => x.MergeFinancialTempToMaster("EODPriceHistory"));
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest("Report range must be between 1 to 9");
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message, ex.InnerException);
+                return Problem(ex.Message);
+            }
+        }
+
+
     }
 }
