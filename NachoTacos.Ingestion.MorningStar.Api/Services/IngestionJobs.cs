@@ -127,7 +127,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                 TokenEntity tokenEntity = await GetTokenEntity(id);
                 if (tokenEntity != null)
                 {
-                    IQueryable<MCompanyFinancialAvailability> query = CreateCompanyFinancialQuery(exchangeId, symbol, reportType, isDiffOnly);
+                    IQueryable<MCompanyFinancialAvailability> query = CreateCompanyFinancialQuery(exchangeId, symbol, reportType, isDiffOnly).OrderBy(x => x.Symbol);
 
                     int recordCount = query.Count();
                     int pageSize = 20;
@@ -177,7 +177,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                 TokenEntity tokenEntity = await GetTokenEntity(id);
                 if (tokenEntity != null)
                 {
-                    IQueryable<MCompanyFinancialAvailability> query = CreateCompanyFinancialQuery(exchangeId, symbol, reportType, isDiffOnly);
+                    IQueryable<MCompanyFinancialAvailability> query = CreateCompanyFinancialQuery(exchangeId, symbol, reportType, isDiffOnly).OrderBy(x => x.Symbol);
 
                     int recordCount = query.Count();
                     int pageSize = 20;
@@ -271,6 +271,24 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                         break;
                     case "ProfitabilityRatioTTM":
                         changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeProfitabilityRatioTTM").ToList();
+                        break;
+                    case "FinancialHealthRatio":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeFinancialHealthRatio").ToList();
+                        break;
+                    case "GrowthRatio":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeGrowthRatio").ToList();
+                        break;
+                    case "ValuationRatio":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeValuationRatio").ToList();
+                        break;
+                    case "QuantitativeRating":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeQuantitativeRating").ToList();
+                        break;
+                    case "MarketCapitalization":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeMonthlyMarketCapitalizationHistory").ToList();
+                        break;
+                    case "EODPriceHistory":
+                        changes = _ingestionContext.ChangeTables.FromSqlRaw("EXECUTE MergeEODPriceHistory").ToList();
                         break;
                     default:
                         break;
@@ -770,6 +788,18 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
                         return CreateCompanyFinancialIncomeStatementDiffQuery(exchangeId);
                     case "IncomeStatementTTM":
                         return CreateCompanyFinancialIncomeStatementTTMDiffQuery(exchangeId);
+                    case "FinancialHealthRatio":
+                        return CreateFinancialHealthRatioDiffQuery(exchangeId);
+                    case "GrowthRatio":
+                        return CreateGrowthRatioDiffQuery(exchangeId);
+                    case "ValuationRatio":
+                        return CreateValuationRatioDiffQuery(exchangeId);
+                    case "QuantitativeRating":
+                        return CreateQuantitativeRatingDiffQuery(exchangeId);
+                    case "MonthlyMarketCap":
+                        return CreateMonthlyMarketCapDiffQuery(exchangeId);
+                    case "EODPriceHistory":
+                        return CreateEODPriceHistoryDiffQuery(exchangeId);
                     default:
                         return CreateStandardCompanyFinancialQuery(exchangeId, symbol);
                 }
@@ -844,6 +874,76 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
         private IQueryable<MCompanyFinancialAvailability> CreateCompanyFinancialIncomeStatementTTMDiffQuery(string exchangeId)
         {
             var existingSymbols = _ingestionContext.MIncomeStatementTTMs.AsQueryable()
+                                                    .Where(x => x.ExchangeId == exchangeId)
+                                                    .Select(x => x.Symbol).Distinct();
+
+            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
+                                                         .Where(x => !existingSymbols.Contains(x.Symbol));
+
+            return companyFinancialQuery;
+        }
+
+        private IQueryable<MCompanyFinancialAvailability> CreateFinancialHealthRatioDiffQuery(string exchangeId)
+        {
+            var existingSymbols = _ingestionContext.MFinancialHealthRatios.AsQueryable()
+                                                    .Where(x => x.ExchangeId == exchangeId)
+                                                    .Select(x => x.Symbol).Distinct();
+
+            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
+                                                         .Where(x => !existingSymbols.Contains(x.Symbol));
+
+            return companyFinancialQuery;
+        }
+
+        private IQueryable<MCompanyFinancialAvailability> CreateGrowthRatioDiffQuery(string exchangeId)
+        {
+            var existingSymbols = _ingestionContext.MGrowthRatios.AsQueryable()
+                                                    .Where(x => x.ExchangeId == exchangeId)
+                                                    .Select(x => x.Symbol).Distinct();
+
+            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
+                                                         .Where(x => !existingSymbols.Contains(x.Symbol));
+
+            return companyFinancialQuery;
+        }
+
+        private IQueryable<MCompanyFinancialAvailability> CreateValuationRatioDiffQuery(string exchangeId)
+        {
+            var existingSymbols = _ingestionContext.MValuationRatios.AsQueryable()
+                                                    .Where(x => x.ExchangeId == exchangeId)
+                                                    .Select(x => x.Symbol).Distinct();
+
+            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
+                                                         .Where(x => !existingSymbols.Contains(x.Symbol));
+
+            return companyFinancialQuery;
+        }
+
+        private IQueryable<MCompanyFinancialAvailability> CreateQuantitativeRatingDiffQuery(string exchangeId)
+        {
+            var existingSymbols = _ingestionContext.MQuantitativeRatings.AsQueryable()
+                                                    .Where(x => x.ExchangeId == exchangeId)
+                                                    .Select(x => x.Symbol).Distinct();
+
+            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
+                                                         .Where(x => !existingSymbols.Contains(x.Symbol));
+
+            return companyFinancialQuery;
+        }
+        private IQueryable<MCompanyFinancialAvailability> CreateMonthlyMarketCapDiffQuery(string exchangeId)
+        {
+            var existingSymbols = _ingestionContext.MMonthlyMarketCapitalizationHistories.AsQueryable()
+                                                    .Where(x => x.ExchangeId == exchangeId)
+                                                    .Select(x => x.Symbol).Distinct();
+
+            var companyFinancialQuery = _ingestionContext.MCompanyFinancialAvailabilities.AsQueryable()
+                                                         .Where(x => !existingSymbols.Contains(x.Symbol));
+
+            return companyFinancialQuery;
+        }
+        private IQueryable<MCompanyFinancialAvailability> CreateEODPriceHistoryDiffQuery(string exchangeId)
+        {
+            var existingSymbols = _ingestionContext.MEODPriceHistories.AsQueryable()
                                                     .Where(x => x.ExchangeId == exchangeId)
                                                     .Select(x => x.Symbol).Distinct();
 
