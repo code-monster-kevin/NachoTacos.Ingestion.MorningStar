@@ -570,10 +570,10 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
 
             await stockList.ParallelForEachAsync(async (stock) =>
             {
-                List<EquityApi.QuantitativeRating.Response> listSymbol =
-                            await GetQuantitativeRatingResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, _financialRatioDataTypes, year, range));
+                EquityApi.QuantitativeRating.Response listSymbol =
+                            await GetQuantitativeRatingResponses(CreateBaseFinancialTTMRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
 
-                lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
+                lock (_lock) { listMain.Add(listSymbol); }
             },
             maxDegreeOfParallelism: 4);
 
@@ -592,10 +592,10 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
 
             await stockList.ParallelForEachAsync(async (stock) =>
             {
-                List<EquityApi.MarketCapitalization.Response> listSymbol =
-                            await GetMarketCapitalizationResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, _financialRatioDataTypes, year, range));
+                EquityApi.MarketCapitalization.Response listSymbol =
+                            await GetMarketCapitalizationResponses(CreateBaseFinancialTTMRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
 
-                lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
+                lock(_lock) { listMain.Add(listSymbol); }
             },
             maxDegreeOfParallelism: 4);
 
@@ -614,10 +614,10 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
 
             await stockList.ParallelForEachAsync(async (stock) =>
             {
-                List<EquityApi.EODPrice.Response> listSymbol =
-                            await GetEODPriceResponses(CreateBaseFinancialRequestList(token, stock.ExchangeId, stock.Symbol, _financialRatioDataTypes, year, range));
+                EquityApi.EODPrice.Response listSymbol =
+                            await GetEODPriceResponses(CreateBaseFinancialTTMRequestList(token, stock.ExchangeId, stock.Symbol, year, range));
 
-                lock (_lock) { listSymbol.ForEach(item => listMain.Add(item)); }
+                lock (_lock) { listMain.Add(listSymbol); }
             },
             maxDegreeOfParallelism: 4);
 
@@ -736,37 +736,22 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Services
             return responses;
         }
 
-        private async Task<List<EquityApi.QuantitativeRating.Response>> GetQuantitativeRatingResponses(List<BaseFinancialRequest> requests)
+        private async Task<EquityApi.QuantitativeRating.Response> GetQuantitativeRatingResponses(BaseFinancialTTMRequest request)
         {
-            List<EquityApi.QuantitativeRating.Response> responses = new List<EquityApi.QuantitativeRating.Response>();
             string endPoint = _configuration.GetValue<string>(EndPoint.QuantitativeRating);
-            foreach (var request in requests)
-            {
-                responses.Add(await RestClient.GetDynamicResponseAsync<EquityApi.QuantitativeRating.Response>(endPoint.SetQueryParams(request)));
-            }
-            return responses;
+            return await RestClient.GetDynamicResponseAsync<EquityApi.QuantitativeRating.Response>(endPoint.SetQueryParams(request));
         }
 
-        private async Task<List<EquityApi.MarketCapitalization.Response>> GetMarketCapitalizationResponses(List<BaseFinancialRequest> requests)
+        private async Task<EquityApi.MarketCapitalization.Response> GetMarketCapitalizationResponses(BaseFinancialTTMRequest request)
         {
-            List<EquityApi.MarketCapitalization.Response> responses = new List<EquityApi.MarketCapitalization.Response>();
             string endPoint = _configuration.GetValue<string>(EndPoint.MarketCapitalization);
-            foreach (var request in requests)
-            {
-                responses.Add(await RestClient.GetDynamicResponseAsync<EquityApi.MarketCapitalization.Response>(endPoint.SetQueryParams(request)));
-            }
-            return responses;
+            return await RestClient.GetDynamicResponseAsync<EquityApi.MarketCapitalization.Response>(endPoint.SetQueryParams(request));
         }
 
-        private async Task<List<EquityApi.EODPrice.Response>> GetEODPriceResponses(List<BaseFinancialRequest> requests)
+        private async Task<EquityApi.EODPrice.Response> GetEODPriceResponses(BaseFinancialTTMRequest request)
         {
-            List<EquityApi.EODPrice.Response> responses = new List<EquityApi.EODPrice.Response>();
             string endPoint = _configuration.GetValue<string>(EndPoint.EODPrice);
-            foreach (var request in requests)
-            {
-                responses.Add(await RestClient.GetDynamicResponseAsync<EquityApi.EODPrice.Response>(endPoint.SetQueryParams(request)));
-            }
-            return responses;
+            return await RestClient.GetDynamicResponseAsync<EquityApi.EODPrice.Response>(endPoint.SetQueryParams(request));
         }
 
         #endregion

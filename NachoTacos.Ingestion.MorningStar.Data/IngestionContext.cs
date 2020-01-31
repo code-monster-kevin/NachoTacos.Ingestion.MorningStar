@@ -65,6 +65,8 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         public DbSet<MEODPriceHistory> MEODPriceHistories { get; set; }
         #endregion
 
+        public DbSet<RBaseScreener> RBaseScreeners { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

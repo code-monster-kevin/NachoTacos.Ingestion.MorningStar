@@ -50,6 +50,7 @@ namespace NachoTacos.Ingestion.MorningStar.Data
         DbSet<MMonthlyMarketCapitalizationHistory> MMonthlyMarketCapitalizationHistories { get; set; }
         DbSet<MEODPriceHistory> MEODPriceHistories { get; set; }
 
+        DbSet<RBaseScreener> RBaseScreeners { get; set; }
         int SaveChanges();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
