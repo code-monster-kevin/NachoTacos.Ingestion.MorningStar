@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using NachoTacos.Ingestion.MorningStar.Api.ViewModels;
 using NachoTacos.Ingestion.MorningStar.Data;
 using NachoTacos.Ingestion.MorningStar.Domain;
 using Newtonsoft.Json;
@@ -18,6 +19,38 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
         private readonly ILogger<ReportController> _logger;
         private readonly IIngestionContext _ingestionDbContext;
         private static readonly ParameterExpression DefaultParam = Expression.Parameter(typeof(RBaseScreener), "m");
+        private static readonly List<string> ScreenerProperties = new List<string>()
+        {
+            "SectorName",
+            "IndustryGroupName",
+            "IndustryName",
+            "MarketCap",
+            "EnterpriseValue",
+            "TotalAssetPerShare",
+            "TangibleBookValuePerShare",
+            "BookValuePerShare",
+            "SalesPerShare",
+            "CFPerShare",
+            "FCFPerShare",
+            "PriceToBook",
+            "PriceToSales",
+            "PriceToCashFlow",
+            "PriceToFreeCashFlow",
+            "PriceToEPS",
+            "PEGRatio",
+            "PricetoCashRatio",
+            "DividendYieldPct",
+            "ForwardDividend",
+            "PayoutRatio",
+            "SustainableGrowthRate",
+            "EVToEBITDA",
+            "QuantitativeMoatLabel",
+            "QuantitativeValuationLabel",
+            "QuantitativeValuationUncertaintyLabel",
+            "QuantitativeFinancialHealthLabel",
+            "QuantitativeStarRating",
+            "QuantitativeFairValue",
+        };
 
         public ReportController(IIngestionContext ingestionDbContext, ILogger<ReportController> logger)
         {
@@ -25,6 +58,10 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Returns the screener data catalog
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [Route("Screener")]
         public IActionResult Screener()
@@ -39,29 +76,34 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             }
         }
 
+        /// <summary>
+        /// Returns the base screener for equity
+        /// </summary>
+        /// <param name="filters">The search filters for screening companies</param>
+        /// <returns></returns>
         [HttpPost]
         [Route("Screener")]
-        public IActionResult Screener(dynamic json)
+        public IActionResult Screener(ScreenerFilter filters)
         {
             try
             {
-                string log = string.Format("screener: {0}", JsonConvert.SerializeObject(json));
+                string log = string.Format("screener: {0}", JsonConvert.SerializeObject(filters));
                 _logger.LogInformation(log);
 
-                List<StringFilter> stringFilters = json.StringFilters.ToObject<List<StringFilter>>();
-                List<ValueFilter<double>> valueFilters = json.ValueFilters.ToObject<List<ValueFilter<double>>>();
+                List<StringFilter> stringFilters = filters.StringFilters;
+                List<ValueFilter<double>> valueFilters = filters.ValueFilters;
 
                 var screener = _ingestionDbContext.RBaseScreeners.AsQueryable();
 
-                foreach (var filter in valueFilters)
+                foreach (var item in valueFilters)
                 {
-                    var expression = GetPredicate(filter);
+                    var expression = GetPredicate(item);
                     screener = screener.Where(expression);
                 }
 
-                foreach (var filter in stringFilters)
+                foreach (var item in stringFilters)
                 {
-                    var expression = GetPredicate(filter);
+                    var expression = GetPredicate(item);
                     screener = screener.Where(expression);
                 }
 
@@ -74,51 +116,53 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             }
         }
 
-        private List<dynamic> GetRange()
+        private List<ScreenerCatalog> GetRange()
         {
             var propertyInfos = typeof(RBaseScreener).GetProperties();
             var screener = _ingestionDbContext.RBaseScreeners.ToList();
 
-            List<dynamic> ranges = new List<dynamic>();
+            List<ScreenerCatalog> ranges = new List<ScreenerCatalog>();
             foreach (var pInfo in propertyInfos)
             {
                 if (ScreenerProperties.Contains(pInfo.Name))
                 {
-                    dynamic range = new ExpandoObject();
-                    range.Name = pInfo.Name;
-                    range.Properties = new ExpandoObject() as dynamic;
+                    ScreenerCatalog range = new ScreenerCatalog
+                    {
+                        Name = pInfo.Name,
+                        Properties = new ScreenerProp()
+                    };
 
                     var propertyValues =
                         screener.Select(m => typeof(RBaseScreener).GetProperty(pInfo.Name)?.GetValue(m, null)).Distinct()
                             .Where(m => m != null).ToList();
 
-                    if (Nullable.GetUnderlyingType(pInfo.PropertyType) == typeof(double))
+                    if (Nullable.GetUnderlyingType(pInfo.PropertyType) == typeof(decimal))
                     {
                         range.Type = "double";
                         if (propertyValues.Any())
                         {
-                            List<double> values = propertyValues.OfType<double>().ToList();
-                            range.Properties.Max = values.Max();
-                            range.Properties.Min = values.Min();
-                            range.IsAvailable = true;
+                            List<decimal> values = propertyValues.OfType<decimal>().ToList();
+                            range.Properties.Max = values.Max().ToString();
+                            range.Properties.Min = values.Min().ToString();
+                            range.Properties.IsAvailable = true;
                         }
                         else
                         {
-                            range.IsAvailable = false;
+                            range.Properties.IsAvailable = false;
                         }
                     }
                     else if (pInfo.PropertyType == typeof(string))
                     {
-                        var kvPairs = propertyValues.Select(m => new { Text = m, Value = m }).ToList();
+                        var kvPairs = propertyValues.Select(m => new ScreenerCollection { Text = m.ToString(), Value = m.ToString() }).ToList();
                         range.Properties.Collection = kvPairs;
                         range.Type = "string";
-                        range.IsAvailable = true;
+                        range.Properties.IsAvailable = true;
                     }
 
                     if (range.Type == null)
                     {
                         range.Type = "others";
-                        range.IsAvailable = false;
+                        range.Properties.IsAvailable = false;
                     }
                     ranges.Add(range);
                 }
@@ -176,54 +220,6 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             };
         }
 
-        private class Filter
-        {
-            public string PropertyName { get; set; }
-            public string Operation { get; set; }
-        }
-
-        private class ValueFilter<T> : Filter
-        {
-            public T Value { get; set; }
-        }
-
-        private class StringFilter : Filter
-        {
-            public IEnumerable<string> Collection { get; set; }
-        }
-
-        public static readonly List<string> ScreenerProperties = new List<string>()
-        {
-            "SectorName",
-            "IndustryGroupName",
-            "IndustryName",
-            "MarketCap",
-            "EnterpriseValue",
-            "TotalAssetPerShare",
-            "TangibleBookValuePerShare",
-            "BookValuePerShare",
-            "SalesPerShare",
-            "CFPerShare",
-            "FCFPerShare",
-            "PriceToBook",
-            "PriceToSales",
-            "PriceToCashFlow",
-            "PriceToFreeCashFlow",
-            "PriceToEPS",
-            "PEGRatio",
-            "PricetoCashRatio",
-            "DividendYieldPct",
-            "ForwardDividend",
-            "PayoutRatio",
-            "SustainableGrowthRate",
-            "EVToEBITDA",
-            "QuantitativeMoatLabel",
-            "QuantitativeValuationLabel",
-            "QuantitativeValuationUncertaintyLabel",
-            "QuantitativeFinancialHealthLabel",
-            "QuantitativeStarRating",
-            "QuantitativeFairValue",
-        };
 
     }
 }

@@ -159,6 +159,19 @@
             <param name="exchangeId">Example "KLS"</param>
             <returns></returns>
         </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.ReportController.Screener">
+            <summary>
+            Returns the screener data catalog
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NachoTacos.Ingestion.MorningStar.Api.Controllers.ReportController.Screener(NachoTacos.Ingestion.MorningStar.Api.ViewModels.ScreenerFilter)">
+            <summary>
+            Returns the base screener for equity
+            </summary>
+            <param name="filters">The search filters for screening companies</param>
+            <returns></returns>
+        </member>
         <member name="P:NachoTacos.Ingestion.MorningStar.Api.EquityApi.BalanceSheetEntity.ReportDate">
             <remarks/>
         </member>
