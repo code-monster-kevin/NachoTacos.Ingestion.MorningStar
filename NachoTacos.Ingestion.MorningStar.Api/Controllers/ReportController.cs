@@ -151,6 +151,36 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
                             range.Properties.IsAvailable = false;
                         }
                     }
+                    else if (Nullable.GetUnderlyingType(pInfo.PropertyType) == typeof(int))
+                    {
+                        range.Type = "int";
+                        if (propertyValues.Any())
+                        {
+                            List<int> values = propertyValues.OfType<int>().ToList();
+                            range.Properties.Max = values.Max().ToString();
+                            range.Properties.Min = values.Min().ToString();
+                            range.Properties.IsAvailable = true;
+                        }
+                        else
+                        {
+                            range.Properties.IsAvailable = false;
+                        }
+                    }
+                    else if(Nullable.GetUnderlyingType(pInfo.PropertyType) == typeof(long))
+                    {
+                        range.Type = "long";
+                        if (propertyValues.Any())
+                        {
+                            List<long> values = propertyValues.OfType<long>().ToList();
+                            range.Properties.Max = values.Max().ToString();
+                            range.Properties.Min = values.Min().ToString();
+                            range.Properties.IsAvailable = true;
+                        }
+                        else
+                        {
+                            range.Properties.IsAvailable = false;
+                        }
+                    }
                     else if (pInfo.PropertyType == typeof(string))
                     {
                         var kvPairs = propertyValues.Select(m => new ScreenerCollection { Text = m.ToString(), Value = m.ToString() }).ToList();
@@ -187,8 +217,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
 
         private static Expression<Func<RBaseScreener, bool>> GetPredicate(string propertyName, string operation, IEnumerable<string> collection)
         {
-            // m => codes.Contains(m.Code)
-            // operation = "Contains"
+
             var methodInfo = typeof(List<string>).GetMethod(operation,
                 new Type[] { typeof(string) });
 
