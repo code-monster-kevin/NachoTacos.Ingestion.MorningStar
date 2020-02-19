@@ -39,7 +39,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             "PriceToEPS",
             "PEGRatio",
             "PricetoCashRatio",
-            "DividendYieldPct",
+            "DividendYield",
             "ForwardDividend",
             "PayoutRatio",
             "SustainableGrowthRate",
@@ -68,7 +68,7 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
         {
             try
             {
-                return Ok(GetRange());
+                return Ok(AddCalculatedFields(GetRange()));
             }
             catch(Exception ex)
             {
@@ -114,6 +114,27 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
                 _logger.LogError(ex.Message);
                 return Problem(ex.Message);
             }
+        }
+
+        private List<ScreenerCatalog> AddCalculatedFields(List<ScreenerCatalog> list)
+        {
+            var catalog = list.Where(x => x.Name == "DividendYield").FirstOrDefault();
+            string max = (ParseDouble(catalog.Properties.Max) * 100).ToString();
+            string min =(ParseDouble(catalog.Properties.Min) * 100).ToString();
+
+            var divPctCatalog = new ScreenerCatalog
+            {
+                Name = "DividendYieldPct",
+                Type = "int",
+                Properties = new ScreenerProp
+                {
+                    Max = max,
+                    Min = min,
+                    IsAvailable = true
+                }
+            };
+            list.Add(divPctCatalog);
+            return list;
         }
 
         private List<ScreenerCatalog> GetRange()
@@ -249,6 +270,12 @@ namespace NachoTacos.Ingestion.MorningStar.Api.Controllers
             };
         }
 
-
+        private double ParseDouble(string value)
+        {
+            double result;
+            if (double.TryParse(value, out result))
+                return result;
+            return 0.0;
+        }
     }
 }
